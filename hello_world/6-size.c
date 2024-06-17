@@ -7,11 +7,15 @@
  */
 int main(void)
 {
+	char a = 'a';
+	int sim_num = 0;
 	long int num = 0;
+	long long int gran_num = 0;
+	float f_num = 0;
 
-	printf("Size of a char: 1 byte(s)\n");
-	printf("Size of an int: 4 byte(s)\n");
-	printf("Size of a long int: %lu byte(s)\n", sizeof(num));
-	printf("Size of a long long int: 8 byte(s)\n");
-	printf("Size of a float: 4 byte(s)\n");
+	printf("Size of a char: %i byte(s)\n", sizeof(a));
+	printf("Size of an int: %i byte(s)\n", sizeof(sim_num));
+	printf("Size of a long int: %i byte(s)\n", sizeof(num));
+	printf("Size of a long long int: %i byte(s)\n", sizeof(gran_num));
+	printf("Size of a float: %i byte(s)\n", sizeof(f_num));
 }
