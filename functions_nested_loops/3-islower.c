@@ -2,9 +2,9 @@
 
 /**
  * _islower - check lowercase
- * Check with ascii table
- * Parameters c - put the char to check
- * Return value - 1 for lowercase and 2 for uppercase
+ * @c: char to input for check
+ *
+ * Return: 1 for lowercase and 2 for uppercase
  */
 int _islower(int c)
 {
