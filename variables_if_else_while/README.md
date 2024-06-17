@@ -5,3 +5,4 @@ Display alphabet innlowercase then in uppercase
 Display alphabet without q and e
 Display 0-9 with printf
 Display 0-9 with putchar
+Display alphabet in reverse in lowercase
