@@ -3,3 +3,4 @@ Compilation without link script
 Generate assembly code script
 Print with puts()
 Print with printf()
+Print multiple lines
