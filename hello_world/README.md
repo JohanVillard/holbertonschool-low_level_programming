@@ -1,2 +1,3 @@
 Pre-processor only(!!!) script
-Compliation without link script
+Compilation without link script
+Generate assembly code script
