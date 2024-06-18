@@ -6,3 +6,4 @@ Is alphabetic
 Which sign is the number
 Compute absolute value
 Display last digit of a number
+Displa a countdown of minute in 24 hours
