@@ -17,8 +17,11 @@ void times_table(void)
 
 	for (i = 0; i < 10; i++)
 	{
+		_putchar('0');
+		_putchar(',');
+		_putchar(' ');
 
-		for (n = 0; n < 10; n++)
+		for (n = 1; n < 10; n++)
 		{
 			result = i * n;
 			first_num = (result / 10) % 10;
