@@ -1,6 +1,6 @@
 #include <unistd.h>
 
-/*
+/**
  * main - Entry point
  *
  * Description: Display a sentence in STDERR
@@ -9,8 +9,8 @@
  */
 int main(void)
 {
-	char sentence[] = "and that piece of art is useful\"\
-- Dora Korpar, 2015-10-19\n";
+	char sentence[] = "and that piece of art is use
+ful\" - Dora Korpar, 2015-10-19\n";
 
 	write(2, sentence, sizeof(sentence));
 
