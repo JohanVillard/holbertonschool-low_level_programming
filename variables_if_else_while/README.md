@@ -8,3 +8,4 @@ Display 0-9 with putchar
 Display alphabet in reverse in lowercase
 Display hexadecimal
 Display unique number with ', ' pattern between
+Display pair of number unique
