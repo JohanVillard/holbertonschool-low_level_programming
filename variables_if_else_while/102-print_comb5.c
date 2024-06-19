@@ -9,11 +9,7 @@ int main(void)
 {
 	int ascii0 = 48;
 	int ascii9 = 57;
-	int first_num;
-	int second_num;
-	int third_num;
-	int fourth_num;
-	int change_fourth;
+	int first_num, second_num, third_num, fourth_num, change_fourth;
 
 	for (first_num = ascii0; first_num < ascii9 + 1; first_num++)
 	{
