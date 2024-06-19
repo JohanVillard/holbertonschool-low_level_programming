@@ -15,15 +15,22 @@ int main(void)
 	int i;
 	int limit = 50;
 
-	printf("%lu\n%lu\n", fib0, fib1);
+	printf("%lu, %lu, ", fib0, fib1);
 
 	for (i = 2; i < limit; i++)
 	{
 		fib2 = fib0 + fib1;
 		fib0 = fib1;
 		fib1 = fib2;
-
-		printf("%lu, ", fib2);
+		if (i != limit - 1)
+		{
+		
+			printf("%lu, ", fib2);
+		}
+		else
+		{
+			printf("%lu", fib2);
+		}
 	}
 
 	putchar('\n');
