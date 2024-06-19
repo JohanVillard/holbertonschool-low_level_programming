@@ -11,13 +11,14 @@ void print_times_table(int n)
 	int column, line, result;
 	int first_num, second_num, last_num;
 
-	if  ((n <= 15) && (n > 0))
+	if  ((n <= 15) && (n >= 0))
 	{
 		for (line = 0; line <= n; line++)
 		{
 			_putchar('0');
-			_putchar(',');
-			_putchar(' ');
+			if (n != 0)
+			{	_putchar(',');
+				_putchar(' '); }
 			for (column = 1; column <= n; column++)
 			{
 				result = line * column;
@@ -39,10 +40,8 @@ void print_times_table(int n)
 				}
 				_putchar('0' + last_num);
 				if (column != n)
-				{
-					_putchar(',');
-					_putchar(' ');
-				}
+				{	_putchar(',');
+					_putchar(' '); }
 			}
 		_putchar('\n');
 		}
