@@ -10,3 +10,5 @@ Display a countdown of minute in 24 hours
 Display a times table
 Sum two numbers
 Display n to 98
+Display n tables
+Display sum of multiples of 3 and 5
