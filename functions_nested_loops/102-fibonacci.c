@@ -15,9 +15,7 @@ int main(void)
 	int i;
 	int limit = 50;
 
-	printf("%lu, %lu, ", fib0, fib1);
-
-	for (i = 2; i < limit; i++)
+	for (i = 0; i < limit; i++)
 	{
 		fib2 = fib0 + fib1;
 		fib0 = fib1;
