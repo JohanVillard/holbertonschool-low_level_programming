@@ -22,7 +22,6 @@ int main(void)
 		fib1 = fib2;
 		if (i != limit - 1)
 		{
-		
 			printf("%lu, ", fib2);
 		}
 		else
