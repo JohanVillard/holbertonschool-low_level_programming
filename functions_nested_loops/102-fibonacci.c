@@ -23,8 +23,10 @@ int main(void)
 		fib0 = fib1;
 		fib1 = fib2;
 
-		printf("%lu\n", fib2);
+		printf("%lu, ", fib2);
 	}
+
+	putchar('\n');
 
 	return (0);
 }
