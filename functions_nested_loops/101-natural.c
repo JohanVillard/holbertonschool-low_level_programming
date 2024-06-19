@@ -5,6 +5,7 @@
  * main - entry point
  *
  * Print sum of all multiple of 3 or 5
+ * Return: 0
  */
 int main(void)
 {
