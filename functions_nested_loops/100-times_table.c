@@ -1,50 +1,44 @@
 #include "main.h"
 
 /**
- * print_times_table - print times table n times
- *
- * Description: Display ten lines column * line n times
+ * print_times_table - print times table n time
+ * @n: integer times tables
  *
  * Return: nothing
  */
 void print_times_table(int n)
 {
-	int i;
-	int j;
-	int k;
-	int result;
-	int first_num;
-	int second_num;
+	int column, line, result;
+	int first_num, second_num, last_num;
 
-	for (k = 0; k < n; k++)
+	if  ((n <= 15) && (n > 0))
 	{
-		for (i = 0; i < n; i++)
+		for (line = 0; line <= n; line++)
 		{
 			_putchar('0');
 			_putchar(',');
 			_putchar(' ');
-
-			for (j = 1; j < n; j++)
+			for (column = 1; column <= n; column++)
 			{
-				result = i * j;
-				first_num = (result / 10) % 10;
-				second_num = result % 10;
-
-				if (first_num == 0)
+				result = line * column;
+				first_num = result / 100;
+				second_num = (result / 10) % 10;
+				last_num = result % 10;
+				if ((first_num == 0) && (second_num == 0))
+				{	_putchar(' ');
+					_putchar(' '); }
+				else if (first_num == 0)
 				{
 					_putchar(' ');
+					_putchar('0' + second_num);
 				}
 				else
 				{
 					_putchar('0' + first_num);
+					_putchar('0' + second_num);
 				}
-
-				_putchar('0' + second_num);
-
-				if (j == 9)
-				{
-				}
-				else
+				_putchar('0' + last_num);
+				if (column != n)
 				{
 					_putchar(',');
 					_putchar(' ');
