@@ -9,3 +9,5 @@ Display alphabet in reverse in lowercase
 Display hexadecimal
 Display unique number with ', ' pattern between
 Display pair of number unique
+Display three number unique
+Display 2 * 2 numbers

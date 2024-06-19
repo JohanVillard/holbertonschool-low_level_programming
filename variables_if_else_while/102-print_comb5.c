@@ -13,29 +13,38 @@ int main(void)
 	int second_num;
 	int third_num;
 	int fourth_num;
+	int change_fourth;
 
 	for (first_num = ascii0; first_num < ascii9 + 1; first_num++)
 	{
-		for (second_num = ascii0; second_num < ascii9; second_num++)
+		for (second_num = ascii0; second_num < ascii9 + 1; second_num++)
 		{
 			for (third_num = first_num; third_num < ascii9 + 1; third_num++)
 			{
-				for (fourth_num = second_num + 1; fourth_num < ascii9 + 1; fourth_num++)
+				if (first_num != third_num)
+				{
+					change_fourth = ascii0;
+				}
+				else
+				{
+					change_fourth = second_num + 1;
+				}
+				for (fourth_num = change_fourth; fourth_num < ascii9 + 1; fourth_num++)
 				{
 					putchar(first_num);
 					putchar(second_num);
 					putchar(' ');
 					putchar(third_num);
 					putchar(fourth_num);
-				if ((first_num == ascii9) && (second_num == ascii9 - 1))
-				{
+					if ((first_num == ascii9) && (second_num == ascii9 - 1))
+					{
 					break;
-				}
-				else
-				{
-					putchar(',');
-					putchar(' ');
-				}
+					}
+					else
+					{
+						putchar(',');
+						putchar(' ');
+					}
 				}
 			}
 		}
