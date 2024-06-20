@@ -9,8 +9,8 @@
  */
 int main(void)
 {
-	long int fib0 = 1;
-	long int fib1 = 2;
+	long int fib0 = 0;
+	long int fib1 = 1;
 	long int fib2;
 	long int sum = 0;
 	int i;
@@ -32,10 +32,8 @@ int main(void)
 				sum += fib2;
 			}
 		}
-		printf("%lu", sum);
 	}
-
-	putchar('\n');
+	printf("%lu\n", sum);
 
 	return (0);
 }
