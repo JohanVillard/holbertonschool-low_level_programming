@@ -15,7 +15,7 @@ int main(void)
 	int i;
 	int limit = 98;
 
-	for (i = 0; i <= limit; i++)
+	for (i = 0; i < limit; i++)
 	{
 		fib2 = fib0 + fib1;
 		fib0 = fib1;
