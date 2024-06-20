@@ -29,7 +29,7 @@ int main(void)
 			}
 			else if (fib2 % 2 == 0)
 			{
-		o		sum += fib2;
+				sum += fib2;
 			}
 		}
 		printf("%lu", sum);
