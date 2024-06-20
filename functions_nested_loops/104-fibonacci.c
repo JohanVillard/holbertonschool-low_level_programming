@@ -5,14 +5,14 @@
  * main - entry point
  *
  * Print 98:x
- *first fibonacci numbers
+ * first fibonacci numbers
  * Return: 0
  */
 int main(void)
 {
-	long int fib0 = 0;
-	long int fib1 = 1;
-	long int fib2;
+	long double fib0 = 0;
+	long double fib1 = 1;
+	long double fib2;
 	int i;
 	int limit = 98;
 
@@ -24,11 +24,11 @@ int main(void)
 
 		if (i != limit)
 		{
-			printf("%lu, ", fib2);
+			printf("%Lf, ", fib2);
 		}
 		else
 		{
-			printf("%lu, ", fib2);
+			printf("%Lf", fib2);
 		}
 	}
 
