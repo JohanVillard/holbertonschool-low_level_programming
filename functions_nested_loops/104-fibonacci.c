@@ -4,7 +4,8 @@
 /**
  * main - entry point
  *
- * Print 50 first fibonacci numbers
+ * Print 98:x
+ *first fibonacci numbers
  * Return: 0
  */
 int main(void)
@@ -20,14 +21,14 @@ int main(void)
 		fib2 = fib0 + fib1;
 		fib0 = fib1;
 		fib1 = fib2;
-		
+
 		if (i != limit)
 		{
 			printf("%lu, ", fib2);
 		}
 		else
 		{
-			printf("%lu", fib2);
+			printf("%lu, ", fib2);
 		}
 	}
 
