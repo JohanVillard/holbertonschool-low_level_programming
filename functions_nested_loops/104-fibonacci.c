@@ -10,9 +10,9 @@
  */
 int main(void)
 {
-	long double fib0 = 0;
-	long double fib1 = 1;
-	long double fib2;
+	unsigned long int fib0 = 0;
+	unsigned long int fib1 = 1;
+	unsigned long int fib2;
 	int i;
 	int limit = 98;
 
@@ -24,11 +24,11 @@ int main(void)
 
 		if (i != limit)
 		{
-			printf("%Lf, ", fib2);
+			printf("%lu, ", fib2);
 		}
 		else
 		{
-			printf("%Lf", fib2);
+			printf("%lu", fib2);
 		}
 	}
 
