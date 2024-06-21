@@ -37,8 +37,8 @@ int main(void)
 
 			if (count_num(fib2_end) > count_num(fib1_end))
 			{
-				carry = fib2_end / 10000;
-				fib2_end %= 10000;
+				carry = fib2_end / 100000000000000000;
+				fib2_end %= 100000000000000000;
 				fib2_start = fib0_start + fib1_start + carry;
 			}
 			else
@@ -62,18 +62,18 @@ int main(void)
 		}
 		else
 		{
-			fib0_start = fib0 / 10000;
-			fib0_end = fib0 % 10000;
+			fib0_start = fib0 / 100000000000000000;
+			fib0_end = fib0 % 100000000000000000;
 
-			fib1_start = fib1 / 10000;
-			fib1_end = fib1 % 10000;
+			fib1_start = fib1 / 100000000000000000;
+			fib1_end = fib1 % 100000000000000000;
 
 			fib2_end = fib0_end + fib1_end;
 
 			if (count_num(fib2_end) > count_num(fib1_end))
 			{
-				carry = fib2_end / 10000;
-				fib2_end %= 10000;
+				carry = fib2_end / 100000000000000000;
+				fib2_end %= 100000000000000000;
 				fib2_start = fib0_start + fib1_start + carry;
 			}
 			else
