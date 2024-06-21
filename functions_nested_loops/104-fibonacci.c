@@ -20,7 +20,7 @@ int main(void)
 	unsigned long int fib1_start = 0;
 	unsigned long int fib2_start = 0;
 	unsigned long int carry;
-	int limit = 96;
+	int limit = 98;
 	int i;
 
 	fib0_start /= cut_comma;
