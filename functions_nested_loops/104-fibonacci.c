@@ -18,7 +18,7 @@ int main(void)
 	unsigned long int count = 0;
 	unsigned long int fib0_start, fib0_end, fib1_start, fib1_end, fib2_start, fib2_end, carry;
 	int i;
-	int limit = 97;
+	int limit = 98;
 
 	for (i = 0; i < limit; i++)
 	{	
@@ -88,7 +88,7 @@ int main(void)
                         fib1_end = fib2_end;	
 		}	
 		count = count_num(fib2); 
-	}	
+	}		
 	putchar('\n');
 	return (0);
 }
