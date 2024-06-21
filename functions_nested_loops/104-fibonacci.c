@@ -12,88 +12,69 @@ unsigned long int count_num(unsigned long int num);
 
 int main(void)
 {
-	unsigned long int fib0 = 0;
-	unsigned long int fib1 = 1;
-	unsigned long int fib2 = 0;
-	unsigned long int count = 0;
-	unsigned long int fib0_start, fib0_end, fib1_start, fib1_end;
-	unsigned long int fib2_start, fib2_end, carry;
+	unsigned long int fib0_end = 0;
+	unsigned long int fib1_end = 1;
+	unsigned long int fib2_end = 0;
+	unsigned long int cut_comma = 1000000000000000000;
+	unsigned long int fib0_start = 0;
+	unsigned long int fib1_start = 0;
+	unsigned long int fib2_start = 0;
+	unsigned long int carry;
 	int limit = 96;
 	int i;
 
+	fib0_start /= cut_comma;
+	fib0_end %= cut_comma;
+	fib1_start /= cut_comma;
+	fib1_end %= cut_comma;
+
+
 	for (i = 0; i < limit; i++)
 	{
-		if (count < 20)
+		fib2_end = fib0_end + fib1_end;
+
+		if (count_num(fib2_end) > count_num(fib1_end))
 		{
-			fib2 = fib0 + fib1;
-			fib0 = fib1;
-			fib1 = fib2;
-
-			printf("%lu, ", fib2);
-		}
-		else if (fib2_start > 0)
-		{
-			fib2_end = fib0_end + fib1_end;
-
-			if (count_num(fib2_end) > count_num(fib1_end))
-			{
-				carry = fib2_end / 1000000000000000000;
-				fib2_end %= 1000000000000000000;
-				fib2_start = fib0_start + fib1_start + carry;
-			}
-			else
-			{
-				fib2_start = fib0_start + fib1_start;
-			}
-
-			if (i != limit - 1)
-			{
-				printf("%lu%lu, ", fib2_start, fib2_end);
-			}
-			else
-			{
-				printf("%lu%lu", fib2_start, fib2_end);
-			}
-
-			fib0_start = fib1_start;
-			fib1_start = fib2_start;
-			fib0_end = fib1_end;
-			fib1_end = fib2_end;
+			carry = fib2_end / cut_comma;
+			fib2_end %= cut_comma;
+			fib2_start = fib0_start + fib1_start + carry;
 		}
 		else
 		{
-			fib0_start = fib0 / 1000000000000000000;
-			fib0_end = fib0 % 1000000000000000000;
+			fib2_start = fib0_start + fib1_start;
+		}
 
-			fib1_start = fib1 / 1000000000000000000;
-			fib1_end = fib1 % 1000000000000000000;
-
-			fib2_end = fib0_end + fib1_end;
-
-			if (count_num(fib2_end) > count_num(fib1_end))
+		if (i != limit - 1)
+		{
+			if (fib2_start == 0)
 			{
-				carry = fib2_end / 1000000000000000000;
-				fib2_end %= 1000000000000000000;
-				fib2_start = fib0_start + fib1_start + carry;
+				printf("%lu, ", fib2_end);
 			}
 			else
 			{
-				fib2_start = fib0_start + fib1_start;
+				printf("%lu%lu, ", fib2_start, fib2_end);
 			}
-
-			printf("%lu%lu, ", fib2_start, fib2_end);
-
-			fib0_start = fib1_start;
-			fib1_start = fib2_start;
-			fib0_end = fib1_end;
-			fib1_end = fib2_end;
 		}
-		count = count_num(fib2);
+		else
+		{
+			printf("%lu%lu", fib2_start, fib2_end);
+		}
+
+		fib0_start = fib1_start;
+		fib1_start = fib2_start;
+		fib0_end = fib1_end;
+		fib1_end = fib2_end;
 	}
 	putchar('\n');
 	return (0);
 }
 
+/**
+ * count_num - count the digits
+ * @num: number to count
+ *
+ * Return: (count)
+ */
 unsigned long int count_num(unsigned long int num)
 {
 	unsigned long int count = 0;
