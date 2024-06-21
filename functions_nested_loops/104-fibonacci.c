@@ -31,12 +31,7 @@ int main(void)
 			printf("%lu, ", fib2);
 		}
 		else if (fib2_start > 0)
-		{
-			fib0_start = fib1_start;
-			fib1_start = fib2_start;
-			fib0_end = fib1_end;
-                        fib1_end = fib2_end;
-			
+		{			
 			fib2_end = fib0_end + fib1_end;
 
                         if (count_num(fib2_end) > count_num(fib1_end))
@@ -58,6 +53,11 @@ int main(void)
 		       {
 			       printf("%lu%lu", fib2_start, fib2_end);
 		       }
+
+		        fib0_start = fib1_start;
+                        fib1_start = fib2_start;
+                        fib0_end = fib1_end;
+                        fib1_end = fib2_end;
 		}
 		else
 		{	
@@ -80,7 +80,12 @@ int main(void)
 				fib2_start = fib0_start + fib1_start;
 			}
                         
-			printf("%lu%lu, ", fib2_start, fib2_end);	
+			printf("%lu%lu, ", fib2_start, fib2_end);
+
+			fib0_start = fib1_start;
+                        fib1_start = fib2_start;
+                        fib0_end = fib1_end;
+                        fib1_end = fib2_end;	
 		}	
 		count = count_num(fib2); 
 	}	
