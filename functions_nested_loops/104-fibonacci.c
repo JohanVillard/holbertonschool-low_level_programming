@@ -4,8 +4,7 @@
 /**
  * main - entry point
  *
- * Print 98:x
- * first fibonacci numbers
+ * Print 50 first fibonacci numbers
  * Return: 0
  */
 int main(void)
@@ -13,6 +12,9 @@ int main(void)
 	unsigned long int fib0 = 0;
 	unsigned long int fib1 = 1;
 	unsigned long int fib2;
+	unsigned long int cut_fib1;
+       	unsigned long int cut_fib2;
+	unsigned long int base = 1000;
 	int i;
 	int limit = 98;
 
@@ -22,13 +24,18 @@ int main(void)
 		fib0 = fib1;
 		fib1 = fib2;
 
-		if (i != limit)
+		if (i != limit - 1)
 		{
-			printf("%lu, ", fib2);
+				cut_fib1 = fib2 / 100000;
+				cut_fib2 = fib2 % 100000;
+				printf("%lu%lu, ", cut_fib1, cut_fib2);
+
 		}
 		else
 		{
-			printf("%lu", fib2);
+			cut_fib1 = fib2 / base;
+                        cut_fib2 = fib2 % base;
+                        printf("%lu%lu", cut_fib1, cut_fib2);
 		}
 	}
 
