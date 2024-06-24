@@ -20,6 +20,7 @@ void puts_half(char *str)
 		count--;
 		half_string = count / 2;
 		half_string++;
+		count++;
 	}
 	else
 	{
