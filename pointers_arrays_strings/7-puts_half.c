@@ -18,6 +18,10 @@ void puts_half(char *str)
 	if (count % 2 != 0)
 	{
 		count++;	
+	}
+	else
+	{
+		count--;
 	}	
 
 	half_string = count / 2;
