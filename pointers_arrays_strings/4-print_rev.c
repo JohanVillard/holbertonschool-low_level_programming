@@ -16,7 +16,7 @@ void print_rev(char *s)
 		i++;
 	}
 
-	for (j = i; j >= 0; j--)
+	for (j = i - 1; j >= 0; j--)
 	{
 		letter = array[j];
 		_putchar(letter);
