@@ -6,20 +6,22 @@
  */
 void more_numbers(void)
 {
-	int i, j;
+	int i, j, second_num, limit_num = 62;
 
 	for (j = 0; j < 10; j++)
 	{
-		for (i = 48; i <= 57; i++)
+		for (i = 48; i <= limit_num; i++)
 		{
-			_putchar(i);
+			second_num = i;
+			if (i > 57)
+			{
+				_putchar('1');
+				second_num -= 10;
+			}
+			_putchar(second_num);
 		}
-		for (i = 48; i <= 52; i++)
-		{
-			_putchar('1');
-			_putchar(i);
-		}
-
-		_putchar('\n');
+	_putchar('\n');
 	}
 }
+
+
