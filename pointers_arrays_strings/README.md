@@ -4,3 +4,4 @@ Return the length of string
 Print a string
 Print a reverse string
 Reverse a string
+Print even character
