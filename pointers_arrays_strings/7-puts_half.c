@@ -24,7 +24,7 @@ void puts_half(char *str)
 
 	if (count % 2 != 0)
 	{
-		half_string--;
+		count--;
 	}
 
 	for (i = half_string; i < count; i++)
