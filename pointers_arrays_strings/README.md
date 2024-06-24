@@ -5,3 +5,4 @@ Print a string
 Print a reverse string
 Reverse a string
 Print even character
+Print the second half of a string
