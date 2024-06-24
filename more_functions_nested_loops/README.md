@@ -7,5 +7,5 @@ Print 1 to 14 ten times
 Print a line
 Print a diagonal line
 Print a square
-
-
+Fizz Buzz
+Print a sapin
