@@ -6,3 +6,4 @@ Print a reverse string
 Reverse a string
 Print even character
 Print the second half of a string
+Print n elements of an array
