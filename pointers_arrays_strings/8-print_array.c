@@ -19,9 +19,9 @@ void print_array(int *a, int n)
 
 	for (count = 0; count < n; count++)
 	{
-		if (count >= array_len - 1)
+		if (count == array_len - 1)
 		{
-			printf("%d\n count: %d    array_len: %d", a[count], count, array_len - 1);
+			printf("%d\n", a[count]);
 		}
 		else
 		{
