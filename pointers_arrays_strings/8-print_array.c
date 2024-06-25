@@ -16,6 +16,8 @@ void print_array(int *a, int n)
 	{
 		array_len++;
 	}
+	
+	n = array_len;
 
 	for (count = 0; count < n; count++)
 	{	
