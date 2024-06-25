@@ -38,10 +38,7 @@ int _atoi(char *s)
 
 		}
 		index++;
-		if (num != -2147483648)
-		{
-			num *= signe;
-		}
+		num *= signe;
 	}
 	return (num);
 }
