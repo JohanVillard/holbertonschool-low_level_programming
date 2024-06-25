@@ -26,14 +26,14 @@ int _atoi(char *s)
 		}
 		else if ((s[index] >= '0') && (s[index] <= '9'))
 		{
-			if ((num != 214748364) && (s[index] != 4))
-			{
-				num = num * 10 + (s[index] - '0');
-			}
-			else if (num == 214748364)
+			if ((num == 214748364) && (s[index] == '8'))
 			{
 				num *= -1;
 				num = num * 10 + (s[index] - '0') * -1;
+			}
+			else
+			{
+				num = num * 10 + (s[index] - '0');
 			}
 
 		}
