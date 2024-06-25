@@ -42,5 +42,6 @@ int _atoi(char *s)
 		{
 			num *= signe;
 		}
+	}
 	return (num);
 }
