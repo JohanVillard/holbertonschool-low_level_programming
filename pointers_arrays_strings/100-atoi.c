@@ -20,7 +20,7 @@ int _atoi(char *s)
 		{
 			break;
 		}
-		else if ((s[index] == '-') && (s[index + 1] >= '0') && (s[index + 1] <= '9'))
+		else if ((s[index] == '-') && (signe == 1))
 		{
 			signe *= -1;
 		}
