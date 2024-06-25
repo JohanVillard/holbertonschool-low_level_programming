@@ -22,7 +22,7 @@ void print_array(int *a, int n)
 
 		printf("%d", a[count]);
 
-		if (count + 1 < array_len)
+		if (count < array_len - 1)
 		{
 			putchar(',');
 			putchar(' ');
