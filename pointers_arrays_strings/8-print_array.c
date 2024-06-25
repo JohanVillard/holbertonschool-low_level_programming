@@ -21,7 +21,7 @@ void print_array(int *a, int n)
 	{
 		if (count >= array_len - 1)
 		{
-			printf("%d", a[count]);
+			printf("%d\n count: %d    array_len: %d", a[count], count, array_len - 1);
 		}
 		else
 		{
