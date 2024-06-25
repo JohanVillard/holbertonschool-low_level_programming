@@ -19,9 +19,9 @@ void print_array(int *a, int n)
 
 	for (count = 0; count < n; count++)
 	{
-		if (a[count] == ' ')
+		if (a[count] == '\0')
 		{
-			
+			printf("This array is NULL");	
 		}
 		else if (count == array_len - 1)
 		{
