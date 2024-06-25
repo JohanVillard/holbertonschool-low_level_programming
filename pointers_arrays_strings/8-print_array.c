@@ -19,7 +19,7 @@ void print_array(int *a, int n)
 
 	for (count = 0; count < n; count++)
 	{
-		if (count == array_len - 1)
+		if (count == array_len)
 		{
 			printf("%d", a[count]);
 		}
