@@ -19,7 +19,11 @@ void print_array(int *a, int n)
 
 	for (count = 0; count < n; count++)
 	{
-		if (count == array_len - 1)
+		if (a[count] == ' ')
+		{
+			
+		}
+		else if (count == array_len - 1)
 		{
 			printf("%d", a[count]);
 		}
