@@ -10,16 +10,23 @@
  */
 void print_array(int *a, int n)
 {
-	int count = 0, i = 0;
-	
+	int count, array_len = 0;
+
+	while (a[array_len])
+	{
+		array_len++;
+	}
+
 	for (count = 0; count < n; count++)
 	{
-		while (a[count] != '\0')
-		{
-			i++;
-		}
 
-		printf("%d", i);
+		printf("%d", a[count]);
+
+		if (count + 1 < array_len)
+		{
+			putchar(',');
+			putchar(' ');
+		}
 	}
 
 	putchar('\n');
