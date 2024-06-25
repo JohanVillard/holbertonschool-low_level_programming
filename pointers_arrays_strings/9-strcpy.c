@@ -15,7 +15,7 @@
 	{
 		dest[i] = src[i];
 		i++;
-		if (dest[i] == '\0')
+		if (src[i] == '\0')
 		{
 			dest[i] = src[i];
 		}
