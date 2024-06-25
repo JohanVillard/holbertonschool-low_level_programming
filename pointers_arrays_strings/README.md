@@ -9,3 +9,4 @@ Print the second half of a string
 Print n elements of an array
 Copy a string
 Convert string into integer
+Concat 2 strings
