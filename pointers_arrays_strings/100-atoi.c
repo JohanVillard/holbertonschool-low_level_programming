@@ -26,12 +26,21 @@ int _atoi(char *s)
 		}
 		else if ((s[index] >= '0') && (s[index] <= '9'))
 		{
-			num = num * 10 + (s[index] - '0');
+			if (num != 214748364)
+			{
+				num = num * 10 + (s[index] - '0');
+			}
+			else if (num == 214748364)
+			{
+				num *= -1;
+				num *= 10 + (s[index] - '0') * -1;
+			}
+
 		}
 		index++;
-	}
-
-	num *= signe;
-
+		if (num != -2147483648)
+		{
+			num *= signe;
+		}
 	return (num);
 }
