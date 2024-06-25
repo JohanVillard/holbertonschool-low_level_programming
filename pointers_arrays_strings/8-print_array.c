@@ -19,16 +19,13 @@ void print_array(int *a, int n)
 
 	for (count = 0; count < n; count++)
 	{
-
-		printf("%d", a[count]);
-
 		if (count == array_len - 1)
 		{
+			printf("%d", a[count]);
 		}
 		else
 		{
-			putchar(',');
-			putchar(' ');
+			printf("%d, ", a[count]);
 		}
 	}
 	putchar('\n');
