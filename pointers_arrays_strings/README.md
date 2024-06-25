@@ -11,3 +11,5 @@ Copy a string
 Convert string into integer
 Concat 2 strings
 Concat 2 strings who use n bytes
+Copy a string in a array
+Compare 2 strings lexicographically and return an integer 
