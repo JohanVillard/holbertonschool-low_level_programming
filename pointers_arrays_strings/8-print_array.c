@@ -10,7 +10,7 @@
  */
 void print_array(int *a, int n)
 {
-	int count, array_len = 0;
+	int count = 0, array_len = 0;
 
 	while (a[array_len])
 	{
@@ -19,11 +19,7 @@ void print_array(int *a, int n)
 
 	for (count = 0; count < n; count++)
 	{
-		if (a[count] == '\0')
-		{
-			printf("This array is NULL");	
-		}
-		else if (count == array_len - 1)
+		if (count == array_len - 1)
 		{
 			printf("%d", a[count]);
 		}
