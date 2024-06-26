@@ -32,7 +32,7 @@ void print_array(int *a, int n)
  */
 int main(void)
 {
-    int a[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 98, 1024, 1337};
+    int a[] = {5976, 1, 2, 3, 4, 5, 6, 7, 8, 9, 98, 1024, 1337, 75545, 65545, 3454654, 7676576, 213436, 5547586, 6456365, 87574654};
 
     print_array(a, sizeof(a) / sizeof(int));
     reverse_array(a, sizeof(a) / sizeof(int));
