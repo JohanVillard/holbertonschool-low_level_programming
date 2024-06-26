@@ -12,24 +12,30 @@ void reverse_array(int *a, int n)
 {
 	int  i;
 
-	for (i = n; i > 0; i--)
+	if (n >= 0)
 	{
-		if (a[i] == '\0')
+		for (i = n; i >= 0; i--)
 		{
-		}
-		else
-		{
-			printf("%d", a[i]);
-		}
+			if (a[i] == '\0')
+			{
+			}
+			else
+			{
+				printf("%d", a[i]);
+			}
 
-		if ((i == 0) || (a[i] == '\0'))
-		{
+			if ((i == 0) || (a[i] == '\0'))
+			{
+			}
+			else
+			{
+				printf(", ");
+			}
 		}
-		else
+		if (a[0] == 0)
 		{
-			printf(", ");
+			printf("%d", a[0]);
 		}
 	}
-	printf("%d", a[0]);
 	putchar('\n');
 }
