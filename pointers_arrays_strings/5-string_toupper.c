@@ -2,11 +2,10 @@
 #include <stdio.h>
 
 /**
- *  - reverse an array of integer
- * @a: array to reverse
- * @n: number of elements
+ * string_toupper- change to uppercase
+ * @str: array to cheack
  *
- * Return: void
+ * Return: modified array
  */
 char *string_toupper(char *str)
 {
