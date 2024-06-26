@@ -15,3 +15,4 @@ Copy a string in a array
 Compare 2 strings lexicographically and return an integer 
 Reverse an array of integer
 Convert lowercase to uppercase
+Capitalize word wich are after some char
