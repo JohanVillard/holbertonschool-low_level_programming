@@ -13,7 +13,13 @@ void print_number(int n)
 	int last_num;
 	int comma = 1;
 
-	if (n < 0)
+	if (n == -2147483648)
+	{
+		n = -2147483648 + 8;
+		n *= -1;
+		_putchar('-');
+	}
+	else if (n < 0)
 	{
 		n *= -1;
 		_putchar('-');
@@ -46,7 +52,14 @@ void print_number(int n)
 			_putchar(other_num + '0');
 			comma /= 10;
 		}
-	_putchar(last_num + '0');
+		if (n == 2147483640)
+		{
+			_putchar('8');
+		}
+		else
+		{
+			_putchar(last_num + '0');
+		}
 	}
 	}
 }

@@ -21,6 +21,9 @@ int main(void)
     _putchar('\n');
     print_number(-1);
     _putchar('\n');
+    print_number(-2147483648);
+    _putchar('\n');
+
 
 
 
