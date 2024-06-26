@@ -9,9 +9,9 @@
 void print_number(int n)
 {
 	int first_num;
-	int second_num;
-	int third_num;
+	int other_num = 0;
 	int last_num;
+	int comma = 1000;
 
 	if (n < 0)
 	{
@@ -19,9 +19,7 @@ void print_number(int n)
 		_putchar('-');
 	}
 
-	first_num = n / 1000;
-	second_num = (n / 100) % 10;
-	third_num = (n / 10) % 10;
+	first_num = n / comma;
 	last_num = n % 10;
 
 	if (n == 0)
@@ -30,19 +28,21 @@ void print_number(int n)
 	}
 	else
 	{
-	if (first_num != 0)
+	while (first_num == 0)
 	{
-		_putchar(first_num + '0');
+		comma /= 10;
+		first_num = n / comma;
 	}
 
-	if (first_num != 0 || second_num != 0)
-	{
-		_putchar(second_num + '0');
-	}
+	_putchar(first_num + '0');
 
-	if (third_num != 0 || first_num != 0 || second_num != 0)
+	comma /= 10;
+
+	while (comma != 1)
 	{
-		_putchar(third_num + '0');
+		other_num = (n / comma) % 10;
+		_putchar(other_num + '0');
+		comma /= 10;
 	}
 
 	_putchar(last_num + '0');
