@@ -14,14 +14,14 @@ int main(void)
 	int r_size;
        	int r_num; 
 	int i;
-	char password[10];
+	char password[15];
 
 	srand(time(NULL));
 	r_size = 15;
 
 	for (i = 0; i < r_size; i++)
 	{
-		r_num = (rand() % (126 - 48 + 1)) + 48;
+		r_num = (rand() % (122 - 33 + 1)) + 33;
 		password[i]= r_num;
 	}
 
