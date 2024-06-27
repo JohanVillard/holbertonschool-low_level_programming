@@ -4,25 +4,24 @@
 #include <stdlib.h>
 
 /**
- * _atoi - convert string to integer
- * @s: string to convert
+ * main - entry point
  *
- * Return: converted integer
+ * Return: (0)
  */
 int main(void)
-{	
+{
 	int r_size;
-       	int r_num; 
+	int r_num;
 	int i;
-	char password[15];
+	char password[16];
 
 	srand(time(NULL));
 	r_size = 15;
 
 	for (i = 0; i < r_size; i++)
 	{
-		r_num = (rand() % (122 - 33 + 1)) + 33;
-		password[i]= r_num;
+		r_num = (rand() % (126 - 32 + 1)) + 32;
+		password[i] = r_num;
 	}
 
 	printf("%s", password);
