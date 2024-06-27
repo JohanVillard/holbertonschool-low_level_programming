@@ -1,4 +1,3 @@
-#include "main.h"
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
@@ -14,32 +13,31 @@ int main(void)
 	int r_num;
 	int sum;
 	int i;
-	char password[100];
+	char password[];
 	int max_limit;
 	int check_sum;
 
 	srand(time(NULL));
-	r_size = 1000;
+	r_size = 64;
 	sum = 0;
 	max_limit = 126;
 	check_sum = 2772;
 
 	for (i = 0; i < r_size; i++)
 	{
-		r_num = (rand() % (max_limit - 44 + 1)) + 48;
-		if ((sum + r_num) <= 2709)
+		r_num = (rand() % (max_limit - 44 + 1)) + 44;
+		if ((sum + r_num) <= 2728)
 		{	sum += r_num;
 			password[i] = r_num;
+			password[i + 1] = '\0';
 		}
 		else 
 		{
 			r_num = check_sum - sum;
+			sum += r_num;
 			password[i]= r_num;
 			password[i + 1] = '\0';
-			sum += r_num;
-		}
-		if (sum == check_sum)
-		{
+			printf("%d", sum);
 			break;
 		}
 	}
