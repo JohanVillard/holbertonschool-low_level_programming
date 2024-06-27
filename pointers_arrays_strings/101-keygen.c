@@ -13,7 +13,7 @@ int main(void)
 	int r_num;
 	int sum;
 	int i;
-	char password[];
+	char password[64];
 	int max_limit;
 	int check_sum;
 
