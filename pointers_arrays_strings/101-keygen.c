@@ -11,10 +11,12 @@
  */
 int main(void)
 {	
-	srand(time(NULL));
-	int r_size, r_num = 0, i;
+	int r_size;
+       	int r_num; 
+	int i;
 	char password[10];
 
+	srand(time(NULL));
 	r_size = rand() % (10 - 5 + 1) + 5;
 
 	for (i = 0; i < r_size; i++)
@@ -23,7 +25,7 @@ int main(void)
 		password[i]= r_num;
 	}
 
-	printf("%s\n", password);
+	printf("%s", password);
 
 	return (0);
 }
