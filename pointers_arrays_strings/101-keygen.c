@@ -17,7 +17,7 @@ int main(void)
 	char password[10];
 
 	srand(time(NULL));
-	r_size = rand() % (10 - 5 + 1) + 5;
+	r_size = 15;
 
 	for (i = 0; i < r_size; i++)
 	{
