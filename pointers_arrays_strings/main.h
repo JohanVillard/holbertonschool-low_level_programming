@@ -19,3 +19,4 @@ char *string_toupper(char *);
 char *cap_string(char *);
 char *leet(char *);
 void key_gen(void);
+char *rot13(char *);
