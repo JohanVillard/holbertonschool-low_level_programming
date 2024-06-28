@@ -1,4 +1,5 @@
 #include "main.h"
+#include "main.h"
 #include <stdio.h>
 
 /**
@@ -40,11 +41,11 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	for (i = n1_len, j = n2_len, k = 0; i >= 0 || j >= 0 || carry > 0; i--, j--, k++)
 	{
 		add_r = carry;
-		if ((n1[i] - '0') >= 0)
+		if (i >= 0)
 		{
 			add_r += n1[i] - '0';
 		}
-		if ((n2[j] - '0') >= 0)
+		if (j >= 0)
 		{
 			add_r += n2[j] - '0';
 		}
@@ -54,7 +55,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		printf("add: %d   sum:%d  carry: %d\n", add_r, sum_r, carry);
 	}
 
-	tmp[k + 1] = '\0';
+	tmp[k] = '\0';
 
 	while (tmp[tmp_len])
         {
@@ -67,6 +68,8 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	{
 		r[i] = tmp[tmp_len];
 	}
+
+	r[i] = '\0';
 
 	while (r[r_len])
 	{
