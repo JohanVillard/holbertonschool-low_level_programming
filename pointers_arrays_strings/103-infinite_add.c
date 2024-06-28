@@ -39,7 +39,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	while (tmp[tmp_len])
 	{	tmp_len++;	}
 	for (i = 0; i < tmp_len; i++)
-	{	r[i] = tmp[tmp_len - i - 1];
+	{	r[i] = tmp[tmp_len - i - 1];	}
 	r[i] = '\0';
 	while (r[r_len])
 	{	r_len++;	}
