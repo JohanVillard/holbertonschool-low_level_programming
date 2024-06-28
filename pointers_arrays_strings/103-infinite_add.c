@@ -57,8 +57,6 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
                 tmp_len++;
         }
 
-	printf("tmplen: %d,  tmpstr: %s\n", tmp_len, tmp);
-
 	tmp_len--;
 
 	for (i = 0; i <= tmp_len + 1; i++, tmp_len--)
