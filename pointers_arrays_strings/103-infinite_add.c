@@ -8,7 +8,8 @@
  * @n2: second array num
  * @r: result array
  * @size_r: size of resulte array
- * 
+ *
+ *
  * Return: result array
  */
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
@@ -58,22 +59,20 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	tmp[k] = '\0';
 
 	while (tmp[tmp_len])
-        {
-                tmp_len++;
-        }
-
-	tmp_len--;
-
-	for (i = 0; i <= tmp_len + 1; i++, tmp_len--)
 	{
-		r[i] = tmp[tmp_len];
+		tmp_len++;
+	}
+
+	for (i = 0; i < tmp_len; i++)
+	{
+		r[i] = tmp[tmp_len - i - 1];
 	}
 
 	r[i] = '\0';
 
 	while (r[r_len])
 	{
-                r_len++;
+		r_len++;
 	}
 
 	printf("size_r: %d   r:  %d   tmp:%s\n", size_r, r_len, tmp);
