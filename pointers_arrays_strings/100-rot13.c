@@ -20,6 +20,7 @@ char *rot13(char *str)
 			if (str[i] == code[0][j])
 			{
 				str[i] = code[1][j];
+				break;
 			}
 		}
 		i++;
