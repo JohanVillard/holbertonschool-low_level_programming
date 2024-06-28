@@ -1,5 +1,3 @@
-#include "main.h"
-#include "main.h"
 #include <stdio.h>
 
 /**
@@ -25,20 +23,16 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	{
 		n1_len++;
 	}
-
 	while (n2[n2_len])
 	{
 		n2_len++;
 	}
-
 	if (size_r <= n1_len || size_r <= n2_len)
 	{
 		return (0);
 	}
-
 	n1_len--;
 	n2_len--;
-
 	for (i = n1_len, j = n2_len, k = 0; i >= 0 || j >= 0 || carry > 0; i--, j--, k++)
 	{
 		add_r = carry;
@@ -53,34 +47,24 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		sum_r = add_r % 10;
 		carry = add_r / 10;
 		tmp[k] = sum_r + '0';
-		printf("add: %d   sum:%d  carry: %d\n", add_r, sum_r, carry);
 	}
-
 	tmp[k] = '\0';
-
 	while (tmp[tmp_len])
 	{
 		tmp_len++;
 	}
-
 	for (i = 0; i < tmp_len; i++)
 	{
 		r[i] = tmp[tmp_len - i - 1];
 	}
-
 	r[i] = '\0';
-
 	while (r[r_len])
 	{
 		r_len++;
 	}
-
-	printf("size_r: %d   r:  %d   tmp:%s\n", size_r, r_len, tmp);
-
 	if (size_r <= r_len)
 	{
 		return (0);
 	}
-
 	return (r);
 }
