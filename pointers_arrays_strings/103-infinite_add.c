@@ -15,6 +15,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int n1_len = 0;
 	int n2_len = 0;
 	int tmp_len = 0;
+	int r_len = 0;
 	int i, j, k, add_r = 0, sum_r = 0, carry = 0;
 	char tmp[1000] = {0};
 
@@ -28,7 +29,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		n2_len++;
 	}
 
-	if (size_r < n1_len || size_r < n2_len)
+	if (size_r <= n1_len || size_r <= n2_len)
 	{
 		return (0);
 	}
@@ -36,18 +37,21 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	n1_len--;
 	n2_len--;
 
-	for (i = n1_len, j = n2_len, k = 0; i >= 0 && j >= 0; i--, j--, k++)
+	for (i = n1_len, j = n2_len, k = 0; i >= 0 || j >= 0 || carry > 0; i--, j--, k++)
 	{
-		add_r = (n1[i] - '0') + (n2[j] - '0') + carry;
-		sum_r = (add_r % 10);
+		add_r = carry;
+		if ((n1[i] - '0') >= 0)
+		{
+			add_r += n1[i] - '0';
+		}
+		if ((n2[j] - '0') >= 0)
+		{
+			add_r += n2[j] - '0';
+		}
+		sum_r = add_r % 10;
 		carry = add_r / 10;
 		tmp[k] = sum_r + '0';
-	}
-
-	if (carry != 0)
-	{
-		carry += '0';
-		tmp[k] = carry;
+		printf("add: %d   sum:%d  carry: %d\n", add_r, sum_r, carry);
 	}
 
 	tmp[k + 1] = '\0';
@@ -62,6 +66,18 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	for (i = 0; i <= tmp_len + 1; i++, tmp_len--)
 	{
 		r[i] = tmp[tmp_len];
+	}
+
+	while (r[r_len])
+	{
+                r_len++;
+	}
+
+	printf("size_r: %d   r:  %d   tmp:%s\n", size_r, r_len, tmp);
+
+	if (size_r <= r_len)
+	{
+		return (0);
 	}
 
 	return (r);
