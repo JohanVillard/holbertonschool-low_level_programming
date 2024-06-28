@@ -18,3 +18,5 @@ Convert lowercase to uppercase
 Capitalize word wich are after some char
 Encode a string into 1337
 Generate a password
+Code/decode in rot13
+Print an integer
