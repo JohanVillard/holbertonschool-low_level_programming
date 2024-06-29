@@ -11,7 +11,7 @@
 void print_buffer(char *b, int size)
 {
 	int address = 0, address_jump = 10, total_lines, line = 0;
-	int i = 0, actual_i = 0, char_limit = 10, char_limit_2 = 10;
+	int i = 0, actual_i = 0, char_limit = 10;
 	int last_line_size = size % 10;
 
 	total_lines = size / 10;
@@ -46,7 +46,18 @@ void print_buffer(char *b, int size)
 				printf(" ");
 			}
 		}
-		for (i = actual_i; i < char_limit_2; i++)
+		if (line == total_lines)
+		{
+			for (; i < char_limit + (10 - last_line_size); i++)
+			{
+				printf("  ");
+				if (i % 2 != 0)
+				{
+					printf(" ");
+				}
+			}
+		}
+		for (i = actual_i; i < char_limit; i++)
 		{
 			if ((b[i] == '\0' || b[i] == '\1' || b[i] == '\2'|| b[i] == '\3'
 				|| b[i] == '\4'|| b[i] == '\5'
@@ -65,14 +76,13 @@ void print_buffer(char *b, int size)
 		address += address_jump;
 		line++;
 		actual_i = i;
-		char_limit += address_jump;
 		if (line != total_lines)
 		{
-			char_limit_2 += address_jump;
+			char_limit += address_jump;
 		}
 		else
 		{
-			char_limit_2 += last_line_size;
+			char_limit += last_line_size;
 		}
 	}
 }
