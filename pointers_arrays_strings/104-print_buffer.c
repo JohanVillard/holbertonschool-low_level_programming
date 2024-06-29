@@ -18,17 +18,22 @@ void print_buffer(char *b, int size)
 	while (line <= total_lines)
 	{
 		for (i_tmp = 0; i_tmp < 10; i_tmp++, i_b++)
-		{
-			tmp[i_tmp] = b[i_b];
+		{	
+			if (b[i_b] == '\0' || b[i_b] == '\1' || b[i_b] == '\2'
+					|| b[i_b] == '\3' || b[i_b] == '\4'
+					|| b[i_b] == '\5' || b[i_b] == '\6'
+					|| b[i_b] == '\7' || b[i_b] == '\n')
+			{
+				tmp[i_tmp] = '.';
+			}
+			else
+			{
+				tmp[i_tmp] = b[i_b];
+			}
 		}
 		
-		printf("%08x: %s", address, tmp);
-				
-		if (line != total_lines)
-		{
-			putchar('\n');
-		}
-		
+		printf("%08x: %s\n", address, tmp)
+			;
 		address += address_jump;
 		line++;
 	}
