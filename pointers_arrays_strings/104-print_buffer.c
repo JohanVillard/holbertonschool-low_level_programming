@@ -95,6 +95,6 @@ void print_buffer(char *b, int size)
 	}
 	else
 	{
-	putchar(0);
+	putchar(10);
 	}
 }
