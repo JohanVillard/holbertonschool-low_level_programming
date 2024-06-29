@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-    char buffer[] = "Talk is cheap. Show me the code.";
+    char buffer[] = "Talk	is 		cheap.  ␁Sho␂w␃ me␄ ␅the␆ code.";
 
     printf("%s\n", buffer);
     printf("---------------------------------\n");

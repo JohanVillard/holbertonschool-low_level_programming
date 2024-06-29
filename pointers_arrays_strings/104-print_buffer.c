@@ -25,7 +25,8 @@ void print_buffer(char *b, int size)
 			if (b[i_b] == '\0' || b[i_b] == '\1' || b[i_b] == '\2'
 					|| b[i_b] == '\3' || b[i_b] == '\4'
 					|| b[i_b] == '\5' || b[i_b] == '\6'
-					|| b[i_b] == '\7' || b[i_b] == '\n')
+					|| b[i_b] == '\7' || b[i_b] == '\n'
+					|| b[i_b] == '\n')
 			{
 				tmp[i_tmp] = '.';
 			}
