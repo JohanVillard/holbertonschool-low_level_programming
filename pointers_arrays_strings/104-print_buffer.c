@@ -16,7 +16,7 @@ void print_buffer(char *b, int size)
 
 	total_lines = size / 10;
 
-	while (line <= total_lines)
+	while (line <= total_lines || last_line_size == 0)
 	{
 		printf("%08x: ", address);
 
