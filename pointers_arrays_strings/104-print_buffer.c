@@ -95,6 +95,6 @@ void print_buffer(char *b, int size)
 	}
 	else
 	{
-	printf("%c", 0);
+	printf("%d", size);
 	}
 }
