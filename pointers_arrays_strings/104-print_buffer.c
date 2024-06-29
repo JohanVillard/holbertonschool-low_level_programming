@@ -16,7 +16,7 @@ void print_buffer(char *b, int size)
 
 	total_lines = size / 10;
 
-	while (line <= total_lines || (last_line_size == 0 && line < total_lines))
+	while (line <= total_lines)
 	{
 		printf("%08x: ", address);
 
@@ -83,6 +83,11 @@ void print_buffer(char *b, int size)
 		else
 		{
 			char_limit += last_line_size;
+		}
+
+		if (last_line_size == 0 && line < total_lines)
+		{
+			break;
 		}
 	}
 }
