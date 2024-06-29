@@ -25,8 +25,7 @@ void print_buffer(char *b, int size)
 			if (b[i_b] == '\0' || b[i_b] == '\1' || b[i_b] == '\2'
 					|| b[i_b] == '\3' || b[i_b] == '\4'
 					|| b[i_b] == '\5' || b[i_b] == '\6'
-					|| b[i_b] == '\7' || b[i_b] == '\n'
-					|| b[i_b] == '\n')
+					|| b[i_b] == '\7')
 			{
 				tmp[i_tmp] = '.';
 			}
@@ -59,7 +58,7 @@ void print_buffer(char *b, int size)
 					}
 					else
 					{
-						printf("%x",tmp[i_tmp]);
+						printf("%20x",tmp[i_tmp]);
 					}
 					if (i_tmp % 2 != 0)
 					{
@@ -70,7 +69,7 @@ void print_buffer(char *b, int size)
 		}
 		else
 		{
-			printf("%08x: %x%x %x%x %x%x %x%x %x%x %s\n", address, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6], tmp[7], tmp[8], tmp[9], tmp);
+			printf("%08x: %02x%02x %02x%02x %02x%02x %02x%02x %02x%02x %s\n", address, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6], tmp[7], tmp[8], tmp[9], tmp);
 		}
 
 		address += address_jump;
