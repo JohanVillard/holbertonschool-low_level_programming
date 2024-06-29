@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * print_buffer - create a hexadecimal file with a string
@@ -12,7 +13,8 @@ void print_buffer(char *b, int size)
 	int address = 0, address_jump = 10, total_lines, line = 0;
 	int i_tmp, i_b = 0, char_limit = 10;
 	int last_line_size = size % 10;
-	char tmp[11] = {0}, tmp_end[7] = {0};
+	char tmp[11] = {0};
+	char tmp_end[11] = {0};
 
 	total_lines = size / 10;
 	
@@ -37,10 +39,29 @@ void print_buffer(char *b, int size)
 				tmp_end[i_tmp] = tmp[i_tmp];
 			}
 		}
+		
+		tmp[i_tmp] = '\0';
+		tmp_end[i_tmp] = '\0';
 
 		if (line == total_lines)
 		{
-			printf("%08x: %x%x %x%x %x%x %x%x %x%x %s\n", address, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6], tmp[7], tmp[8], tmp[9], tmp_end);
+			printf("%08x: ", address);
+				for (i_tmp = 0; i_tmp < 10; i_tmp++)
+				{
+					if (tmp_end[i_tmp] == 0)
+					{
+						printf("  ");
+					}
+					else
+					{
+						printf("%x",tmp[i_tmp]);
+					}
+					if (i_tmp % 2 != 0)
+					{
+						printf(" ");
+					}
+				}
+			printf("%s\n", tmp_end);
 		}
 		else
 		{
