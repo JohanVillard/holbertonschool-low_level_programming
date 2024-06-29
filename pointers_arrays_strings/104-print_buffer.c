@@ -40,11 +40,11 @@ void print_buffer(char *b, int size)
 
 		if (line == total_lines)
 		{
-			printf("%08x: %s\n", address, tmp_end);
+			printf("%08x: %x%x %x%x %x%x %x%x %x%x %s\n", address, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6], tmp[7], tmp[8], tmp[9], tmp_end);
 		}
 		else
 		{
-			printf("%08x: %s\n", address, tmp);
+			printf("%08x: %x%x %x%x %x%x %x%x %x%x %s\n", address, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6], tmp[7], tmp[8], tmp[9], tmp);
 		}
 
 		address += address_jump;
