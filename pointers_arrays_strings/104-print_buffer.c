@@ -11,82 +11,68 @@
 void print_buffer(char *b, int size)
 {
 	int address = 0, address_jump = 10, total_lines, line = 0;
-	int i_tmp, i_b = 0, char_limit = 10;
+	int i = 0, actual_i = 0, char_limit = 10, char_limit_2 = 10;
 	int last_line_size = size % 10;
-	char tmp[11] = {0};
-	char tmp_end[11] = {0};
 
 	total_lines = size / 10;
-	
+
 	while (line <= total_lines)
 	{
-		for (i_tmp = 0; i_tmp < char_limit; i_tmp++, i_b++)
+		printf("%08x: ", address);
+
+		for (i = actual_i; i < char_limit; i++)
 		{
-			if (b[i_b] == '\0' || b[i_b] == '\1' || b[i_b] == '\2'
-					|| b[i_b] == '\3' || b[i_b] == '\4'
-					|| b[i_b] == '\5' || b[i_b] == '\6'
-					|| b[i_b] == '\7')
+			if (line != total_lines)
 			{
-				tmp[i_tmp] = '.';
+				printf("%02x", b[i]);
 			}
 			else
 			{
-				tmp[i_tmp] = b[i_b];
+				if (b[i] == '\0' && b[i - 1] <= '\0')
+				{
+					printf("  ");	
+				}
+				else if (b[i] == '\0')
+				{
+					printf("00");
+				}
+				else
+				{
+					printf("%02x", b[i]);
+				}
 			}
-
-			if (line == total_lines)
+			if (i % 2 != 0)
 			{
-				tmp_end[i_tmp] = tmp[i_tmp];
+				printf(" ");
 			}
 		}
-		
-		tmp[i_tmp] = '\0';
-		tmp_end[i_tmp] = '\0';
-
-		printf("%08x: ", address);
-
-		if (line == total_lines)
+		for (i = actual_i; i < char_limit_2; i++)
 		{
-				for (i_tmp = 0; i_tmp < 10; i_tmp++)
-				{
-					if (tmp_end[i_tmp + 1] == '\0' && tmp_end[i_tmp] == '.')
-					{
-						printf("00");
-					}
-					else if (tmp_end[i_tmp] == '\0')
-					{
-						printf("  ");
-					}
-					else
-					{
-						printf("%02x", tmp_end[i_tmp]);
-					}
-					if (i_tmp % 2 != 0)
-					{
-						printf(" ");
-					}
-				}
-			printf("%s\n", tmp_end);
+			if ((b[i] == '\0' || b[i] == '\1' || b[i] == '\2'|| b[i] == '\3'
+				|| b[i] == '\4'|| b[i] == '\5'
+				|| b[i] == '\6'|| b[i] == '\7'
+				|| b[i] == '\n'))
+			{
+				printf(".");
+			}
+			else
+			{
+				printf("%c", b[i]);
+			}
+		}
+		putchar('\n');
+		
+		address += address_jump;
+		line++;
+		actual_i = i;
+		char_limit += address_jump;
+		if (line != total_lines)
+		{
+			char_limit_2 += address_jump;
 		}
 		else
 		{
-			for (i_tmp = 0; i_tmp < 10; i_tmp++)
-			{	
-				printf("%02x", tmp[i_tmp]);
-				if (i_tmp % 2 != 0)
-				{
-					printf(" ");
-				}
-			}
-			printf("%s\n", tmp);
-		}
-
-		address += address_jump;
-		line++;
-
-		if (line == total_lines)
-		{
-			char_limit = last_line_size;
+			char_limit_2 += last_line_size;
 		}
 	}
 }
