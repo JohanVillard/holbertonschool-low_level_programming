@@ -48,7 +48,11 @@ void print_buffer(char *b, int size)
 			printf("%08x: ", address);
 				for (i_tmp = 0; i_tmp < 10; i_tmp++)
 				{
-					if (tmp_end[i_tmp] == 0)
+					if (tmp_end[i_tmp + 1] == '\0' && tmp_end[i_tmp] == '.')
+					{
+						printf("00");
+					}
+					else if (tmp_end[i_tmp] == '\0')
 					{
 						printf("  ");
 					}
