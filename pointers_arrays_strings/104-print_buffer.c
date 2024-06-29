@@ -43,9 +43,10 @@ void print_buffer(char *b, int size)
 		tmp[i_tmp] = '\0';
 		tmp_end[i_tmp] = '\0';
 
+		printf("%08x: ", address);
+
 		if (line == total_lines)
 		{
-			printf("%08x: ", address);
 				for (i_tmp = 0; i_tmp < 10; i_tmp++)
 				{
 					if (tmp_end[i_tmp + 1] == '\0' && tmp_end[i_tmp] == '.')
@@ -58,7 +59,7 @@ void print_buffer(char *b, int size)
 					}
 					else
 					{
-						printf("%02x",tmp[i_tmp]);
+						printf("%02x", tmp_end[i_tmp]);
 					}
 					if (i_tmp % 2 != 0)
 					{
@@ -69,7 +70,15 @@ void print_buffer(char *b, int size)
 		}
 		else
 		{
-			printf("%08x: %02x%02x %02x%02x %02x%02x %02x%02x %02x%02x %s\n", address, tmp[0], tmp[1], tmp[2], tmp[3], tmp[4], tmp[5], tmp[6], tmp[7], tmp[8], tmp[9], tmp);
+			for (i_tmp = 0; i_tmp < 10; i_tmp++)
+			{	
+				printf("%02x", tmp[i_tmp]);
+				if (i_tmp % 2 != 0)
+				{
+					printf(" ");
+				}
+			}
+			printf("%s\n", tmp);
 		}
 
 		address += address_jump;
