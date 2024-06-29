@@ -58,7 +58,7 @@ void print_buffer(char *b, int size)
 					}
 					else
 					{
-						printf("%20x",tmp[i_tmp]);
+						printf("%02x",tmp[i_tmp]);
 					}
 					if (i_tmp % 2 != 0)
 					{
