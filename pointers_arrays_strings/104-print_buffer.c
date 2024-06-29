@@ -85,7 +85,7 @@ void print_buffer(char *b, int size)
 			char_limit += last_line_size;
 		}
 
-		if (last_line_size == 0 && line < total_lines)
+		if (last_line_size == 0 && line == total_lines)
 		{
 			break;
 		}
