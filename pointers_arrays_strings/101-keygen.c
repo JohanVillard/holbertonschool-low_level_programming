@@ -37,7 +37,6 @@ int main(void)
 			sum += r_num;
 			password[i]= r_num;
 			password[i + 1] = '\0';
-			printf("%d", sum);
 			break;
 		}
 	}
