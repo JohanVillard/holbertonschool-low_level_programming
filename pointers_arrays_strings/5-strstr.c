@@ -1,5 +1,5 @@
 #include "main.h"
-har *_strchr(char *s, char c);
+char *_strchr(char *s, char c);
 int _strcmp(char *s1, char *s2);
 /**
  * _strstr - locate the first occurence of char
