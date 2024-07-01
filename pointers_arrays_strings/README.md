@@ -24,4 +24,5 @@ Change a value in array in one line ithout call it
 Add huge 2 numbers(strings)
 Create an hexadecimal file
 
-P0T0 : Fill the memory to n bytes memory pointed with a constant
+P0T0 : Fill memory with xonstant byte
+POT1 : Copy memory area
