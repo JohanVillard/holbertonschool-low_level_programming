@@ -25,4 +25,5 @@ Add huge 2 numbers(strings)
 Create an hexadecimal file
 
 P0T0 : Fill memory with xonstant byte
-POT1 : Copy memory area
+P0T1 : Copy memory area
+P0T2 : Search for the first occurrence of the char in parameter in the string pointed

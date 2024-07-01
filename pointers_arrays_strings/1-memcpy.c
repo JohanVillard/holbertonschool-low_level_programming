@@ -5,6 +5,8 @@
  * @dest: string to change
  * @src: string to copy
  * @n: number of cells to copy
+ *
+ * Return: edited string
  */
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
