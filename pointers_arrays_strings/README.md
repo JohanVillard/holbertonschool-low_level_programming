@@ -29,3 +29,6 @@ P0T1 : Copy memory area
 P0T2 : Search for the first occurrence of the char in parameter in the string pointed
 POT3 : Count each occurence of char a key in string
 POT4 : Locates the first occurence of char in key in the string
+POT5 : Search a substring into a string
+POT6 : Create a chessboard
+POT7 : sum two diagonalsi of a quare matrix
