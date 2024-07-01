@@ -1,7 +1,24 @@
 #include "main.h"
-#include <stdio.h>
 
-int _strlen(char *s);
+char *_strchr(char *s, char c);
+
+/**
+ * _strspn - count the number of first char in a string that match with a key
+ * @s: key
+ * @accept: char to search from string
+ *
+ * Return: number of match
+ */
+unsigned int _strspn(char *s, char *accept)
+{
+	unsigned int i = 0;
+
+	while (_strchr(accept, s[i]))
+	{
+		i++;
+	}
+	return (i);
+}
 
 /**
  * _strchr - return a pointer on the first occurence of the specified char
