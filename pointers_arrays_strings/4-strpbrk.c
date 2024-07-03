@@ -11,20 +11,17 @@ char *_strchr(char *s, char c);
  */
 char *_strpbrk(char *s, char *accept)
 {
-	int i = 0;
+    int i = 0;
 
-	while (_strchr(accept, s[i]) == 0)
-	{
-		i++;
-	}
-	if (s == 0)
-	{
-		return (0);
-	}
-	else
-	{
-		return (s + i);
-	}
+    while (s[i] != '\0')
+    {
+      if (_strchr(accept, s[i]) != 0)
+      {
+      return (s + i);
+      }
+      i++;
+    }
+    return (s + i);
 }
 
 /**
@@ -40,7 +37,7 @@ char *_strpbrk(char *s, char *accept)
 	{
 		if (*s == c)
 		{
-			return  (s);
+			return (s);
 		}
 		s++;
 	}
