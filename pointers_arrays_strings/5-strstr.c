@@ -11,7 +11,7 @@ int _strcmp(char *s1, char *s2);
  */
 char *_strstr(char *haystack, char *needle)
 {
-	char *ptr;
+	char *ptr, i = 0;
 
 	if (*needle == '\0'  || *haystack == '\0')
 	{
@@ -27,6 +27,7 @@ char *_strstr(char *haystack, char *needle)
 			{
 				haystack++;
 				needle++;
+				i++;
 				if (*needle == '\0')
 				{
 					return (ptr);
@@ -35,6 +36,11 @@ char *_strstr(char *haystack, char *needle)
 				{
 					return (0);
 				}
+			}
+			while (i > 0)
+			{
+				needle--;
+				i--;
 			}
 		}
 		haystack++;
