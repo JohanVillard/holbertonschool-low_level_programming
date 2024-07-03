@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-    char *s = "popppppppppppppppppppppppppppppppppppppppppppppppppplpppppppppppfffffffffff";
+    char *s = "poppppppppppppppppppppppppppppppppppppppppzpppppppppplpppppppppppfffffffffff";
     char *f;
 
     f = _strchr(s, 'z');
