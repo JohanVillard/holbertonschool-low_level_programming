@@ -9,7 +9,7 @@
 int main(void)
 {
     char *s = "Col";
-    char *f = "Coline";
+    char *f = "";
     char *t;
 
     t = _strstr(s, f);
