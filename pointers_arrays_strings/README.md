@@ -27,8 +27,9 @@ Create an hexadecimal file
 P0T0 : Fill memory with xonstant byte
 P0T1 : Copy memory area
 P0T2 : Search for the first occurrence of the char in parameter in the string pointed
-POT3 : Count each occurence of char a key in string
-POT4 : Locates the first occurence of char in key in the string
-POT5 : Search a substring into a string
-POT6 : Create a chessboard
-POT7 : sum two diagonalsi of a quare matrix
+P0T3 : Count each occurence of char a key in string
+P0T4 : Locates the first occurence of char in key in the string
+P0T5 : Search a substring into a string
+P0T6 : Create a chessboard
+P0T7 : Sum two diagonals of a square matrix
+P0T8 : Change the direction of the pointer
