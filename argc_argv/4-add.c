@@ -22,14 +22,14 @@ else if (argc > 1)
 {
 for (i = 1; i < argc; i++)
 {
-if ((*argv[i] >= 48) && (*argv[i] <= 57))
-{
-sum += atoi(argv[i]);
-}
-else
+if ((*argv[i] < 48) || (*argv[i] > 57))
 {
 printf("Error\n");
 return (1);
+}
+else
+{
+sum += atoi(argv[i]);
 }
 }
 printf("%d\n", sum);
