@@ -8,10 +8,10 @@
  */
 int main(void)
 {
-    char *s = "popppppppppppppppppppppppppppppppppppppppppppppppppplpppppppppppfffffffffffz";
+    char *s = "popppppppppppppppppppppppppppppppppppppppppppppppppplpppppppppppfffffffffff";
     char *f;
 
-    f = _strchr(s, 'l');
+    f = _strchr(s, 'z');
 
     if (f != NULL)
     {
