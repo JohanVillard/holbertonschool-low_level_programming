@@ -1,7 +1,5 @@
 #include "main.h"
 
-int _strlen(char *s);
-
 /**
  * _strchr - return a pointer on the first occurence of the specified char
  * @s: search string
