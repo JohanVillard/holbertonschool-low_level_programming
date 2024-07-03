@@ -22,8 +22,8 @@ return (_sqrt_guess(2, n));
 
 /**
 * _sqrt_guess - guess the squareroot
-* @x: int number that function test
-* @y: int square number
+* @guess: int number which is tested
+* @n: int radicande
 *
 * Return: squareroot of y
 */
