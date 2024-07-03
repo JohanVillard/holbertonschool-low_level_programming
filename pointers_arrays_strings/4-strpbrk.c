@@ -11,17 +11,17 @@ char *_strchr(char *s, char c);
  */
 char *_strpbrk(char *s, char *accept)
 {
-    int i = 0;
+int i = 0;
 
-    while (s[i] != '\0')
-    {
-      if (_strchr(accept, s[i]) != 0)
-      {
-      return (s + i);
-      }
-      i++;
-    }
-    return (0);
+while (s[i] != '\0')
+{
+if (_strchr(accept, s[i]) != 0)
+{
+return (s + i);
+}
+i++;
+}
+return (0);
 }
 
 /**
@@ -31,7 +31,7 @@ char *_strpbrk(char *s, char *accept)
  *
  * Return: pointer of resulting string dest
  */
- char *_strchr(char *s, char c)
+char *_strchr(char *s, char c)
 {
 	while (*s)
 	{
