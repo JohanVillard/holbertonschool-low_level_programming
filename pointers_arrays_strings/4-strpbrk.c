@@ -17,7 +17,14 @@ char *_strpbrk(char *s, char *accept)
 	{
 		i++;
 	}
-	return (s + i);
+	if (s == 0)
+	{
+		return (0);
+	}
+	else
+	{
+		return (s + i);
+	}
 }
 
 /**
@@ -27,7 +34,7 @@ char *_strpbrk(char *s, char *accept)
  *
  * Return: pointer of resulting string dest
  */
-char *_strchr(char *s, char c)
+ char *_strchr(char *s, char c)
 {
 	while (*s)
 	{
