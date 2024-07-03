@@ -20,7 +20,7 @@ printf("%d\n", result);
 }
 else
 {
-printf("error\n");
+printf("Error\n");
 }
 return (0);
 }
