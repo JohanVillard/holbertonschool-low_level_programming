@@ -1,9 +1,9 @@
 #include "main.h"
 
-/*
+/**
 * wildcmp - compare 2 strings
 * @s1: first string
-* 0s2: second string
+* @s2: second string
 *
 * Return: 1 if identical, 0 if not
 */
