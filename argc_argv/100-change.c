@@ -14,10 +14,9 @@ int main(int argc, char *argv[])
 {
 	int num, result = 0;
 
-	num = atoi(argv[1]);
-	
-	if (argc - 1 == 1 || num < 0)
+	if (argc - 1 == 1 && atoi(argv[1]) > 0) 
 	{
+		num = atoi(argv[1]);
 
 		result = num / 25;
 		num -= result * 25;
