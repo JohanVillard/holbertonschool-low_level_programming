@@ -7,3 +7,4 @@ P1T3 : Return the factorial of a number
 P1T4 : Return the value of x raised to the power y
 P1T5 : Return the natural square of a number
 P1T6 : Return 1 if the input integer is a prime number
+P1T6 : Compare 2 strings if identical = 1 else 0
