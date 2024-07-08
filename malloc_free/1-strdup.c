@@ -27,7 +27,6 @@ char *_strdup(char *str)
 
 	/* Alloue la mémoire à tmp (taille de str par la taille d'une char) */
 	tmp = malloc(len * sizeof(char));
-
 	/* Vérifie si l'allocation a fonctionnée */
 	if (tmp == 0)
 	{
