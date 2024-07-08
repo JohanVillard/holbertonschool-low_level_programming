@@ -3,7 +3,7 @@
 #include "main.h"
 
 /**
- * str_concat- concatenate 2 strings
+ * str_concat - concatenate 2 strings
  * @s1: string
  * @s2: string to add
  * Return: (tmp)
