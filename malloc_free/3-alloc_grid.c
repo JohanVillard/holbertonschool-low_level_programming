@@ -45,18 +45,6 @@ int **alloc_grid(int width, int height)
 		for (j = 0; j < width; j++)
 		{
 			s[i][j] = 0;
-			/* Vérifie si l'allocation a fonctionnée */
-			/* Sur la ligne soit le pointeur actuel*/
-			if (s[i] == NULL)
-			{
-				return (NULL);
-			}
-		}
-		/* Vérifie si l'allocation a fonctionnée */
-		/* A l'adresse de la string */
-		if (s == NULL)
-		{
-			return (NULL);
 		}
 	}
 	return (s);
