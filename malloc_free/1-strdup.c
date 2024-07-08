@@ -8,18 +8,18 @@
  * @c: element to insert in array
  * Return: ()
  */
-char *create_array(unsigned int size, char c)
+char *_strdup(char *str)
 {
-	char *s;
+	char *tmp;
 	unsigned int i;
+
+	/* Alloue la mémoire à s (size par la taille d'une char) */
+	tmp = malloc(size * sizeof(char));
 
 	if (size == 0)
 	{
 		return (NULL);
 	}
-
-	/* Alloue la mémoire à s (size par la taille d'une char) */
-	s = malloc(size * sizeof(char));
 
 	i = 0;
 	while (i < size)
