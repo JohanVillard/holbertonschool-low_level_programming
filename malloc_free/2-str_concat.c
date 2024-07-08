@@ -31,12 +31,20 @@ char *str_concat(char *s1, char *s2)
 
 	while (i < len1)
 	{
+		if (s1 == NULL)
+		{
+			tmp = "";
+		}
 		tmp[i] = s1[i];
 		i++;
 	}
 
 	while (j < len2)
 	{
+		if (s2 == NULL)
+		{
+			tmp = "";
+		}
 		tmp[i + j] = s2[j];
 		j++;
 	}
