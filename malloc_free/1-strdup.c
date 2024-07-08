@@ -3,36 +3,43 @@
 #include "main.h"
 
 /**
- * create_array - create an extensible array
- * @size: number of element of array
- * @c: element to insert in array
- * Return: ()
+ * _strdup - duplicate a string
+ * @str: number of element of array
+ * Return: (str)
  */
 char *_strdup(char *str)
 {
 	char *tmp;
-	unsigned int i;
+	int i;
+    int len = 0;
 
-	/* Alloue la mémoire à s (size par la taille d'une char) */
-	tmp = malloc(size * sizeof(char));
-
-	if (size == 0)
+	if (str == NULL)
 	{
 		return (NULL);
 	}
+
+    while (str[len])
+    {
+        len++;
+    }
+
+    len += 1;
+
+    /* Alloue la mémoire à tmp (taille de str par la taille d'une char) */
+	tmp = malloc(sizeof(char) * len);
 
 	i = 0;
-	while (i < size)
+	while (i < len)
 	{
-		s[i] = c;
+		tmp[i] = str[i];
 		i++;
 	}
-	s[i] = '\0';
+	tmp[i] = '\0';
 
-	if (s == NULL)
+	if (tmp == NULL)
 	{
 		return (NULL);
 	}
 
-	return (s);
+	return (tmp);
 }
