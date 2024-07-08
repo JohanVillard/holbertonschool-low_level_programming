@@ -6,7 +6,7 @@
  * create_array - create an extensible array
  * @size: number of element of array
  * @c: element to insert in array
- * Return: ()
+ * Return: (s)
  */
 char *create_array(unsigned int size, char c)
 {
