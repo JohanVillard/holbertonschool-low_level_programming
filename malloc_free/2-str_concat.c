@@ -27,7 +27,7 @@ char *str_concat(char *s1, char *s2)
 	len3 = len1 + len2 + 1;
 	/* Alloue la mémoire à tmp (taille de str par la taille d'une char) */
 	tmp = malloc(sizeof(char) * len3);
-	/* Alloue la mémoire à tmp (taille de str par la taille d'une char) */
+	/* Vérifie si l'allocation a fonctionnée */
 	if (tmp == NULL)
 	{	return (NULL);	}
 
