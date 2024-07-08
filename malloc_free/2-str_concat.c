@@ -15,18 +15,15 @@ char *str_concat(char *s1, char *s2)
 	int len1 = 0, len2 = 0, len3 = 0;
 
 	if (s1 == NULL)
-	{
-		s1 = "";
-	}
+	{	s1 = "";	}
 	if (s2 == NULL)
-	{
-		s2 = "";
-	}
+	{	s2 = "";	}
 	
 	while (s1[len1])
 	{	len1++;	}
 	while (s2[len2])
 	{	len2++;	}
+
 	len3 = len1 + len2 + 1;
 	/* Alloue la mémoire à tmp (taille de str par la taille d'une char) */
 	tmp = malloc(sizeof(char) * len3);
