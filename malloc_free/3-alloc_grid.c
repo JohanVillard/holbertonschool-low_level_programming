@@ -6,7 +6,7 @@
  * alloc_grid - create an extensible double array
  * @width: integer columns
  * @height: integer line
- * Return: (array)
+ * Return: (s)
  */
 int **alloc_grid(int width, int height)
 {
@@ -42,6 +42,11 @@ int **alloc_grid(int width, int height)
 		for (j = 0; j < width; j++)
 		{
 			s[i][j] = 0;
+			/* Vérifie si l'allocation a fonctionnée */
+			if (s[i] == NULL)
+			{
+				return (NULL);
+			}
 		}
 	}
 	return (s);
