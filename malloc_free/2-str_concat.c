@@ -24,22 +24,21 @@ char *str_concat(char *s1, char *s2)
 	/* Alloue la mémoire à tmp (taille de str par la taille d'une char) */
 	if (tmp == NULL)
 	{	return (NULL);	}
-		while (i < len1)
-		{
-			if (s1 == NULL)
-		{	tmp[i] = "";	}
+	while (i < len1)
+	{
+		if (s1 == NULL)
+		{	tmp[i] = '\0';	}
 		else
 		{	tmp[i] = s1[i];	}
 		i++;
 	}
-		while (j < len2)
-		{
-			if (s2 == NULL)
-			{	tmp[i + j] = "";	}
-			else
-			{	tmp[i + j] = s2[j]; }
+	while (j < len2)
+	{
+		if (s2 == NULL)
+		{	tmp[i + j] = '\0';	}
+		else
+		{	tmp[i + j] = s2[j]; }
 			j++;
-		}
 	}
 	tmp[i + j] = '\0';
 	return (tmp);
