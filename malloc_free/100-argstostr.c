@@ -4,7 +4,7 @@
 
 /**
  * argstostr - concat args of command
- * @grid: integer argc
+ * @ac: integer argc
  * @av: integer argv
  * Return: (s)
  */
@@ -17,7 +17,8 @@ char *argstostr(int ac, char **av)
 		return (NULL);
 	/* Compte la taille de tous les arguments */
 	for (i = 0; i < ac; i++)
-	{	while (av[i][len])
+	{
+		while (av[i][len])
 		{	len++;
 		/* Le retour à la ligne est un caractère !!!*/
 		/* Ajoute 1 pour la nouvelle ligne et l'octet de fin */
