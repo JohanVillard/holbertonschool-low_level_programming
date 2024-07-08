@@ -46,8 +46,6 @@ char *argstostr(int ac, char **av)
 		s[depart_concat] = '\n';
 		depart_concat++;
 	}
-	/* Remplace le retour à la ligne par un octect de fin*/
-	s[depart_concat] = '\0';
 	return (s);
 }
 
