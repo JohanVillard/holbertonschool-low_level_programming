@@ -33,6 +33,7 @@ int **alloc_grid(int width, int height)
 		/* int(4 bytes) stocke un entier dans chaque colonne de chaque ligne */
 		s[i] = malloc(width * sizeof(int));
 		/* Vérifie si l'allocation a fonctionnée */
+		/* Sur la ligne soit le pointeur actuel*/
 		if (s[i] == NULL)
 		{
 			return (NULL);
@@ -44,14 +45,18 @@ int **alloc_grid(int width, int height)
 		for (j = 0; j < width; j++)
 		{
 			s[i][j] = 0;
+			/* Vérifie si l'allocation a fonctionnée */
+			/* Sur la ligne soit le pointeur actuel*/
 			if (s[i] == NULL)
 			{
-				free(s[i]);
+				return (NULL);
 			}
 		}
+		/* Vérifie si l'allocation a fonctionnée */
+		/* A l'adresse de la string */
 		if (s == NULL)
 		{
-			free(s);
+			return (NULL);
 		}
 	}
 	return (s);
