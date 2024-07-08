@@ -11,21 +11,21 @@ char *_strdup(char *str)
 {
 	char *tmp;
 	int i;
-    int len = 0;
+	int len = 0;
 
 	if (str == NULL)
 	{
 		return (NULL);
 	}
 
-    while (str[len])
-    {
-        len++;
-    }
+	while (str[len])
+	{
+		len++;
+	}
 
-    len += 1;
+	len += 1;
 
-    /* Alloue la mémoire à tmp (taille de str par la taille d'une char) */
+	/* Alloue la mémoire à tmp (taille de str par la taille d'une char) */
 	tmp = malloc(sizeof(char) * len);
 
 	i = 0;
