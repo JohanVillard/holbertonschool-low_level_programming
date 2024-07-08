@@ -35,10 +35,10 @@ char *_strdup(char *str)
 	}
 	tmp[i] = '\0';
 
-	if (tmp == NULL)
+	if (tmp != NULL)
 	{
-		return (NULL);
+		return (tmp);
 	}
 
-	return (tmp);
+	return (NULL);
 }
