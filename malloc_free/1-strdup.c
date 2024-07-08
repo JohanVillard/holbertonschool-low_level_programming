@@ -5,7 +5,7 @@
 /**
  * _strdup - duplicate a string
  * @str: number of element of array
- * Return: (str)
+ * Return: (tmp) or (NULL)
  */
 char *_strdup(char *str)
 {
