@@ -42,11 +42,6 @@ int **alloc_grid(int width, int height)
 		for (j = 0; j < width; j++)
 		{
 			s[i][j] = 0;
-			/* Vérifie si l'allocation a fonctionnée */
-			if (s[i] == NULL)
-			{
-				return (NULL);
-			}
 		}
 	}
 	return (s);
