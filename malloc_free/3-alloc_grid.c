@@ -18,7 +18,8 @@ int **alloc_grid(int width, int height)
 	}
 
 	/* Alloue la mémoire à toutes les lignes de s */
-	/* (ligne par la taille d'une char) */
+	/* (ligne par pointeur) */
+	/* int*(8 bytes) pointe vers chaque ligne*/
 	s = malloc(height * sizeof(int *));
 	/* Vérifie si l'allocation a fonctionnée */
 	if (s == NULL)
@@ -29,7 +30,8 @@ int **alloc_grid(int width, int height)
 	for (i = 0; i < height; i++)
 	{
 		/* Alloue la mémoire des colonnes */
-		s[i] = malloc(width * sizeof(int *));
+		/* int(4 bytes) stocke un entier dans chaque colonne de chaque ligne */
+		s[i] = malloc(width * sizeof(int));
 		/* Vérifie si l'allocation a fonctionnée */
 		if (s[i] == NULL)
 		{
