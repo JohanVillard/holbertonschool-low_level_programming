@@ -20,13 +20,19 @@ char *_strdup(char *str)
 
 	while (str[len] != '\0')
 	{
-		len ++;
+		len++;
 	}
 
-	len ++;
+	len++;
 
 	/* Alloue la mémoire à tmp (taille de str par la taille d'une char) */
 	tmp = malloc(sizeof(char) * len);
+
+	/* Vérifie si l'allocation a fonctionnée */
+	if (tmp != 0)
+	{
+		return (NULL);
+	}
 
 	while (i < len)
 	{
@@ -35,10 +41,6 @@ char *_strdup(char *str)
 	}
 	tmp[i] = '\0';
 
-	if (tmp != 0)
-	{
-		return (tmp);
-	}
-
-	return (NULL);
+	return (tmp);
 }
+
