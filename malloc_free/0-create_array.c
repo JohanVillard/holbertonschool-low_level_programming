@@ -11,7 +11,7 @@
 char *create_array(unsigned int size, char c)
 {
 	char *s;
-	unsigned int i;
+	unsigned int i = 0;
 
 	if (size == 0)
 	{
@@ -21,7 +21,6 @@ char *create_array(unsigned int size, char c)
 	/* Alloue la mémoire à s (size par la taille d'une char) */
 	s = malloc(size * sizeof(char));
 
-	i = 0;
 	while (i < size)
 	{
 		s[i] = c;
