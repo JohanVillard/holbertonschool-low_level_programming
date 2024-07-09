@@ -19,8 +19,8 @@ void free_dog(dog_t *d)
 	/* Libère les éléments d'abord, puis la structure */
 	if (d->name == NULL)
 	{
-		/* Pas de return. Fonction de type void */
-		exit(1);
+		/* Suivant */
+		
 	}
 	else
 	{
@@ -28,7 +28,7 @@ void free_dog(dog_t *d)
 	}
 	if (d->owner == NULL)
 	{
-		/* Pas de return. Fonction de type void */
+		/* Suivant */
 		exit(1);
 	}
 	else
