@@ -15,7 +15,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	dog_t *d;
 	int len1 = 0, len2 = 0, i;
 
-	/* Arrete la fonction si l'age est négatif ou égal à 0*/
+	/* Arrete la fonction si l'age est négatif ou égal à 0 */
 	if (age <= 0)
 	{	return (NULL);	}
 
