@@ -12,8 +12,7 @@ void print_dog(struct dog *d)
 	/* Memory and parameters check */
 	if (d == NULL)
 	{
-		/* N'imprime rien */
-		printf("%s", "");
+		return;
 	}
 
 	/* Affiche les éléments de la struct */
