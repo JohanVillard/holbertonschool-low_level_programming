@@ -29,7 +29,6 @@ void free_dog(dog_t *d)
 	if (d->owner == NULL)
 	{
 		/* Suivant */
-		exit(1);
 	}
 	else
 	{
