@@ -11,10 +11,10 @@
  **/
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
-
 	/* Memory and parameters check */
 	if (d == NULL || name == NULL || owner == NULL || age <= 0)
 	{
+		/* Renvoie un message d'erreur */
 		exit(1);
 	}
 
@@ -22,8 +22,5 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 	d->name = name;
 	d->owner = owner;
 	d->age = age;
-
-	/* Confirme qu'il y a pas eu d'erreur */
-	exit(0);
 }
 
