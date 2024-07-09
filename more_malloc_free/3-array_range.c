@@ -15,6 +15,7 @@ int *array_range(int min, int max)
 	int i, len;
 
 	/* Si le min est supérieur au max */
+	/* Len sera toujours non-négative */
 	if (min > max)
 	{
 		return (NULL);
@@ -22,13 +23,6 @@ int *array_range(int min, int max)
 
 	/* Calcul de la taille à allouer */
 	len = max - min;
-
-	/* Si la taille est négative*/
-	if (len < 0)
-	{
-		/* On la convertit en positif */
-		len *= -1;
-	}
 
 	/* On ajoute le dernier chiffre */
 	len++;
