@@ -19,7 +19,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	}
 
-	/* Alloue la mémoire ode nmemb of nsize */
+	/* Alloue la mémoire de nmemb of nsize */
 	ptr = malloc(nmemb * size);
 
 	/* Allocation réussie ?*/
