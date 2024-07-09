@@ -9,7 +9,7 @@
  * @owner: .
  * Return: new dog
  **/
-dog_t *new_dog(char *name, float age __attribute__((unused)), char *owner)
+dog_t *new_dog(char *name, float age, char *owner)
 {
 	/* Déclare une structure */
 	dog_t *d;
@@ -24,6 +24,7 @@ dog_t *new_dog(char *name, float age __attribute__((unused)), char *owner)
 	}
 
 	d->name = name;
+	d->age = age;
 	d->owner = owner;
 
 	return (d);
