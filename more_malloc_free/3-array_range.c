@@ -36,8 +36,8 @@ int *array_range(int min, int max)
 		return (NULL);
 	}
 
-	/* i s'incrémente jusqu'à len  */
-	for (i = 0; i <= len; i++)
+	/* i s'incrémente jusqu'à len exclus*/
+	for (i = 0; i < len; i++)
 	{
 		/* Incrémente i a min*/
 		ptr[i] = i + min;
