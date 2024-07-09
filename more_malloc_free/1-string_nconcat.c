@@ -22,13 +22,11 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{	len2++;	}
 	/* Compare s2 à n */
 	if (n >= len2)
-	{
-		/* Longueur tout s2 */
+	{	/* Longueur tout s2 */
 		n_s2 = len2;
 	}
 	else
-	{
-		/* Longueur n bytes de s2 */
+	{	/* Longueur n bytes de s2 */
 		n_s2 = n;
 	}
 	/* Initialise le pointeur à l'adresse donnée par malloc */
@@ -36,8 +34,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	ptr = malloc(len1 + n_s2 + 1);
 	/* Allocation réussie ? */
 	if (ptr == NULL)
-	{
-		/* Renvoie NULL si non */
+	{	/* Renvoie NULL si non */
 		return (NULL);
 	}
 	/* Incrémente s1 dans la nouvelle string */
