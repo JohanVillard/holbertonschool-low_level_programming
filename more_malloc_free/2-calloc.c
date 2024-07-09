@@ -12,6 +12,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	char *ptr;
 	/* Déclare un compteur */
 	unsigned int i;
+	/* Déclare une taille */
+	unsigned int total_size;
 
 	/* Stop la fonction si la taille n'est pas supérieure à zéro */
 	if (size == 0 || nmemb == 0)
@@ -19,8 +21,11 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	}
 
+	/* Taille total à allouer */
+	total_size = nmemb * size;
+
 	/* Alloue la mémoire de nmemb of nsize */
-	ptr = malloc(nmemb * size);
+	ptr = malloc(total_size);
 
 	/* Allocation réussie ?*/
 	if (ptr == NULL)
@@ -29,7 +34,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	}
 
 	/* Initialise tous les membres à zero */
-	for (i = 0; i < nmemb; i++)
+	/* Toute la mémoire */
+	for (i = 0; i < total_size; i++)
 	{
 		ptr[i] = 0;
 	}
