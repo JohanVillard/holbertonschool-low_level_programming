@@ -1,10 +1,11 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 /**
  * array_range - Create and fill an array with num by order
  * @min: first number
  * @max: last number
- * Return: (0)
+ * Return: (ptr)
  */
 int *array_range(int min, int max)
 {
@@ -19,10 +20,10 @@ int *array_range(int min, int max)
 		return (NULL);
 	}
 
-	/* Calcul de la taille à allouer */
-	len = max - min;
+	/* Calcul de la taille à allouer plus le dernier chiffre*/
+	len = max - min + 1;
 
-	/* Alloue la mémoire ode nmemb of nsize */
+	/* Alloue la mémoire len * nsize */
 	ptr = malloc(len * sizeof(int));
 
 	/* Allocation réussie ?*/
