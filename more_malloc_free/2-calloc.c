@@ -1,14 +1,14 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 /**
- * string_nconcat - concatenate 2 strings for n bytes
- * @s1: first string
- * @s2: second string
- * @n: bytes to concat
+ * _calloc - Allocate memory and set to 0
+ * @nmemb: number of members in array
+ * @size: size of each member
  * Return: (0)
  */
-char *string_nconcat(char *s1, char *s2, unsigned int n)
+void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	/* Déclare un pointeur */
 	char *ptr;
@@ -16,10 +16,8 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int len1 = 0, len2 = 0, n_s2 = 0, i, j;
 
 	/* Taille de s1 et s2 sans l'octet de fin*/
-	while (s1[len1])
-	{	len1++;	}
-	while (s2[len2])
-	{	len2++;	}
+	len1 = strlen(s1);
+	len2 = strlen(s2);
 	/* Compare s2 à n */
 	if (n >= len2)
 	{
