@@ -10,7 +10,7 @@
 char **strtow(char *str)
 {
 	/* Compteur et longueur*/
-	int i = 0, j = 0, k = 0, len = 0, t_words = 0;
+	int i = 0, j = 0, k = 0, l = 0, len = 0, t_words = 0;
 	/* Tableau 2D */
 	char **s;
 
@@ -22,7 +22,6 @@ char **strtow(char *str)
 		if (str[i] != 32)	/* Les mots sont séparés par des espaces */
 		{
 			t_words++;  /* Compte le nombre de mots */
-
 			while (str[i] != 32)    /* se déplace jusqu'au prochain espace */
 			{	i++;	}
 		}	i++;	}
@@ -39,7 +38,10 @@ char **strtow(char *str)
 			len++; /* Ajout d'une place pour l'octet de fin*/
 			s[j] = malloc(len * sizeof(char)); /* Alloue len colonnes (1 char) */
 			if (s[j] == NULL) /* Malloc check */
-			{	return (NULL);	}
+			{	for (l = 0; l < k; l++)	/* Free si échec allocation */
+				{	free(s[j]);	}
+				free(s);
+				return (NULL);	}
 			for (k = 0; str[i] != 32; k++, i++)   /* Copie le mot  de str[] vers s[j] */
 			{	s[j][k] = str[i];	}
 			s[j][k] = '\0'; /* Ajout de l'octet de fin */
