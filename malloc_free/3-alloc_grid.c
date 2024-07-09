@@ -10,16 +10,12 @@
  */
 int **alloc_grid(int width, int height)
 {
-	int **s, i = 0, j = 0;
+	int **s, i, j;
 
 	if (width <= 0 || height <= 0)
-	{
-		return (NULL);
-	}
-
+	{	return (NULL);	}
 	/* Alloue la mémoire à toutes les lignes de s */
-	/* (ligne par pointeur) */
-	/* int*(8 bytes) pointe vers chaque ligne*/
+	/* (tableau de pointeur) int*(8 bytes) pointe vers chaque ligne*/
 	s = malloc(height * sizeof(int *));
 	/* Vérifie si l'allocation a fonctionnée */
 	if (s == NULL)
@@ -36,6 +32,11 @@ int **alloc_grid(int width, int height)
 		/* Sur la ligne soit le pointeur actuel*/
 		if (s[i] == NULL)
 		{
+			/* Libère la mémoire déjà réservée dans les col pour éviter les fuites */
+			for (j = 0; j < i; j++)
+			{	free(s[j]);	}
+			/* Libère les lignes*/
+			free(s);
 			return (NULL);
 		}
 	}
@@ -43,9 +44,7 @@ int **alloc_grid(int width, int height)
 	for (i = 0; i < height; i++)
 	{
 		for (j = 0; j < width; j++)
-		{
-			s[i][j] = 0;
-		}
+		{	s[i][j] = 0;	}
 	}
 	return (s);
 }
