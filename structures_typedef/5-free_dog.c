@@ -12,11 +12,28 @@ void free_dog(dog_t *d)
 	/* Check memory */
 	if (d == NULL)
 	{
+		/* Pas de return. Fonction de type void */
 		exit(1);
 	}
 
 	/* Libère les éléments d'abord, puis la structure */
-	free(d->name);
-	free(d->owner);
+	if (d->name == NULL)
+	{
+		/* Pas de return. Fonction de type void */
+		exit(1);
+	}
+	else
+	{
+		free(d->name);
+	}
+	if (d->owner == NULL)
+	{
+		/* Pas de return. Fonction de type void */
+		exit(1);
+	}
+	else
+	{
+		free(d->owner);
+	}
 	free(d);
 }
