@@ -34,7 +34,8 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	}
 
 	/* Initialise tous les membres à zero */
-	/* Toute la mémoire */
+	/* Toute la mémoire, pas seulement le premier octet*/
+	/* Chaque byte doit ếtre mis à 0!!!*/
 	for (i = 0; i < total_size; i++)
 	{
 		ptr[i] = 0;
