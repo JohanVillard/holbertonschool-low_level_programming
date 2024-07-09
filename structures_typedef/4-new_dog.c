@@ -32,19 +32,20 @@ dog_t *new_dog(char *name, float age, char *owner)
 	/* Alloue et libère (si echec) la mémoire des strings*/
 	d->name = malloc(len1 * sizeof(char));
 	if (d->name == NULL)
-	{	return (NULL);	}
+	{
+		free(d);
+		return (NULL);	}
 	d->owner = malloc(len2 * sizeof(char));
 	if (d->owner == NULL)
-	{	return (NULL);	}
+	{
+		free(name);
+		free(d);
+		return (NULL);	}
 	/* Copy name dans d->name owner dans d->owner */
 	for (i = 0; i < len1; i++)
-	{
-		d->name[i] = name[i];
-	}
+	{	d->name[i] = name[i];	}
 	for (i = 0; i < len2; i++)
-	{
-		d->owner[i] = owner[i];
-	}
+	{	d->owner[i] = owner[i];	}
 	/* Attribue age à age de d */
 	d->age = age;
 	return (d);
