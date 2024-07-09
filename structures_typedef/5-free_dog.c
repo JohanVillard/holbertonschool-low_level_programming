@@ -12,7 +12,7 @@ void free_dog(dog_t *d)
 	/* Check memory */
 	if (d == NULL)
 	{
-		return (NULL);
+		exit(1);
 	}
 
 	/* Libère les éléments d'abord, puis la structure */
