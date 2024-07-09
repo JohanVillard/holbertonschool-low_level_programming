@@ -37,11 +37,9 @@ int *array_range(int min, int max)
 	}
 
 	/* Initialise tout les membres à zero */
-	for (i = min; i <= max; i++)
+	for (i = 0; i <= len; i++)
 	{
 		ptr[i] = i;
-
-		printf("i :  %d\n", i);
 	}
 
 	return (ptr);
