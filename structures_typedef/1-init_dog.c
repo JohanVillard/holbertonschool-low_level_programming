@@ -20,7 +20,7 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 
 	/* Initialise tous les paramètres de la struc créée dans ailleurs */
 	/* Check chaque pointer*/
-	if (name == NULL)
+	if (*name == '\0')
 	{
 		free(d);
 		exit(1);
@@ -28,13 +28,21 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 
 	d->name = name;
 
-	if (owner == NULL)
+	if (*owner== '\0')
 	{
 		free(name);
 		free(d);
 		exit(1);
 	}
 	d->owner = owner;
+
+	if (age < 0)
+	{
+		free(owner);
+		free(name);
+		free(d);
+		exit(1);
+	}
 	d->age = age;
 }
 
