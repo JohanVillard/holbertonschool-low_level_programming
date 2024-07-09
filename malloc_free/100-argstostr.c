@@ -21,13 +21,13 @@ char *argstostr(int ac, char **av)
 		while (av[i][len])
 		{	len++;	}
 		/* !!! Le retour à la ligne est un caractère !!!*/
-		/* Ajoute 1 pour la nouvelle ligne et l'octet de fin */
+		/* Ajoute 1 pour la nouvelle ligne*/
 		/* Reset du compteur de longeur */
-		total_len += len + 2;
+		total_len += len + 1;
 		len = 0;	}
-	/* Alloue la mémoire nécéssaire et check */
+	/* Alloue la mémoire nécéssaire + l'octet de fin et check */
 	/* char (1 bytes) stocke variable */
-	s = malloc(total_len * sizeof(char));
+	s = malloc(1 + total_len * sizeof(char));
 	if (s ==  NULL)
 	{	return (NULL);	}
 	/* Copie la string actuelle du double tableau vers le simple tableau */
@@ -46,7 +46,6 @@ char *argstostr(int ac, char **av)
 		s[depart_concat] = '\n';
 		depart_concat++;
 	}
-	s[depart_concat] = '\0';
 	return (s);
 }
 
