@@ -22,6 +22,7 @@ int **alloc_grid(int width, int height)
 	{
 		return (NULL);
 	}
+	printf("%ld\n", sizeof(s));
 	/* Pour chaque ligne */
 	for (i = 0; i < height; i++)
 	{
