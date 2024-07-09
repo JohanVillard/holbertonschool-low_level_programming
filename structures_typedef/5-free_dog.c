@@ -9,6 +9,13 @@
  **/
 void free_dog(dog_t *d)
 {
+	/* Check memory */
+	if (d == NULL)
+	{
+		return (NULL);
+	}
+
+	/* Libère les éléments d'abord, puis la structure */
 	free(d->name);
 	free(d->owner);
 	free(d);
