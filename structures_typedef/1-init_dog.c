@@ -12,7 +12,7 @@
 void init_dog(struct dog *d, char *name, float age, char *owner)
 {
 	/* Memory check */
-	if (d == NULL || name == NULL || age == 0 || owner == NULL)
+	if (d == NULL)
 	{
 		exit(1);
 	}
