@@ -1,5 +1,4 @@
 #include <stdlib.h>
-#include <string.h>
 
 /**
  * string_nconcat - concatenate 2 strings for n bytes
