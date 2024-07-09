@@ -36,10 +36,11 @@ int *array_range(int min, int max)
 		return (NULL);
 	}
 
-	/* Initialise tout les membres à zero */
+	/* i s'incrémente jusqu'à len  */
 	for (i = 0; i <= len; i++)
 	{
-		ptr[i] = i;
+		/* Incrémente i a min*/
+		ptr[i] = i + min;
 	}
 
 	return (ptr);
