@@ -32,7 +32,7 @@ int **alloc_grid(int width, int height)
 		/* Sur la ligne soit le pointeur actuel*/
 		if (s[i] == NULL)
 		{
-			/* Libère la mémoire déjà réservée dans les col pour éviter les fuites */
+			/* Libère la mémoire déjà résa dans les col pour éviter les fuites */
 			for (j = 0; j < i; j++)
 			{	free(s[j]);	}
 			/* Libère les lignes*/
