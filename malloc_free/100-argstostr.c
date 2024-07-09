@@ -36,16 +36,17 @@ char *argstostr(int ac, char **av)
 	{
 		/* Jusqu'à la fin du mot */
 		for (j = 0; av[i][j] != '\0'; j++)
-			{
-				/* Copie chaque char dans le nouveau tableau */
-				s[depart_concat] = av[i][j];
-				depart_concat++; }
+		{
+			/* Copie chaque char dans le nouveau tableau */
+			s[depart_concat] = av[i][j];
+			depart_concat++; }
 		/*!!! Le retour à la ligne est un caractère !!! */
 		/* Ligne très importante. Il peux effacer la string */
 		/* Il doit être compté en tant qu'élément de s */
 		s[depart_concat] = '\n';
 		depart_concat++;
 	}
+	s[depart_concat] = '\0';
 	return (s);
 }
 
