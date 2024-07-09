@@ -12,8 +12,8 @@ void print_dog(struct dog *d)
 	/* Memory and parameters check */
 	if (d == NULL)
 	{
-		/* Renvoie un message d'erreur */
-		exit(1);
+		/* N'imprime rien */
+		printf("%s", "");
 	}
 
 	/* Affiche les éléments de la struct */
