@@ -1,12 +1,12 @@
 #include <stdlib.h>
 
 /**
- * _calloc - Allocate memory and set to 0
+ * _alloc - Allocate memory and set to 0
  * @nmemb: number of members in array
  * @size: size of each member
- * Return: (0)
+ * Return: (ptr)
  */
-void *_calloc(unsigned int nmemb, unsigned int size)
+void *_alloc(unsigned int nmemb, unsigned int size)
 {
 	/* Déclare un pointeur */
 	char *ptr;
@@ -28,7 +28,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 		return (NULL);
 	}
 
-	/* Initialise tout les membres à zero */
+	/* Initialise tous les membres à zero */
 	for (i = 0; i < nmemb; i++)
 	{
 		ptr[i] = 0;
