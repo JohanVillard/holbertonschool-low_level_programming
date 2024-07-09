@@ -46,7 +46,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{	d->name[i] = name[i];	}
 	for (i = 0; i < len2; i++)
 	{	d->owner[i] = owner[i];	}
-	/* Attribue age à age de d */
+	/* Attribue age à age de la struct d */
 	d->age = age;
 	return (d);
 }
