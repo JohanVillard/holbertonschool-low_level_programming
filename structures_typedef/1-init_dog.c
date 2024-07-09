@@ -17,7 +17,7 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 		exit(1);
 	}
 
-	if (name == NULL || owner == NULL || age < O)
+	if (name == NULL || owner == NULL || age < 0)
 	{
 		exit(1);
 	}
