@@ -20,8 +20,18 @@ int *array_range(int min, int max)
 		return (NULL);
 	}
 
-	/* Calcul de la taille à allouer plus le dernier chiffre*/
-	len = max - min + 1;
+	/* Calcul de la taille à allouer */
+	len = max - min;
+
+	/* Si la taille est négative*/
+	if (len < 0)
+	{
+		/* On la convertit en positif */
+		len *= -1;
+	}
+
+	/* On ajoute le dernier chiffre */
+	len++;
 
 	/* Alloue la mémoire len * nsize */
 	ptr = malloc(len * sizeof(int));
@@ -36,6 +46,8 @@ int *array_range(int min, int max)
 	for (i = min; i <= max; i++)
 	{
 		ptr[i] = i;
+
+		printf("i :  %d\n", i);
 	}
 
 	return (ptr);
