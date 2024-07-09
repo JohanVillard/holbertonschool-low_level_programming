@@ -6,3 +6,4 @@ P0T2 : Concatene 2 strings
 P0T3 : Create a double array with malloc
 P0T4 : Free memory from a 2D array
 P0T5 : Concat all arguments of programm
+P0T6 : transform space into \n in a new string

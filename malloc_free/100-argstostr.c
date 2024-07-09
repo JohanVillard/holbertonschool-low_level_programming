@@ -25,9 +25,9 @@ char *argstostr(int ac, char **av)
 		/* Reset du compteur de longeur */
 		total_len += len + 1;
 		len = 0;	}
-	/* Alloue la mémoire nécéssaire + l'octet de fin et check */
+	/* Alloue la mémoire nécéssaire et check */
 	/* char (1 bytes) stocke variable */
-	s = malloc(1 + total_len * sizeof(char));
+	s = malloc(total_len * sizeof(char));
 	if (s ==  NULL)
 	{	return (NULL);	}
 	/* Copie la string actuelle du double tableau vers le simple tableau */
