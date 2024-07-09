@@ -19,8 +19,8 @@ int *array_range(int min, int max)
 		return (NULL);
 	}
 
-	/* Calcul de la taille à allouer plus l'octet de fin */
-	len = max - min + 1;
+	/* Calcul de la taille à allouer */
+	len = max - min;
 
 	/* Alloue la mémoire ode nmemb of nsize */
 	ptr = malloc(len * sizeof(int));
