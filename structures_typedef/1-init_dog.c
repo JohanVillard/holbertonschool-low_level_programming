@@ -14,6 +14,10 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 	/* Memory check */
 	if (d == NULL)
 	{
+		/* Libère toute la mémoire de la struc(éléments puis struct) */
+		free(d->name);
+		free(d->owner);
+		free(d);
 		exit(1);
 	}
 
