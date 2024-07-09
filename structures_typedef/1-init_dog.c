@@ -17,6 +17,11 @@ void init_dog(struct dog *d, char *name, float age, char *owner)
 		exit(1);
 	}
 
+	if (name == NULL || owner == NULL || age < O)
+	{
+		exit(1);
+	}
+
 	/* Initialise tous les paramètres de la struc créée dans ailleurs */
 	d->name = name;
 	d->owner = owner;
