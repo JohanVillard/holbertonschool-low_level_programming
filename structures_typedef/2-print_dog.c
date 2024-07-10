@@ -5,7 +5,6 @@
 /**
  * print_dog - print elements of dog
  * @d: pointer to ttruct dog
-
  **/
 void print_dog(struct dog *d)
 {
