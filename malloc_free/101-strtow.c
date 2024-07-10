@@ -9,13 +9,11 @@
  */
 char **strtow(char *str)
 {
-	/* Compteur et longueur*/
-	int i = 0, j = 0, k = 0, l = 0, len = 0, t_words = 0;
+	int i = 0, j = 0, k = 0, l = 0, len = 0, t_words = 0;	/* Compteur + longueur*/
 	/* Tableau 2D */
 	char **s;
 
-	/* Conditions d'arrêt */
-	if (str == NULL || *str == '\0')
+	if (str == NULL || *str == '\0')	/* Conditions d'arrêt */
 	{	return (NULL);	}
 	while (str[i])  /* Parcourt str */
 	{
@@ -38,15 +36,15 @@ char **strtow(char *str)
 			len++; /* Ajout d'une place pour l'octet de fin*/
 			s[j] = malloc(len * sizeof(char)); /* Alloue len colonnes (1 char) */
 			if (s[j] == NULL) /* Malloc check */
-			{	for (l = 0; l < k; l++)	/* Free si échec allocation */
+			{
+				for (l = 0; l < k; l++)	/* Free si échec allocation */
 				{	free(s[j]);	}
 				free(s);
 				return (NULL);	}
 			for (k = 0; str[i] != 32; k++, i++)   /* Copie le mot  de str[] vers s[j] */
 			{	s[j][k] = str[i];	}
 			s[j][k] = '\0'; /* Ajout de l'octet de fin */
-			j++;	/* Incrémente les lignes */	}
-		else
+			j++;	/* Incrémente les lignes */	}	else
 		{	i++; /* Si espace, passe au char suivant */	}}
 	s[j] = NULL; /* Dernier élément du tableau NULL */
 	return (s);	}
