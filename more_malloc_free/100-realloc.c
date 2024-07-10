@@ -15,12 +15,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	unsigned char *byte_ptr; /* Ponteur d'init*/
 	void *new_ptr, *tmp;  /* Nouveau pointeur et temporaire */
 
+	if (ptr == NULL)    /* Si ptr NULL, free non nécéssaire */
+	{	return (malloc(new_size));	}
 	if (new_size == old_size) /* Ne fait rien */
 	{
 		return (ptr); /* Renvoie le ptr d'origine */
 	}
-	if (ptr == NULL)    /* Si ptr NULL, free non nécéssaire */
-	{	return (malloc(new_size));	}
 	if (new_size == 0 && ptr != NULL) /* La mémoire demandée est égale à 0 */
 	{
 		free(ptr);  /* Efface le block mémoire associé à ptr */
