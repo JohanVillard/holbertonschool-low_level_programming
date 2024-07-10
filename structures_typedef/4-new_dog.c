@@ -42,7 +42,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{	free(name);
 		free(d);
 		return (NULL);	}
-	
+
 	/* Copy name dans d->name et owner dans d->owner */
 	for (i = 0; i < len1; i++)
 	{	d->name[i] = name[i];	}
