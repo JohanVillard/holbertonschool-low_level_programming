@@ -12,8 +12,7 @@
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	unsigned int i; /* Compteur */
-	unsigned char *byte_ptr; /* Ponteur d'init*/
-	void *new_ptr, *tmp;  /* Nouveau pointeur et temporaire */
+	char *new_ptr;	/* Nouveau pointeur et temporaire */
 
 	if (ptr == NULL)    /* Si ptr NULL, free non nécéssaire */
 	{	return (malloc(new_size));	}
@@ -28,27 +27,27 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	}
 	new_ptr = malloc(new_size); /* Alloue la mémoire demandée */
 	if (new_ptr == NULL) /* Check allocation */
-	{
-		return (NULL);
-	}
+	{	return (NULL);	}
 	if (new_size > old_size) /* La mémoire ajoutée n'est pas init */
 	{	/* Pas d'opé arithmé ou de déférence pour les ptr de type void */
-		for (i = 0; i < old_size; i++) /* Utilis de memcopy à cause du type void* */
-		{
-			tmp = ptr; /* ancien dans temporaire */
-			new_ptr = tmp;  /* temporaire dans new_tmp */
+		for (i = 0; i < old_size; i++) /* Copie dans le nouveau bloc */
+		{	/* Forcé de cast, pas d'opé arithmé ou de déféren pour void* */
+			new_ptr[i] = ((unsigned char *)ptr)[i]; /* Convertit en char(1 bytes) */
 		}
 	}
 	else /* Initialisation à 0 */
 	{
-		byte_ptr = (unsigned char *)ptr;
 		for (i = 0; i < new_size; i++)
-		{   /* Forcé de cast, pas d'opé arithmé ou de déféren pour void* */
-			byte_ptr = (unsigned char *)new_ptr; /* Convertit en char(1 bytes) */
-			byte_ptr[i] = 0; /* Toutes les byte sont initialisé à 0*/
+		{
+			new_ptr[i] = ((unsigned char *)ptr)[i]; /* Convertit en char(1 bytes) */
+			if (new_ptr == NULL)
+			{
+				free(new_ptr);
+				new_ptr = NULL;
+				return (ptr);
+			}
 		}
 	}
 	free(ptr); /* Libération de la mémoire de l'ancien tableau */
 	return (new_ptr);
 }
-
