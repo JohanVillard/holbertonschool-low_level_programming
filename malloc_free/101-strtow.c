@@ -44,6 +44,8 @@ char **strtow(char *str)
 				return (NULL);
 			}
 
+			len = 0; /* Remise à 0 pour utilisation suivante */
+
 			for (k = 0; str[i] != 32; k++, i++)   /* Copie le mot  de str[] vers s[j] */
 			{	s[j][k] = str[i];	}
 
