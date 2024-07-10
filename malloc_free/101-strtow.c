@@ -13,6 +13,7 @@ char **alloc_total_word(int t_words);
 char **strtow(char *str)
 {
 	int i = 0, j = 0, k = 0, l = 0, len = 0, t_words = 0;	/* Compteur + longueur*/
+	int tmp_i = 0; /* Première lettre du mot */
 	/* Tableau 2D */
 	char **s;
 
@@ -30,9 +31,12 @@ char **strtow(char *str)
 	{
 		if (str[i] != 32) /* Les mots sont séparés par des espaces */
 		{
+			tmp_i = i; /* Capture de la première lettre du mot */
 			len = 0; /* Remise à 0 pour utilisation suivante */
-			while (str[len] != 32) /* Tant que str[i] n'est pas un espace */
-			{	len++; /* Compte la taille du mot */	}
+			while (str[i] != 32) /* Tant que str[i] n'est pas un espace */
+			{	len++;	/* Compte la taille du mot */
+				i++;
+			}
 
 			len++; /* Ajout d'une place pour l'octet de fin*/
 
@@ -45,8 +49,8 @@ char **strtow(char *str)
 				return (NULL);
 			}
 
-			for (k = 0; str[i] != 32; k++, i++)   /* Copie le mot  de str[] vers s[j] */
-			{	s[j][k] = str[i];	}
+			for (k = 0; str[tmp_i] != 32; k++, tmp_i++)   /* Cp mot de str[] -> s[j] */
+			{	s[j][k] = str[tmp_i];	}	/* Pars du début du mot grâce à tmp_i */
 
 			s[j][k] = '\0'; /* Ajout de l'octet de fin */
 			j++;	/* Incrémente les lignes */
