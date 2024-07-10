@@ -11,7 +11,7 @@
  **/
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	/* Déclare une structure et les longueurs de string */
+	/* Déclare une structure, les longueurs de string et compteurs */
 	dog_t *d;
 	int len1 = 0, len2 = 0, i;
 
@@ -42,13 +42,13 @@ dog_t *new_dog(char *name, float age, char *owner)
 	{	free(name);
 		free(d);
 		return (NULL);	}
-
 	/* Copy name dans d->name et owner dans d->owner */
 	for (i = 0; i < len1; i++)
 	{	d->name[i] = name[i];	}
+	d->name[i] = '\0';
 	for (i = 0; i < len2; i++)
 	{	d->owner[i] = owner[i];	}
-
+	d->owner[i] = '\0';
 	d->age = age;	/* Attribue age à age de la struct d */
 	return (d);
 }
