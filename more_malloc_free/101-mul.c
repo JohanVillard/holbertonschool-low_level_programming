@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 	{		if (argv[1][0] == '0' || argv[2][0] == '0')	/* Zero case */
 		{
 			printf("0\n"); /* Le système gère la mem*/
-			Return (0);	/* Pas  de fuite de mémoire */
+			return (0);	/* Pas  de fuite de mémoire */
 		}
 		for (i = 1; i < argc; i++) /* Pointe chacun de nums */
 		{
