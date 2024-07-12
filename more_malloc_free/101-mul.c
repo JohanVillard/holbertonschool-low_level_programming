@@ -16,7 +16,11 @@ int main(int argc, char *argv[])
 	int tmp, *num1, *num2, *produit;
 
 	if (argc == 3) /* Cmd + num1 + num2 */
-	{
+	{		if (argv[1][0] == '0' || argv[2][0] == '0')	/* Zero case */
+		{
+			printf("0\n");
+			return (0);
+		}
 		for (i = 1; i < argc; i++) /* Pointe chacun de nums */
 		{
 			for (j = 0; argv[i][j] != '\0'; j++) /* Passe sur chaque elem du tab */
