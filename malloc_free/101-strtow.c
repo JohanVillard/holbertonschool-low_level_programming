@@ -12,7 +12,7 @@ char **alloc_total_word(int t_words);
  */
 char **strtow(char *str)
 {
-	int i = 0, j = 0, k = 0, l = 0, len = 0, t_words = 0;	/* Compteur + longueur*/
+	int i = 0, j = 0, k = 0, l = 0, len = 0, t_words = 0;	/* Compteur+longueur */
 	int tmp_i = 0; /* Première lettre du mot */
 	/* Tableau 2D */
 	char **s;
@@ -23,6 +23,11 @@ char **strtow(char *str)
 	}
 
 	t_words = count_words(str); /* Fonct comptant les mots de str */
+
+	if (t_words == 0)	/* Si pas de mot trouvé */
+	{
+		return (NULL);
+	}
 
 	s = alloc_total_word(t_words); /* Fonct allouant la place pr nbre de mot */
 
