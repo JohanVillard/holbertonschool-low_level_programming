@@ -12,7 +12,7 @@
 */
 int main(int argc, char *argv[])
 {
-	int i, j, len1, len2;	/* Déclarations de variables */
+	int i, j, len1 = 0, len2 = 0;	/* Déclarations de variables */
 	int tmp, *num1, *num2, *produit;
 
 	if (argc == 3) /* Cmd + num1 + num2 */
@@ -21,12 +21,12 @@ int main(int argc, char *argv[])
 		{
 			for (j = 0; argv[i][j] != '\0'; j++) /* Passe sur chaque elem du tab */
 			{
-				if ((argv[i][j] > 47) || (argv[i][j] < 58)) /* Si c'est un chiffre */
+				if ((argv[i][j] > 47) && (argv[i][j] < 58)) /* Si c'est un chiffre */
 				{
 					if (i == 1)	/* Compte num1 */
 						len1++;
 
-					else if (i == 2)	/* Compte num1 */
+					else if (i == 2)	/* Compte num2 */
 						len2++;
 				}
 				else
