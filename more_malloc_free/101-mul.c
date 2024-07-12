@@ -41,11 +41,19 @@ int main(int argc, char *argv[])
 		{
 			return (0);
 		}
+		for (i = 0; i < len1; i++)	/* Initialise tous les membres à zero */
+		{
+			num1[i] = 0;	/* Pour éviter des comportements non définis */
+		}
 		num2 = malloc(len2 * sizeof(int));	/* Alloue la mémoire de num2 */
 		if (num2 == NULL)	/* Check */
 		{
 			free(num1);
 			return (0);
+		}
+		for (i = 0; i < len2; i++)	/* Initialise tous les membres à zero */
+		{
+			num2[i] = 0;	/* Pour éviter des comportements non définis */
 		}
 		produit = malloc((len1 + len2) * sizeof(int));	/* Alloue la mém de prod */
 		if (produit == NULL)	/* Check */
