@@ -12,7 +12,7 @@ char **alloc_total_word(int t_words);
  */
 char **strtow(char *str)
 {
-	int i = 0, j = 0, k = 0, l = 0, len = 0, t_words = 0;	/* Compteur+longueur */
+	int i = 0, j = 0, k = 0, len = 0, t_words = 0;	/* Compteur+longueur */
 	int tmp_i = 0; /* Première lettre du mot */
 	/* Tableau 2D */
 	char **s;
@@ -29,7 +29,7 @@ char **strtow(char *str)
 		return (NULL);
 	}
 
-	s = alloc_total_word(t_words); /* Fonct allouant la place pr nbre de mot */
+	s = alloc_total_word(t_words); /* 1 ptr = 1 mot */
 
 	i = 0;  /* Remet l'index de str au début */
 	while (str[i])  /* Parcourt str */
@@ -37,7 +37,7 @@ char **strtow(char *str)
 		if (str[i] != 32) /* Les mots sont séparés par des espaces */
 		{
 			tmp_i = i; /* Capture de la première lettre du mot */
-			len = 0; /* Remise à 0 pour utilisation suivante */
+			len = 0; /* Remise à 0 pour l'utilisation suivante */
 			while (str[i] != 32) /* Tant que str[i] n'est pas un espace */
 			{	len++;	/* Compte la taille du mot */
 				i++;
@@ -48,8 +48,8 @@ char **strtow(char *str)
 			s[j] = malloc(len * sizeof(char)); /* Alloue len colonnes (1 char) */
 			if (s[j] == NULL) /* Malloc check */
 			{
-				for (l = 0; l < k; l++)	/* Free si échec allocation */
-				{	free(s[j]);	}
+				for (; j >= 0; j--)
+					free(s[j]);	/* Free si échec allocation */
 				free(s);
 				return (NULL);
 			}
@@ -80,7 +80,7 @@ int count_words(char *str)
 
 	while (str[i])  /* Parcourt str */
 	{
-		if (str[i] != 32)	/* Les mots sont séparés par des espaces */
+		if (str[i] != 32)	/* Les mots sont séparés par des espaces(32) */
 		{
 			t_words++;  /* Compte le nombre de mots */
 
@@ -112,6 +112,7 @@ char **alloc_total_word(int t_words) /* Renvoie un double pointeur */
 	{
 		return (NULL);
 	}
+
 	return (s);
 }
 
