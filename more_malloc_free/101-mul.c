@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 		{
 			num2[i] = 0;	/* Pour éviter des comportements non définis */
 		}
-		produit = malloc((len1 + len2) * sizeof(int));	/* Alloue la mém de prod */
+		produit = malloc((len1 + len2 + 1) * sizeof(int));	/* Alloue la mém de prod + 1*/
 		if (produit == NULL)	/* Check */
 		{
 			free(num1);
