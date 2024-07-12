@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	int tmp, *num1 = NULL, *num2 = NULL, *produit = NULL;
 
 	if (argc == 3) /* Cmd + num1 + num2 */
-	{		if (argv[1][0] == '0' || argv[2][0] == '0')	/* Zero case */
+	{		if (argv[1][0] == '0' || argv[2][0] == '0')	/* Cas zéro */
 		{
 			printf("0\n"); /* Le système gère la mem*/
 			return (0);	/* Pas  de fuite de mémoire */
@@ -35,9 +35,6 @@ int main(int argc, char *argv[])
 				}
 				else
 				{
-					free(num1);	/* Libération des 3 tableaux */
-					free(num2);
-					free(produit);
 					printf("Error\n");	/* Si autre que chiffre */
 					exit(98);
 				}
@@ -102,9 +99,6 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
-		free(num1);	/* Libération des 3 tableaux */
-		free(num2);
-		free(produit);
 		printf("Error\n");	/* Si pas assez d'arguments */
 		exit(98);
 	}
