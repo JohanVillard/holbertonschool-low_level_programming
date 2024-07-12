@@ -35,6 +35,9 @@ int main(int argc, char *argv[])
 				}
 				else
 				{
+					free(num1);	/* Libération des 3 tableaux */
+					free(num2);
+					free(produit);
 					printf("Error\n");	/* Si autre que chiffre */
 					exit(98);
 				}
@@ -72,7 +75,7 @@ int main(int argc, char *argv[])
 			num2[j] = argv[2][i] - '0';	/* Stocke num2 à l'envers et conv en int */
 
 		/* Multiplication d’un grand nombre par un nombre à un chiffre */
-		for (i = 0; i < len2; i++) /* See wikipedia */
+		for (i = 0; i < len2; i++) /* Voir wikipedia */
 		{
 			for (j = 0; j < len1; j++)
 				produit[i + j] += num2[i] * num1[j];	/* Calc des prod interm*/
@@ -99,6 +102,9 @@ int main(int argc, char *argv[])
 	}
 	else
 	{
+		free(num1);	/* Libération des 3 tableaux */
+		free(num2);
+		free(produit);
 		printf("Error\n");	/* Si pas assez d'arguments */
 		exit(98);
 	}
