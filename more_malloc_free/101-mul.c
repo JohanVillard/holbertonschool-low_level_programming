@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 	if (argc == 3) /* Cmd + num1 + num2 */
 	{		if (argv[1][0] == '0' || argv[2][0] == '0')	/* Cas zéro */
 		{
-			printf("0\n"); /* Le système gère la mem*/
+
 			return (0);	/* Pas  de fuite de mémoire */
 		}
 		for (i = 1; i < argc; i++) /* Pointe chacun de nums */
@@ -65,32 +65,13 @@ int main(int argc, char *argv[])
 		for (i = 0; i < len1 + len2; i++)	/* Initialise tous les membres à zero */
 			produit[i] = 0;	/* Pour éviter des comportements non définis */
 		if (produit == NULL)	/* Check */
-		{
-			free(num1);
-			free(num2);
-			free(produit);
-			exit(98);
-		}
 
 		for (i = len1 - 1, j = 0; i >= 0; i--, j++)
 			num1[j] = argv[1][i] - '0';	/* Stocke num1 à l'envers et conv en int */
-		if (num1 == NULL)	/* Check */
-		{
-			free(num1);
-			free(num2);
-			free(produit);
-			exit(98);
-		}
+
 
 		for (i = len2 - 1, j = 0; i >= 0; i--, j++)
 			num2[j] = argv[2][i] - '0';	/* Stocke num2 à l'envers et conv en int */
-		if (num2 == NULL)	/* Check */
-		{
-			free(num1);
-			free(num2);
-			free(produit);
-			exit(98);
-		}
 
 		/* Multiplication d’un grand nombre par un nombre à un chiffre */
 		for (i = 0; i < len2; i++) /* Voir wikipedia */
@@ -98,25 +79,12 @@ int main(int argc, char *argv[])
 			for (j = 0; j < len1; j++)
 				produit[i + j] += num2[i] * num1[j];	/* Calc des prod interm*/
 		}
-		if (produit == NULL)	/* Check */
-		{
-			free(num1);
-			free(num2);
-			free(produit);
-			exit(98);
-		}
+
 		for (i = 0; i < len1 + len2; i++)	/* Addition des produits */
 		{
 			tmp = produit[i] / 10;	/* Dizaine à additionner à i + 1 */
 			produit[i] = produit[i] % 10;	/* Chiffre posée (résultat définitif) */
 			produit[i + 1] = produit[i + 1] + tmp;	/* (i + 1) + (dizaine de i) */
-		}
-		if (produit == NULL)	/* Check */
-		{
-			free(num1);
-			free(num2);
-			free(produit);
-			exit(98);
 		}
 
 		for (i = len1 + len2; i >= 0; i--)	/* Place i tout à la fin de produit */
