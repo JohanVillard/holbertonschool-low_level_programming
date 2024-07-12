@@ -9,12 +9,11 @@ void free_and_exit(void *ptr1, void *ptr2, void *ptr3);
 * main - multiply two numbers
 * @argc: count arguments
 * @argv: store arguments in string
-*
 * Return: (0)
 */
 int main(int argc, char *argv[])
 {
-	int i = 0, j = 0, len1 = 0, len2 = 0;	/* Déclarations et init des variables */
+	int i = 0, j = 0, len1 = 0, len2 = 0;	/* Décla et init des variables */
 	int tmp = 0, *num1 = NULL, *num2 = NULL, *produit = NULL;
 
 	if (argc != 3) /* Cmd + num1 + num2 */
@@ -60,10 +59,8 @@ int main(int argc, char *argv[])
 		free_and_exit(num1, num2, produit);
 	for (i = 0; i < len1 + len2 + 1; i++)	/* Init tous les membres à zero */
 		produit[i] = 0;	/* Pour éviter des comportements non définis */
-
 	for (i = len1 - 1, j = 0; i >= 0; i--, j++)
 		num1[j] = argv[1][i] - '0';	/* Stocke num1 à l'envers et conv en int */
-
 	for (i = len2 - 1, j = 0; i >= 0; i--, j++)
 		num2[j] = argv[2][i] - '0';	/* Stocke num2 à l'envers et conv en int */
 	/* Multiplication d’un grand nombre par un nombre à un chiffre */
@@ -86,7 +83,7 @@ int main(int argc, char *argv[])
 	for (; i >= 0; i--)	/* Affiche le resultat dans le bon sens*/
 		printf("%d", produit[i]);
 	putchar('\n');	/* Saut de ligne */
-	free_and_exit(num1, num2, produit);
+	free_all(num1, num2, produit);
 	return (0);
 }
 
