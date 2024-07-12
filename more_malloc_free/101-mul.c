@@ -12,16 +12,13 @@
 */
 int main(int argc, char *argv[])
 {
-	int i, j, len1 = 0, len2 = 0;	/* Déclarations de variables */
-	int tmp, *num1 = NULL, *num2 = NULL, *produit = NULL;
+	int i = 0, j = 0, len1 = 0, len2 = 0;	/* Déclarations et init des variables */
+	int tmp = 0, *num1 = NULL, *num2 = NULL, *produit = NULL;
 
 	if (argc == 3) /* Cmd + num1 + num2 */
 	{		if (argv[1][0] == '0' || argv[2][0] == '0')	/* Cas zéro */
 		{
 			printf("0\n"); /* Le système gère la mem*/
-					free(num1);	/* Libération des 3 tableaux */
-		free(num2);
-		free(produit);
 			return (0);	/* Pas  de fuite de mémoire */
 		}
 		for (i = 1; i < argc; i++) /* Pointe chacun de nums */
@@ -65,8 +62,7 @@ int main(int argc, char *argv[])
 			free(num2);
 			exit(98);
 		}
-
-		for (i = 0; i < len1 + len2; i++)	/* Initialise tous les membres à zero */
+		for (i = 0; i < len1 + len2 + 1; i++)	/* Initialise tous les membres à zero */
 			produit[i] = 0;	/* Pour éviter des comportements non définis */
 
 
