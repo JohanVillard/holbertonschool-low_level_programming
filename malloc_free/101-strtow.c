@@ -45,7 +45,7 @@ char **strtow(char *str)
 
 			len++; /* Ajout d'une place pour l'octet de fin*/
 
-			s[j] = malloc(len * sizeof(char)); /* Alloue len colonnes (1 char) */
+			s[j] = malloc(len * sizeof(char)); /* Alloue 1 colonne = 1 char */
 			if (s[j] == NULL) /* Malloc check */
 			{
 				for (; j >= 0; j--)
@@ -53,8 +53,8 @@ char **strtow(char *str)
 				free(s);
 				return (NULL);
 			}
-
-			for (k = 0; str[tmp_i] != 32; k++, tmp_i++)   /* Cp mot de str[] -> s[j] */
+			/* Copie du mot de str[tmp_i] -> s[j][k] !!! si fin de str alors stop */
+			for (k = 0; str[tmp_i] != 32 && str[tmp_i] != '\0'; k++, tmp_i++)
 				s[j][k] = str[tmp_i];	/* Pars du début du mot grâce à tmp_i */
 
 			s[j][k] = '\0'; /* Ajout de l'octet de fin */
