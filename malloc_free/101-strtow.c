@@ -34,7 +34,7 @@ char **strtow(char *str)
 	i = 0;  /* Remet l'index de str au début */
 	while (str[i])  /* Parcourt str */
 	{
-		if (str[i] != 32) /* Les mots sont séparés par des espaces */
+		if (str[i] != 32 && str[i] != '\0') /* Mots sont séparés par des espaces */
 		{
 			tmp_i = i; /* Capture de la première lettre du mot */
 			len = 0; /* Remise à 0 pour l'utilisation suivante */
@@ -55,9 +55,10 @@ char **strtow(char *str)
 			}
 
 			for (k = 0; str[tmp_i] != 32; k++, tmp_i++)   /* Cp mot de str[] -> s[j] */
-			{	s[j][k] = str[tmp_i];	}	/* Pars du début du mot grâce à tmp_i */
+				s[j][k] = str[tmp_i];	/* Pars du début du mot grâce à tmp_i */
 
 			s[j][k] = '\0'; /* Ajout de l'octet de fin */
+
 			j++;	/* Incrémente les lignes */
 		}
 		else
@@ -66,6 +67,7 @@ char **strtow(char *str)
 		}
 	}
 	s[j] = NULL; /* Dernier élément du tableau NULL */
+
 	return (s);
 }
 
