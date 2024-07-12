@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
 		num1 = malloc(len1 * sizeof(int));	/* Alloue la mémoire de num1 */
 		if (num1 == NULL)	/* Check */
 		{
-			return (0);
+			exit(98);
 		}
 		for (i = 0; i < len1; i++)	/* Initialise tous les membres à zero */
 		{
@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 		if (num2 == NULL)	/* Check */
 		{
 			free(num1);
-			return (0);
+			exit(98);
 		}
 		for (i = 0; i < len2; i++)	/* Initialise tous les membres à zero */
 		{
@@ -64,13 +64,12 @@ int main(int argc, char *argv[])
 		{
 			free(num1);
 			free(num2);
-			return (0);
+			exit(98);
 		}
 		for (i = 0; i < len1 + len2; i++)	/* Initialise tous les membres à zero */
 		{
 			produit[i] = 0;	/* Pour éviter des comportements non définis */
 		}
-
 		for (i = len1 - 1, j = 0; i >= 0; i--, j++)
 			num1[j] = argv[1][i] - '0';	/* Stocke num1 à l'envers et conv en int */
 
@@ -98,16 +97,14 @@ int main(int argc, char *argv[])
 
 		for (; i >= 0; i--)	/* Affiche le resultat dans le bon sens*/
 			printf("%d", produit[i]);
-
-		putchar('\n');
-
-		free(num1);
+		putchar('\n');	/* Saut de ligne */
+		free(num1);	/* Libération des 3 tableaux */
 		free(num2);
 		free(produit);
 	}
 	else
 	{
-		printf("Error\n");	/* Si autre que chiffre */
+		printf("Error\n");	/* Si pas assez d'arguments */
 		exit(98);
 	}
 	return (0);
