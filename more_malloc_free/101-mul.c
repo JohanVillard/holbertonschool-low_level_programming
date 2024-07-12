@@ -18,8 +18,9 @@ int main(int argc, char *argv[])
 	if (argc == 3) /* Cmd + num1 + num2 */
 	{		if (argv[1][0] == '0' || argv[2][0] == '0')	/* Zero case */
 		{
+
 			printf("0\n");
-			return (0);
+			exit(98);
 		}
 		for (i = 1; i < argc; i++) /* Pointe chacun de nums */
 		{
@@ -42,13 +43,10 @@ int main(int argc, char *argv[])
 		}
 		num1 = malloc(len1 * sizeof(int));	/* Alloue la mémoire de num1 */
 		if (num1 == NULL)	/* Check */
-		{
 			exit(98);
-		}
 		for (i = 0; i < len1; i++)	/* Initialise tous les membres à zero */
-		{
 			num1[i] = 0;	/* Pour éviter des comportements non définis */
-		}
+
 		num2 = malloc(len2 * sizeof(int));	/* Alloue la mémoire de num2 */
 		if (num2 == NULL)	/* Check */
 		{
@@ -56,10 +54,9 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 		for (i = 0; i < len2; i++)	/* Initialise tous les membres à zero */
-		{
 			num2[i] = 0;	/* Pour éviter des comportements non définis */
-		}
-		produit = malloc((len1 + len2 + 1) * sizeof(int));	/* Alloue la mém de prod + 1*/
+
+		produit = malloc((len1 + len2 + 1) * sizeof(int));	/* Alloue la mém de prod + 1(overflow) */
 		if (produit == NULL)	/* Check */
 		{
 			free(num1);
@@ -67,9 +64,8 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 		for (i = 0; i < len1 + len2; i++)	/* Initialise tous les membres à zero */
-		{
 			produit[i] = 0;	/* Pour éviter des comportements non définis */
-		}
+
 		for (i = len1 - 1, j = 0; i >= 0; i--, j++)
 			num1[j] = argv[1][i] - '0';	/* Stocke num1 à l'envers et conv en int */
 
