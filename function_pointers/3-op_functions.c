@@ -39,7 +39,7 @@ int op_mul(int a, int b)
  * @a: num1
  * @b: num2
  *
- * Return: (quotient)
+ * Return: (result)
  */
 int op_div(int a, int b)
 {
@@ -51,7 +51,7 @@ int op_div(int a, int b)
  * @a: num1
  * @b: num2
  *
- * Return: (Modulo)
+ * Return: (remainder)
  */
 int op_mod(int a, int b)
 {
