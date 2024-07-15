@@ -20,9 +20,6 @@ int (*get_op_func(char *s))(int, int)
 	{NULL, NULL}	/* Indique la fin de la structure */
 	};
 
-	if (s == NULL)	/* Check si s est NULL */
-		return (NULL);
-
 	while (ops[i].op != NULL) /* Tant la val de l'op dans la struc != NULL*/
 	{
 		if (*s == *(ops + i)->op)	/* Opé correspond à ceux dans ops[] */
