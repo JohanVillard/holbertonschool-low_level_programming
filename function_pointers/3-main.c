@@ -11,8 +11,8 @@
  */
 int main(int argc, char *argv[])
 {
-	int a = 0, b = 0, result = 0;	/* Nombre à calculer */
-	int (*pf)(int, int); /* Pointeur de fonction */
+	int a = 0, b = 0;	/* Nombre à calculer */
+	/*int (*pf)(int, int); /* Pointeur de fonction */
 
 	if (argc != 4)	/* Vérifie le nombre d'arguments */
 	{
@@ -38,9 +38,7 @@ int main(int argc, char *argv[])
 	b = atoi(argv[3]);
 	/* On récupère l'adresse de la function de calcul */
 	/* que la fonction get_func a choisi suivant l'opérateur */
-	pf = get_op_func(argv[2]);
-	/* Pointeur de fonction qui appelle la fonction de calcul */
-	result = (*pf)(a, b);
-	printf("%d\n", result);	/* Affiche le résultat stocké */
+	/* Puis le résultat est calculé avec les paramètres a et b*/
+	printf("%d\n", get_op_func(argv[2])(a, b));	/* Affiche le résultat stocké */
 	return (0);
 }
