@@ -20,9 +20,6 @@ int int_index(int *array, int size, int (*cmp)(int))
 		if (cmp(array[i]) != 0)	/* Si cmp retourne 1 */
 			return (i);	/* Renvoie l'index i si la valeur est trouvée */
 	}
-	if (i == size)	/* Si aucun élément ne match */
-	{
-		return (-1); /* La fonction ne renvoie pas 0 */
-	}
-	return (-1);
+
+	return (-1); /* La fonction ne renvoie pas 0 */
 }
