@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	if (argv[2][1] != '\0')	/* Check si op fait 1 char + '\0' */
+	if (argv[2][1] != '\0')
 	{
 		printf("Error\n");
 		exit(99);
