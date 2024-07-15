@@ -15,9 +15,12 @@ int int_index(int *array, int size, int (*cmp)(int))
 	if (size <= 0)
 		return (-1);
 
+	if (array == NULL || cmp == NULL)	/* Check si les ptr sont NULL */
+		return (-1);
+
 	for (i = 0; i < size; i++)	/* Parcours array */
 	{
-		if (cmp(array[i]) != 0)	/* Si cmp retourne 1 */
+		if (cmp(array[i]) != 0)	/* Si cmp ne retourne pas 0 */
 			return (i);	/* Renvoie l'index i si la valeur est trouvée */
 	}
 

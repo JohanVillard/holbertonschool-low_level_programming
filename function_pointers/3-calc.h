@@ -16,7 +16,7 @@ typedef struct op
 /* 3-get_op_func.c */
 int (*get_op_func(char *s))(int, int);
 
-/*3-op_functions.c */
+/* 3-op_functions.c */
 int op_add(int a, int b);
 int op_sub(int a, int b);
 int op_mul(int a, int b);
