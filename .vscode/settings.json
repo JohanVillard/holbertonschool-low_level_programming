@@ -3,6 +3,7 @@
 		"function_pointers.h": "c",
 		"stdio.h": "c",
 		"stdlib.h": "c",
-		"3-calc.h": "c"
+		"3-calc.h": "c",
+		"stdarg.h": "c"
 	}
 }
