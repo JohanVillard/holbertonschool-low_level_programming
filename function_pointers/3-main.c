@@ -20,6 +20,12 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
+	if (argv[2][1] != '\0')	/* Check si op fait 1 char + '\0' */
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
 	if (*argv[2] != '+' && *argv[2] != '-' && *argv[2] != '*'
 	&& *argv[2] != '/' && *argv[2] != '%')	/* Vérifie l'opérateur' */
 	{

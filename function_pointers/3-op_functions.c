@@ -14,7 +14,7 @@ int op_add(int a, int b)
 }
 
 /**
- * op_sub - Dubcract 2 numbers
+ * op_sub - Subcract 2 numbers
  * @a: num1
  * @b: num2
  *
