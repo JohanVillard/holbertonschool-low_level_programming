@@ -1,5 +1,4 @@
 #include <stdarg.h>
-#include <stdio.h>
 
 /**
  * sum_them_all - Summ all parameters
