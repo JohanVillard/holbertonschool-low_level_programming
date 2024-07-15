@@ -25,5 +25,5 @@ int sum_them_all(const unsigned int n, ...)
 
 	va_end(nums);	/* Met fin à l'utilisation de nums */
 
-	return (sum);
+	return (sum + n);
 }
