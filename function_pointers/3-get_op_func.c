@@ -10,7 +10,7 @@
  */
 int (*get_op_func(char *s))(int, int)
 {
-	int i = 0;	/* Compteur */
+	int i;	/* Compteur */
 	op_t ops[] = {	/* Stocke les choix dans une structure */
 	{"+", op_add},	/* Chaque opé à sa fonction correspodante */
 	{"-", op_sub},
@@ -20,6 +20,7 @@ int (*get_op_func(char *s))(int, int)
 	{NULL, NULL}	/* Indique la fin de la structure */
 	};
 
+	i = 0;
 	while (ops[i].op != NULL) /* Tant la val de l'op dans la struc != NULL*/
 	{
 		if (*s == *(ops + i)->op)	/* Opé correspond à ceux dans ops[] */
