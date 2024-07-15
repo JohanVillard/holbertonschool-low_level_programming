@@ -18,7 +18,7 @@ int int_index(int *array, int size, int (*cmp)(int))
 
 	for (i = 0; i < size; i++)	/* Parcours array */
 	{
-		if (cmp(array[i]) == 1)	/* Si cmp retourne 1 */
+		if (cmp(array[i]) != 0)	/* Si cmp retourne 1 */
 			return (i);	/* Renvoie l'index i si la valeur est trouvée */
 	}
 
