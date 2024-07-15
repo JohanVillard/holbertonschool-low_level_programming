@@ -37,15 +37,16 @@ int main(int argc, char *argv[])
 
 	a = atoi(argv[1]); /* Convertit en nombre */
 	b = atoi(argv[3]);
-
 	/* On récupère l'adresse de la function de calcul */
 	/* que la fonction get_func a choisi suivant l'opérateur */
 	pf = get_op_func(argv[2]);
-
+	if (pf == NULL)	/* Si le ptr renvoyé est NULL */
+	{
+		printf("Error\n");
+		exit(99);
+	}
 	/* Pointeur de fonction qui appelle la fonction de calcul */
 	result = (*pf)(a, b);
-
 	printf("%d\n", result);	/* Affiche le résultat stocké */
-
 	return (0);
 }
