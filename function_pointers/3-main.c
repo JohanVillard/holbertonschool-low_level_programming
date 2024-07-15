@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
 
 	if (argc != 4)	/* Vérifie le nombre d'arguments */
 	{
-		printf("*argv[2]: %d,     \n", *argv[2]);
 		printf("Error\n");
 		exit(98);
 	}
@@ -40,11 +39,6 @@ int main(int argc, char *argv[])
 	/* On récupère l'adresse de la function de calcul */
 	/* que la fonction get_func a choisi suivant l'opérateur */
 	pf = get_op_func(argv[2]);
-	if (pf == NULL)	/* Si le ptr renvoyé est NULL */
-	{
-		printf("Error\n");
-		exit(99);
-	}
 	/* Pointeur de fonction qui appelle la fonction de calcul */
 	result = (*pf)(a, b);
 	printf("%d\n", result);	/* Affiche le résultat stocké */
