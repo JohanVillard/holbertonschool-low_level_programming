@@ -16,6 +16,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 4)	/* Vérifie le nombre d'arguments */
 	{
+		printf("*argv[2]: %d,     \n", *argv[2]);
 		printf("Error\n");
 		exit(98);
 	}
@@ -37,14 +38,14 @@ int main(int argc, char *argv[])
 	a = atoi(argv[1]); /* Convertit en nombre */
 	b = atoi(argv[3]);
 
-	/* On récupère l'adresse de la function choisi suivant l'opérateur */
-	pf = get_op_func(argv[2]);	/* Choix de la func suivant l'opérateur */
-								/* Les 2 nombres à calculer en arguments */
-								/* Récupère l'adresse de get_op_func */
+	/* On récupère l'adresse de la function de calcul */
+	/* que la fonction get_func a choisi suivant l'opérateur */
+	pf = get_op_func(argv[2]);
 
+	/* Pointeur de fonction qui appelle la fonction de calcul */
 	result = (*pf)(a, b);
 
-	printf("%d\n", result);
+	printf("%d\n", result);	/* Affiche le résultat stocké */
 
-	return (result);
+	return (0);
 }

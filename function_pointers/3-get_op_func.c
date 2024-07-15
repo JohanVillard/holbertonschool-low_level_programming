@@ -3,25 +3,23 @@
 #include <stdio.h>
 
 /**
- * get_op_func - choose func following operator
+ * get_op_func - Choose func following operator
  * @s: operator
  *
- * Return: (Address of corresponding operator)
+ * Return: (Address of function corresponding with operator)
  */
 int (*get_op_func(char *s))(int, int)
 {
 
 	int i = 0;	/* Compteur */
-	op_t ops[] = {	/* Stocke les choix dans un structure */
-	{"+", op_add},
-	/*{"-", op_sub},
+	op_t ops[] = {	/* Stocke les choix dans une structure */
+	{"+", op_add},	/* Chaque opé à sa fonction correspodante */
+	{"-", op_sub},
 	{"*", op_mul},
 	{"/", op_div},
-	{"%", op_mod},*/
+	{"%", op_mod},
 	{NULL, NULL}	/* Indique la fin de la structure */
 	};
-
-
 
 	while (ops[i].op != NULL) /* Tant la valeur de l'op dans la struc n'est NULL*/
 	{
