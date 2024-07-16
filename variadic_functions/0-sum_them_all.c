@@ -3,7 +3,7 @@
 /**
  * sum_them_all - Summ all parameters
  * @n: Total number
- *
+ * @...: Variadic parameter
  * Return: (sum)
  */
 int sum_them_all(const unsigned int n, ...)
