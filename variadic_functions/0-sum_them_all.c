@@ -1,25 +1,25 @@
 #include <stdarg.h>
 
 /**
- * sum_them_all - Summ all parameters
+ * sum_them_all - Sum all parameters
  * @n: Total number
  *
  * Return: (sum)
  */
 int sum_them_all(const unsigned int n, ...)
 {
-unsigned int i = 0;	/* Compteur */
-va_list nums;		/* Déclare un pointeur d'argument */
-int sum = 0;		/* Somme */
+	unsigned int i = 0;	/* Compteur */
+	va_list term;		/* Déclare un pointeur d'argument */
+	int sum = 0;		/* Somme */
 
-if (n == 0)
-	return (0);
+	if (n == 0)			/* SOrt du code si n = 0 */
+		return (0);
 
-va_start(nums, n);
-for (i = 0; i < n; i++)
-	sum += va_arg(nums, int);
+	va_start(term, n);	/* Init le pointeur */
+	for (i = 0; i < n; i++)
+		sum += va_arg(term, int);	/* Change d'occurrence à chaque appel */
 
-va_end(nums);		/* Met fin à l'utilisation de nums */
+	va_end(term);		/* Met fin à l'utilisation de term */
 
-return (sum);
+	return (sum);
 }
