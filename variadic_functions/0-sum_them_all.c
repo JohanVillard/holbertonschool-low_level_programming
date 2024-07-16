@@ -8,9 +8,6 @@
  */
 int sum_them_all(const unsigned int n, ...)
 {
-	if (n == 0)	/* Si n == 0 alors renvoie 0 */
-		return (0);
-
 	unsigned int i;	/* Compteur */
 	int sum = 0;	/* Somme */
 	va_list nums;	/* Déclare un pointeur d'argument */
@@ -25,5 +22,5 @@ int sum_them_all(const unsigned int n, ...)
 
 	va_end(nums);	/* Met fin à l'utilisation de nums */
 
-	return (sum);
+	return (sum + n);
 }
