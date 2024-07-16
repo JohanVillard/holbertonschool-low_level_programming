@@ -50,4 +50,3 @@ void print_all(const char * const format, ...)
 	printf("\n");
 }
 
-/**** pour accéder au membre de format */
