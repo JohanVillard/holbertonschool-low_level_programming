@@ -10,7 +10,7 @@
  */
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
-	unsigned int i = 0;
+	unsigned int i = 0; /* Compteur */
 	va_list nums;	/* Déclare un pointeur d'argument */
 
 	va_start(nums, n);	/* Initialisation */
