@@ -14,9 +14,8 @@ int sum_them_all(const unsigned int n, ...)
 
 	if (n == 0)
 		return (0);
-						/* Initialise nums pour qu'elle pointe vers le premier*/
-						/*  argument optionnel 'n' étant le param */
-	va_start(nums, n);	/*  nommé précédant le premier param variable*/
+
+	va_start(nums, n);
 	for (i = 0; i < n; i++)
 		sum += va_arg(nums, int);	/* Renvoie les arguments successivement */
 									/* de nums de type spécifié dans l'appel */
