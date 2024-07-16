@@ -10,11 +10,10 @@ int sum_them_all(const unsigned int n, ...)
 {
 	unsigned int i;	/* Compteur */
 	int sum = 0;	/* Somme */
+	va_list nums;	/* Déclare un pointeur d'argument */
 
 	if (n == 0)	/* Si n == 0 alors renvoie 0 */
 		return (0);
-	va_list nums;	/* Déclare un pointeur d'argument */
-
 	va_start(nums, n);	/* Initialise nums pour qu'elle pointe */
 					/* vers le premier argument optionnel */
 					/* n étant le param nommé précédant le premier param variable*/
