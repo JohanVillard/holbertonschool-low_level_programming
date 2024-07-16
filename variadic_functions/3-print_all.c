@@ -17,13 +17,10 @@ void print_all(const char * const format, ...)
 	{"i", "%d"},
 	{"f", "%f"},
 	{"c", "%c"},
-	{NULL, NULL}	/* Indique la fin de la structure */
-	};
+	{NULL, NULL} };	/* Indique la fin de la structure */
 	int i = 0; /* Compteur */
-	char spe; /* Format(Spécificateur) à imprimer */
-	char *t_string; /* Pour stock un arg de chaque type */
-	const char *prt_format = format;	/* prt_format constant */
-							/* pour accéder au membre de format */
+	char spe, *t_string;	/* Spécificateur à imprimer, Stock string arg*/
+	const char *prt_format = format;	/* prt_format constant*** */
 
 	va_start(datas, format);	/* Initialisation */
 	while (*prt_format != '\0')	/* Parcourt format */
@@ -35,34 +32,34 @@ void print_all(const char * const format, ...)
 			{
 				switch (spe)
 				{
-					case 's':
+					case 's':	/* Print string */
 						t_string = va_arg(datas, char *);
 
 						if (t_string == NULL)
 								printf("(nil)");
-						
+
 						printf((spes + i)->format, t_string);
 						break;
-					case 'i':
+					case 'i':	/* Print integer */
 						printf((spes + i)->format, va_arg(datas, int));
 						break;
-					case 'f':
+					case 'f':	/* Print float */
 						printf((spes + i)->format, va_arg(datas, double));
 						break;
-					case 'c':
+					case 'c':	/* Print char */
 						printf((spes + i)->format, va_arg(datas, int));
 						break;
 				}
-
+				if (*(prt_format + 1) != '\0')	/* Si le caractère suivant */
+				printf(", ");	/* n' est pas la dernière occurence*/
 			}
 			i++;
 		}
-
-			if (*(prt_format + 1) != '\0')	/* Si le caractère suivant */
-				printf(", ");	/* n' est pas la dernière occurence*/
 		i = 0; /* Reset le compteur de la structure */
 		prt_format++;	/* déplace le pointeur à l'adresse suivante */
 	}
 	va_end(datas);	/* On a fini d'utiliser datas */
 	printf("\n");
 }
+
+/**** pour accéder au membre de format */
