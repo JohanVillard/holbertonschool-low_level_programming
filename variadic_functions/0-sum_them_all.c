@@ -3,7 +3,7 @@
 /**
  * sum_them_all - Summ all parameters
  * @n: Total number
- * @...: Variadic parameter
+ *
  * Return: (sum)
  */
 int sum_them_all(const unsigned int n, ...)
@@ -11,9 +11,6 @@ int sum_them_all(const unsigned int n, ...)
 	unsigned int i = 0;	/* Compteur */
 	int sum = 0;		/* Somme */
 	va_list nums;		/* Déclare un pointeur d'argument */
-
-	if (n == 0)
-		return (0);
 
 	va_start(nums, n);	/* Initialise nums pour qu'elle pointe */
 						/* vers le premier argument optionnel */
