@@ -10,6 +10,9 @@ int sum_them_all(const unsigned int n, ...)
 {
 	unsigned int i;	/* Compteur */
 	int sum = 0;	/* Somme */
+
+	if (n == 0)	/* Si n == 0 alors renvoie 0 */
+		return (0);
 	va_list nums;	/* Déclare un pointeur d'argument */
 
 	va_start(nums, n);	/* Initialise nums pour qu'elle pointe */
