@@ -12,10 +12,11 @@ int sum_them_all(const unsigned int n, ...)
 	va_list nums;		/* Déclare un pointeur d'argument */
 	int sum = 0;		/* Somme */
 
-	va_start(nums, n);	/* Initialise nums pour qu'elle pointe */
-						/* vers le premier argument optionnel */
-						/* 'n' étant le param nommé précédant le premier param variable*/
-
+	if (n == 0)
+		return (0);
+						/* Initialise nums pour qu'elle pointe vers le premier*/
+						/*  argument optionnel 'n' étant le param */
+	va_start(nums, n);	/*  nommé précédant le premier param variable*/
 	for (i = 0; i < n; i++)
 		sum += va_arg(nums, int);	/* Renvoie les arguments successivement */
 									/* de nums de type spécifié dans l'appel */
