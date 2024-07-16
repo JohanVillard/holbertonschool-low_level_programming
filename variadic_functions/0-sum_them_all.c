@@ -8,18 +8,18 @@
  */
 int sum_them_all(const unsigned int n, ...)
 {
-	unsigned int i = 0;	/* Compteur */
-	va_list nums;		/* Déclare un pointeur d'argument */
-	int sum = 0;		/* Somme */
+unsigned int i = 0;	/* Compteur */
+va_list nums;		/* Déclare un pointeur d'argument */
+int sum = 0;		/* Somme */
 
-	if (n == 0)
-		return (0);
+if (n == 0)
+	return (0);
 
-	va_start(nums, n);
-	for (i = 0; i < n; i++)
-		sum += va_arg(nums, int);
+va_start(nums, n);
+for (i = 0; i < n; i++)
+	sum += va_arg(nums, int);
 
-	va_end(nums);		/* Met fin à l'utilisation de nums */
+va_end(nums);		/* Met fin à l'utilisation de nums */
 
-	return (sum);
+return (sum);
 }
