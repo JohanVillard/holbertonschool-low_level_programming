@@ -27,9 +27,5 @@ void print_strings(const char *separator, const unsigned int n, ...);
 
 /* P1T3 */
 void print_all(const char * const format, ...);
-void print_string(char *t_string);
-void print_int(int t_int);
-void print_float(int t_float);
-void print_char(int t_char);
 
 #endif /* VARIADIC_FUNCTIONS */

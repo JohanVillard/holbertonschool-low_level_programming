@@ -21,7 +21,7 @@ void print_all(const char * const format, ...)
 	};
 	int i = 0; /* Compteur */
 	char spe; /* Format(Spécificateur) à imprimer */
-	void *data;
+	char *t_string; /* Pour stock un arg de chaque type */
 	const char *prt_format = format;	/* prt_format constant */
 							/* pour accéder au membre de format */
 
@@ -33,10 +33,27 @@ void print_all(const char * const format, ...)
 		{
 			if (spe == *(spes + i)->spe)	/* spe correspond à ceux dans spes[] */
 			{
-				data = va_arg(datas, void *);
-				if (data == NULL)
-					printf("(nil)");
-				printf((spes + i)->format, data);
+				switch (spe)
+				{
+					case 's':
+						t_string = va_arg(datas, char *);
+
+						if (t_string == NULL)
+								printf("(nil)");
+						
+						printf((spes + i)->format, t_string);
+						break;
+					case 'i':
+						printf((spes + i)->format, va_arg(datas, int));
+						break;
+					case 'f':
+						printf((spes + i)->format, va_arg(datas, double));
+						break;
+					case 'c':
+						printf((spes + i)->format, va_arg(datas, int));
+						break;
+				}
+
 			}
 			i++;
 		}
