@@ -13,7 +13,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	unsigned int i = 0;
 	va_list nums;	/* Déclare un pointeur d'argument */
 
-	if (n == 0)	/* N'affiche rien si NULL */
+	if (separator == NULL)	/* N'affiche rien si NULL */
 		return;
 
 	va_start(nums, n);	/* Initialisation */
@@ -21,7 +21,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 	for (i = 0; i < n; i++)
 	{
 		printf("%d", va_arg(nums, int));	/* Passe d'arg en arg */
-		if (i != n - 1 || separator != NULL)	/* N'affiche pas la der occurence */
+		if (i != n - 1)	/* N'affiche pas à la dernière occurence */
 			printf("%s", separator);
 	}
 
