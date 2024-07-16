@@ -1,7 +1,6 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "variadic_functions.h"
 
 /**
  * print_all - with separator between them
@@ -50,3 +49,4 @@ void print_all(const char * const format, ...)
 	printf("\n");
 }
 
+/**** pour accéder au membre de format */
