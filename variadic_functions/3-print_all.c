@@ -41,7 +41,7 @@ void print_all(const char * const format, ...)
 				printf("%c", va_arg(datas, int));
 				break;
 		}
-		if (*(prt_format + 1) != '\0' && (spe == 's' || spe == 'i'
+		if ((*(prt_format + 1) != '\0') && (spe == 's' || spe == 'i'
 		|| spe == 'f' || spe == 'c'))	/* Si le caractère suivant */
 			printf(", ");	/* n' est pas la dernière occurence*/
 		prt_format++;	/* déplace le pointeur à l'adresse suivante */
