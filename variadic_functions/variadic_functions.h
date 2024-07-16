@@ -1,19 +1,6 @@
 #ifndef VARIADIC_FUNCTIONS
 #define VARIADIC_FUNCTIONS
 
-/* struct P1T3 */
-/**
- * struct specifier - Struct specifier
- *
- * @spe: The specifier
- * @format: Format set by specifier
- */
-typedef struct specifier
-{
-	char *spe;
-	char *format;
-} spe_t;
-
 int _putchar(char c);
 
 /* P1T0 */
