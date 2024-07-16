@@ -9,8 +9,8 @@
 int sum_them_all(const unsigned int n, ...)
 {
 	unsigned int i = 0;	/* Compteur */
-	int sum = 0;		/* Somme */
 	va_list nums;		/* Déclare un pointeur d'argument */
+	int sum = 0;		/* Somme */
 
 	va_start(nums, n);	/* Initialise nums pour qu'elle pointe */
 						/* vers le premier argument optionnel */
