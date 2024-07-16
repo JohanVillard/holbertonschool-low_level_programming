@@ -8,6 +8,6 @@
  */
 int main(void)
 {
-	print_strings(", ", 2, NULL, "Django");
+	print_strings(", ", 6, NULL, "Django", NULL, "Django", NULL, "Django");
 	return (0);
 }

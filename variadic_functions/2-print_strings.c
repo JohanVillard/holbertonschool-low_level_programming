@@ -12,12 +12,21 @@ void print_strings(const char *separator, const unsigned int n, ...)
 {
 	unsigned int i = 0; /* Compteur */
 	va_list strings;	/* Déclare un pointeur d'argument */
+	char *tmp;	/* Stock va_arg */
 
 	va_start(strings, n);	/* Initialisation */
 
 	for (i = 0; i < n; i++)
 	{
-		printf("%s", va_arg(strings, char *));
+		tmp = va_arg(strings, char *);
+		if (tmp != NULL)
+		{
+			printf("%s", tmp); /* Passe d'arg en arg */
+		}
+		else
+		{
+			printf("(nil)");
+		}
 		if (i != n - 1  && separator != NULL)	/* Ne s'affiche pas */
 			printf("%s", separator);	/* à la dernière occurence et si NULL */
 	}
