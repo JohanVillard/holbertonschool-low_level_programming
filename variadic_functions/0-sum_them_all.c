@@ -9,7 +9,7 @@
  */
 int sum_them_all(const unsigned int n, ...)
 {
-	unsigned int i = 0;				/* Compteur */
+	unsigned int i;					/* Compteur */
 	va_list term;					/* Déclare un pointeur d'argument */
 	int sum = 0;					/* Somme */
 
