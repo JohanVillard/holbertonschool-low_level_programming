@@ -37,8 +37,10 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i < bytes; i++)
 	{
-		printf("%.2x ", *opcode_ptr);
+		printf("%.2x", *opcode_ptr);
 		opcode_ptr++;
+		if (i + 1 != bytes)
+			printf(" ");
 	}
 
 	printf("\n");
