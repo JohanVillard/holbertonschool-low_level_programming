@@ -16,7 +16,7 @@ void print_all(const char * const format, ...)
 	const char *prt_format = format;	/* prt_format constant*** */
 
 	va_start(datas, format);	/* Initialisation */
-	while (*prt_format != '\0' && prt_format != NULL)	/* Parcourt format */
+	while (*prt_format != '\0')	/* Parcourt format */
 	{
 		spe = *prt_format;	/* Attribue la lettre pointée actuellement vers format */
 		switch (spe)	/* Pour la valeur de spe */

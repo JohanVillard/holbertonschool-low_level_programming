@@ -10,3 +10,4 @@ void print_name(char *name, void (*f)(char *))
 {
 		f(name); /* Appelle la fonction pointée .... et c'est tout*/
 }
+
