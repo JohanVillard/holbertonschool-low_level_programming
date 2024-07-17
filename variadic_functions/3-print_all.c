@@ -40,6 +40,8 @@ void print_all(const char * const format, ...)
 			case 'c':	/* Print char */
 				printf("%c", va_arg(datas, int));
 				break;
+			default:
+				break;
 		}
 		if ((*(prt_format + 1) != '\0') && (spe == 's' || spe == 'i'
 		|| spe == 'f' || spe == 'c'))	/* Si le caractère suivant */
