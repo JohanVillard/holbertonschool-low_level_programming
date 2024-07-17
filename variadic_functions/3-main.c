@@ -8,6 +8,6 @@
  */
 int main(void)
 {
-	print_all("mnbvfqcepolsbxzi", 3.14435, 'H', "#Cisfun", 0);
+	print_all("si", "DODO");
 	return (0);
 }
