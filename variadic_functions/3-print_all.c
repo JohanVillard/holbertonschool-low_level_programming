@@ -24,7 +24,7 @@ void print_all(const char * const format, ...)
 			case 's':	/* Print string */
 				t_string = va_arg(datas, char *);
 
-				if (t_string == NULL)	/* Si la string est NULL */
+				if (t_string == NULL || *t_string == '\0')	/* Si la string est NULL */
 				{
 					printf("(nil)");	/* Affiche (nil) */
 					break;	/* Sort de la boucle */
