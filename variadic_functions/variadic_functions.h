@@ -3,9 +3,6 @@
 
 int _putchar(char c);
 
-/* P1T0 */
-int sum_them_all(const unsigned int n, ...);
-
 /* P1T1 */
 void print_numbers(const char *separator, const unsigned int n, ...);
 
@@ -14,5 +11,8 @@ void print_strings(const char *separator, const unsigned int n, ...);
 
 /* P1T3 */
 void print_all(const char * const format, ...);
+
+/* P1T0 */
+int sum_them_all(const unsigned int n, ...);
 
 #endif /* VARIADIC_FUNCTIONS */
