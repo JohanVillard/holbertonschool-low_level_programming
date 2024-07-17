@@ -1,5 +1,4 @@
-#include <stdarg.h>
-#include <stdio.h>
+#include "variadic_functions.h"
 
 /**
  * sum_them_all - Sum all parameters
@@ -7,12 +6,11 @@
  * @...: Elipsis
  *
  * Return: (sum)
- * Exercice to discover variadic functions
  */
 int sum_them_all(const unsigned int n, ...)
 {
-	unsigned int i = 0;				/* Compteur */
 	va_list term;					/* Déclare un pointeur d'argument */
+	unsigned int i = 0;				/* Compteur */
 	int sum = 0;					/* Somme */
 
 	if (n == 0)						/* Sort du code si n = 0 */

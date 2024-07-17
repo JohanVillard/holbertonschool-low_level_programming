@@ -3,6 +3,8 @@
 
 int _putchar(char c);
 
+#include <stdarg.h>
+
 /* P1T0 */
 int sum_them_all(const unsigned int n, ...);
 
