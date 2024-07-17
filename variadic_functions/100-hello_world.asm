@@ -12,7 +12,7 @@ main:		mov			rax, 1							;			LABEL: 	INSTRUCTION OPERANDS		;Charge 1 dans rax c
     		syscall                      				;					INSTRUCTION					;Fait l'appel du système pour sortir du programme
 
 						section 	.data				;SECTION:			INSTRUCTION OPERANDS
-message:	db 			'Hello, World!', 0xa			;			LABEL: 	INSTRUCTION OPERANDS		;db: Declare Byte; Message à imprimer + saut de ligne
+message:	db 			'Hello, World', 0xa			;			LABEL: 	INSTRUCTION OPERANDS		;db: Declare Byte; Message à imprimer + saut de ligne
 			len 		equ $ - message					;					INSTRUCTION OPERANDS		;Longueur du message(len) =(equ/calcule) adresse actuelle($) - l'adresse du message(message)
 
 			section 	.note.GNU-stack					;SECTION:			INSTRUCTION OPERANDS

@@ -13,37 +13,38 @@ void choose_format_print(char *spe, va_list datas);
  */
 void print_all(const char * const format, ...)
 {
-	va_list datas;										/* Déclare un pointeur d'argument */
-	char spe;											/* Spécificateur de format */
-	const char *ptr_format = format;					/* Ptr constant vers format */
+	va_list datas;									/* Déclare un pointeur d'argument */
+	char spe;										/* Spécificateur de format */
+	const char *ptr_format = format;				/* Ptr constant vers format */
 
-	va_start(datas, format);							/* Initialisation */
-	while (*ptr_format != '\0')							/* Ptr parcourt format */
+	va_start(datas, format);						/* Initialisation */
+	while (*ptr_format != '\0')						/* Ptr parcourt format */
 	{
-		spe = *ptr_format;								/* spe pointe vers char actuel de format */
+		spe = *ptr_format;							/* spe pointe vers char actuel de format */
 
-	choose_format_print(&spe, datas);
+		choose_format_print(&spe, datas);			/* Choix du format */
 
-		if ((*(ptr_format + 1) != '\0') &&				/* Virgule ou pas... */
+		if ((*(ptr_format + 1) != '\0') &&			/* Virgule ou pas... */
 		(spe == 's' || spe == 'i' || spe == 'f' || spe == 'c'))
 			printf(", ");
 
-		ptr_format++;									/* Place le pointeur à l'adresse suivante */
+		ptr_format++;								/* Place le pointeur à l'adresse suivante */
 	}
-	va_end(datas);										/* Fin d'utilisation de datas */
+	va_end(datas);									/* Fin d'utilisation de datas */
 	printf("\n");
 }
+
 /**
  * choose_format_print - Choose specifier
  * @spe: specifier
  * @datas: ellipsis
  *
- * Return: (Specifier)
+ * Return: (Nothing)
  */
 void choose_format_print(char *spe, va_list datas)
 {
 	char *t_string;
-										/* Stocke va_arg si il est une string */
+													/* Stocke va_arg si il est une string */
 	switch (*spe)									/* Si spe est égale */
 	{
 		case 's':									/* s: affiche string */
