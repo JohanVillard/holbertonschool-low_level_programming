@@ -7,6 +7,7 @@
  * @...: Elipsis
  *
  * Return: (sum)
+ * Exercice to discover variadic functions
  */
 int sum_them_all(const unsigned int n, ...)
 {
