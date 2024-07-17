@@ -3,6 +3,7 @@
 
 int _putchar(char c);
 
+/* P1T0 */
 int sum_them_all(const unsigned int n, ...);
 
 /* P1T1 */
