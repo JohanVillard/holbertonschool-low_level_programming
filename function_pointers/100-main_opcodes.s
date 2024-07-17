@@ -7,7 +7,7 @@
 	.string	"%.2x "
 	.text
 	.globl	main
-	.type	main, @function
+	.type	main,
 main:
 .LFB6:
 	.cfi_startproc
