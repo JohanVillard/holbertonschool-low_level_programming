@@ -13,15 +13,12 @@ void print_all(const char * const format, ...)
 {
 	va_list datas;	/* Déclare un pointeur d'argument */
 	char spe, *t_string;	/* Spécificateur à imprimer, Stock string arg*/
-	const char *ptr_format = format, *first_pos = format;	/* ptr constant */
+	const char *ptr_format = format;	/* ptr constant */
 
 	va_start(datas, format);	/* Initialisation */
 	while (*ptr_format != '\0')	/* Parcourt format */
 	{
 		spe = *ptr_format;	/* Attribue la lettre pointée actuellement vers format */
-		if (((ptr_format != first_pos) && (*(ptr_format + 1) != '\0')) &&
-		(spe == 's' || spe == 'i' || spe == 'f' || spe == 'c'))
-			printf(", ");
 
 		switch (spe)
 		{
@@ -46,6 +43,9 @@ void print_all(const char * const format, ...)
 			default:
 				break;
 		}
+		if ((*(ptr_format + 1) != '\0') &&
+		(spe == 's' || spe == 'i' || spe == 'f' || spe == 'c'))
+			printf(", ");
 		ptr_format++;	/* déplace le pointeur à l'adresse suivante */
 	}
 	va_end(datas);	/* On a fini d'utiliser datas */
