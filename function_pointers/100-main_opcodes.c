@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
 	/* Rétro-ingéniérie - Reproduire le code à partir d'objdump */
 	int bytes = 0, i = 0;/* Pointe une ligne de code */
 	unsigned char *opcode_ptr;			/* Opcodes sont des octets - 1 char = 1 octet */
+										/* unsigned sinon l'impression pb dur affichage hexa */
 
 	if (argc != 2)						/* 2 arguments en entrée acceptés*/
 	{
@@ -37,7 +38,7 @@ int main(int argc, char *argv[])
 
 	for (i = 0; i < bytes; i++)
 	{
-		printf("%.2x", *opcode_ptr);
+		printf("%.2x", *opcode_ptr);	/* Affiche opcode en hexa de longueur de 2 */
 		opcode_ptr++;
 		if (i + 1 != bytes)
 			printf(" ");
