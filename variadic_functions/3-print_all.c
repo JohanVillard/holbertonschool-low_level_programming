@@ -48,6 +48,7 @@ void print_all(const char * const format, ...)
 				printf("%c", va_arg(datas, int));
 				break;
 			default:
+				count_spe++;	/* Compte le nombre de spe valide */
 				break;
 		}
 		prt_format++;	/* déplace le pointeur à l'adresse suivante */
