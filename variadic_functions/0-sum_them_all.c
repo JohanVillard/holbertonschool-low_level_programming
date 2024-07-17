@@ -4,12 +4,13 @@
 /**
  * sum_them_all - Sum all parameters
  * @n: Total number
+ * @...: Elipsis
  *
  * Return: (sum)
  */
 int sum_them_all(const unsigned int n, ...)
 {
-	unsigned int i;					/* Compteur */
+	unsigned int i = 0;				/* Compteur */
 	va_list term;					/* Déclare un pointeur d'argument */
 	int sum = 0;					/* Somme */
 
