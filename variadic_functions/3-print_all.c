@@ -16,7 +16,7 @@ void print_all(const char * const format, ...)
 	const char *prt_format = format;	/* prt_format constant*** */
 
 	va_start(datas, format);	/* Initialisation */
-	while (*prt_format != '\0')	/* Parcourt format */
+	while (*prt_format != '\0' && prt_format != NULL)	/* Parcourt format */
 	{
 		spe = *prt_format;	/* Attribue la lettre pointée actuellement vers format */
 		switch (spe)	/* Pour la valeur de spe */
@@ -24,7 +24,7 @@ void print_all(const char * const format, ...)
 			case 's':	/* Print string */
 				t_string = va_arg(datas, char *);
 
-				if (t_string == NULL || *t_string == '\0')	/* Si la string est NULL */
+				if (t_string == NULL)	/* Si la string est NULL */
 				{
 					printf("(nil)");	/* Affiche (nil) */
 					break;	/* Sort de la boucle */

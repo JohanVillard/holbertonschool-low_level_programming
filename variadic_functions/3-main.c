@@ -8,6 +8,6 @@
  */
 int main(void)
 {
-	print_all("ceissfcscs", 'B', 3, "stSchool", "yoyo", 0.65566, 'a', NULL, ' ', "");
+	print_all("", 'B', 3, "stSchool", "yoyo", 0.65566, 'a', NULL, ' ');
 	return (0);
 }
