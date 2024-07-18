@@ -33,7 +33,7 @@ void print_all(const char * const format, ...)
 			if (spe == *(specifiers[i].spec))	/* Check spécificateur */
 			{
 				printf("%s", separator);		/* Premier affichage sans virgule */
-				(specifiers[i].f(datas));		/* Appel la fonction correspondante */
+				specifiers[i].f(datas);		/* Appel la fonction correspondante */
 				separator = ", ";				/* Respecter sens affichage virgule */
 			}
 			i++;
@@ -44,7 +44,7 @@ void print_all(const char * const format, ...)
 	}
 	va_end(datas);								/* Fin d'utilisation de datas */
 
-	printf("\n");								/* Efface le carac de fin et la virgule */
+	printf("\n");								/* Retour à la ligne */
 }
 
 /**
