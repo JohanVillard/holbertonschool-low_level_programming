@@ -3,9 +3,9 @@
 /**
  * sum_them_all - Sum all parameters
  * @n: Total number
- * @...: Elipsis
+ * @...: Ellipsis
  *
- * Return: (sum)
+ * Return: (Sum)
  */
 int sum_them_all(const unsigned int n, ...)
 {
