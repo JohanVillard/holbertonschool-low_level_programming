@@ -11,8 +11,8 @@
  */
 void print_all(const char * const format, ...)
 {
-	va_list datas;									/* Déclare un pointeur d'argument */
-	char spe;										/* Spécificateur de format */
+	va_list datas;								/* Déclare un pointeur d'argument */
+	char spe, *separator = "";					/* Spécificateur de format */
 	const char *ptr_format = format;
 	int i = 0;									/* Compteur */
 	specifier specifiers[] = {					/* Stocke les choix dans une structure */
@@ -32,9 +32,9 @@ void print_all(const char * const format, ...)
 		{
 			if (spe == *(specifiers[i].spec))	/* Check spécificateur */
 			{
+				printf("%s", separator);		/* Premier affichage sans virgule */
 				(specifiers[i].f(datas));		/* Appel la fonction correspondante */
-				if (*(ptr_format + 1) != '\0')
-					printf(", ");
+				separator = ", ";				/* Respecter sens affichage virgule */
 			}
 			i++;
 		}
