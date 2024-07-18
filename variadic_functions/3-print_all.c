@@ -32,7 +32,7 @@ void print_all(const char * const format, ...)
 
 		while (specifiers[i].spec != NULL)		/* Tant la val.spec != NULL*/
 		{
-			if (spe == *(specifiers[i].spec))	/* Opé correspond à ceux dans ops[] */
+			if (spe == *(specifiers[i].spec))	/* spe correspond à ceux de la struct */
 			{
 				(specifiers[i].f(datas));			/* Appel la fonction correspondante */
 			}
@@ -60,11 +60,7 @@ void print_string(va_list datas)
 	char *t_string;
 
 	t_string = va_arg(datas, char *);
-	if (t_string == NULL)						/* Si la string est NULL */
-	{
-		printf("(nil)");
-		return;									/* Affiche (nil) */
-	}
+
 	printf("%s", t_string);						/* Stocke va_arg si il est une string */
 }
 
