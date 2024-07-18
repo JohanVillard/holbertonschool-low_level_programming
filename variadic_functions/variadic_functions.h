@@ -11,7 +11,7 @@
 typedef struct specifier
 {
 	char *spec;					/* Stocke les choix dans une structure */
-	void (*f)(va_list datas);	/* Chaque spécifier à sa fonction correspondante */
+	void (*f)(va_list datas);	/* Chaque spécifier à sa fonct correspondante */
 } specifier;
 
 int _putchar(char c);
