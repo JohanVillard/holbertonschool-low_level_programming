@@ -9,7 +9,7 @@
  */
 int sum_them_all(const unsigned int n, ...)
 {
-	va_list term;	/* Déclare un pointeur d'argument */
+	va_list term;	/* Declare un pointeur d'argument */
 	unsigned int i = 0;	/* Compteur */
 	int sum = 0;	/* Somme */
 
@@ -18,8 +18,8 @@ int sum_them_all(const unsigned int n, ...)
 
 	va_start(term, n);	/* Init le pointeur */
 	for (i = 0; i < n; i++)
-		sum += va_arg(term, int);	/* Change d'occurrence à chaque appel */
-	va_end(term);	/* Met fin à l'utilisation de term */
+		sum += va_arg(term, int);	/* Change d'occurrence a chaque appel */
+	va_end(term);	/* Met fin a l'utilisation de term */
 
 	return (sum);
 }
