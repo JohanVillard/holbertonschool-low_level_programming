@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "variadic_functions.h"
 
-void choose_format_print(char *spe, va_list datas);
+
 
 /**
  * print_all - with separator between them
@@ -15,15 +15,30 @@ void print_all(const char * const format, ...)
 {
 	va_list datas;									/* Déclare un pointeur d'argument */
 	char spe;										/* Spécificateur de format */
-	const char *ptr_format = format;				/* Ptr constant vers format */
+	const char *ptr_format = format;
+	int i = 0;									/* Compteur */
+	specifier specifiers[] = {					/* Stocke les choix dans une structure */
+		{"s", print_string},					/* Chaque spécifier à sa fonct correspondante */
+		{"i", print_int},
+		{"f", print_float},
+		{"c", print_char},
+		{NULL, NULL}							/* Indique la fin de la structure */
+	};										/* Ptr constant vers format */
 
-	va_start(datas, format);						/* Initialisation */
-	while (*ptr_format != '\0')						/* Ptr parcourt format */
+	va_start(datas, format);				/* Initialisation */
+	while (*ptr_format != '\0')				/* Ptr parcourt format */
 	{
-		spe = *ptr_format;							/* spe pointe vers char actuel de format */
+		spe = *ptr_format;					/* spe pointe vers char actuel de format */
 
-		choose_format_print(&spe, datas);			/* Choix du format */
-
+		while (specifiers[i].spec != NULL)		/* Tant la val.spec != NULL*/
+		{
+			if (spe == *(specifiers[i].spec))	/* Opé correspond à ceux dans ops[] */
+			{
+				(specifiers[i].f(datas));			/* Appel la fonction correspondante */
+			}
+			i++;
+		}
+		i = 0;										/* Reset du compteur sinon la boucle ne se relance pas */
 		if ((*(ptr_format + 1) != '\0') &&			/* Virgule ou pas... */
 		(spe == 's' || spe == 'i' || spe == 'f' || spe == 'c'))
 			printf(", ");
@@ -35,38 +50,54 @@ void print_all(const char * const format, ...)
 }
 
 /**
- * choose_format_print - Choose specifier
- * @spe: specifier
- * @datas: ellipsis
+ * print_string - Print string
+ * @datas: of va_list
  *
  * Return: (Nothing)
  */
-void choose_format_print(char *spe, va_list datas)
+void print_string(va_list datas)
 {
 	char *t_string;
-													/* Stocke va_arg si il est une string */
-	switch (*spe)									/* Si spe est égale */
-	{
-		case 's':									/* s: affiche string */
-			t_string = va_arg(datas, char *);
-			if (t_string == NULL)					/* Si la string est NULL */
-			{
-			printf("(nil)");						/* Affiche (nil) */
-				break;
-			}
-			printf("%s", t_string);
-			break;
-		case 'i':									/* i: affiche integer */
-			printf("%i", va_arg(datas, int));
-			break;
-		case 'f':									/* f: affiche float */
-			printf("%f", va_arg(datas, double));	/* Promotion: float vers double */
-			break;
-		case 'c':									/* c: affiche char */
-			printf("%c", va_arg(datas, int));		/* Promotion: char vers int */
-			break;
-		default:
-			break;
-	}
 
+	t_string = va_arg(datas, char *);
+	if (t_string == NULL)						/* Si la string est NULL */
+	{
+		printf("(nil)");
+		return;									/* Affiche (nil) */
+	}
+	printf("%s", t_string);						/* Stocke va_arg si il est une string */
+}
+
+/**
+ * print_int - Print int
+ * @datas: of va_list
+ *
+ * Return: (Nothing)
+ */
+void print_int(va_list datas)
+{
+	printf("%i", va_arg(datas, int));
+}
+
+
+/**
+ * print_float - Print float
+ * @datas: of va_list
+ *
+ * Return: (Nothing)
+ */
+void print_float(va_list datas)
+{
+	printf("%f", va_arg(datas, double));
+}
+
+/**
+ * print_char - Print char
+ * @datas: of va_list
+ *
+ * Return: (Nothing)
+ */
+void print_char(va_list datas)
+{
+	printf("%c", va_arg(datas, int));
 }
