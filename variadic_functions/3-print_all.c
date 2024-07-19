@@ -12,19 +12,19 @@
 void print_all(const char * const format, ...)
 {
 	va_list datas;								/* Déclare un pointeur d'argument */
-	char spe, *separator = "";					/* Spécificateur de format */
-	const char *ptr_format = format;
-	int i = 0;									/* Compteur */
-	specifier specifiers[] = {					/* Stocke les choix dans une structure */
-		{"s", print_string},					/* Chaque spécifier à sa fonct correspondante */
+	char spe, *separator = "";					/* Spécificateur de format, séparateur */
+	const char *ptr_format = format;			/* Car format est un pointeur constant */
+	int i = 0;									/* Compteur de la 2ème boucle */
+	specifier specifiers[] = {					/* Stocke les formats dans une structure */
+		{"s", print_string},					/* 1 Spécificateur = 1 fonction */
 		{"i", print_int},
 		{"f", print_float},
 		{"c", print_char},
 		{NULL, NULL}							/* Indique la fin de la structure */
-	};											/* Ptr constant vers format */
+	};
 
 	va_start(datas, format);					/* Initialisation */
-	while (*ptr_format != '\0')					/* Ptr parcourt format */
+	while (ptr_format != NULL &&  *ptr_format != '\0')					/* Ptr parcourt format */
 	{
 		spe = *ptr_format;						/* spe pointe vers char actuel de format */
 
@@ -33,8 +33,8 @@ void print_all(const char * const format, ...)
 			if (spe == *(specifiers[i].spec))	/* Check spécificateur */
 			{
 				printf("%s", separator);		/* Premier affichage sans virgule */
-				specifiers[i].f(datas);		/* Appel la fonction correspondante */
-				separator = ", ";				/* Respecter sens affichage virgule */
+				specifiers[i].f(datas);			/* Appel la fonction correspondante */
+				separator = ", ";				/* !!!Affichage virgule avant le mot!!! */
 			}
 			i++;
 		}
@@ -85,7 +85,7 @@ void print_int(va_list datas)
  */
 void print_float(va_list datas)
 {
-	printf("%f", va_arg(datas, double));
+	printf("%f", va_arg(datas, double));		/* Promotion en double */
 }
 
 /**
@@ -96,5 +96,5 @@ void print_float(va_list datas)
  */
 void print_char(va_list datas)
 {
-	printf("%c", va_arg(datas, int));
+	printf("%c", va_arg(datas, int));			/* Promotion en int */
 }
