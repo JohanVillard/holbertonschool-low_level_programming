@@ -24,7 +24,7 @@ void print_all(const char * const format, ...)
 	};
 
 	va_start(datas, format);					/* Initialisation */
-	while (ptr_format != NULL &&  *ptr_format != '\0')	/* Ptr parcourt format */
+	while (ptr_format != NULL && *ptr_format != '\0')	/* Ptr parcourt format */
 	{
 		spe = *ptr_format;						/* spe pointe vers char actuel de format */
 
