@@ -4,6 +4,7 @@
 /* --------------------------------Library------------------------------ */
 #include<stdlib.h>
 #include<stdio.h>
+#include <string.h>
 
 /* --------------------------------Struct------------------------------- */
 /**
@@ -16,14 +17,14 @@
  */
 typedef struct list_s
 {
-    char *str;
-    unsigned int len;
-    struct list_s *next;
+	char *str;
+	unsigned int len;
+	struct list_s *next;
 } list_t;
 
 /* ------------------- ------------Functions-------- ------------------- */
 /* Write a character */
-int _putchar(char );
+int _putchar(char);
 /* P0T0 */
 size_t print_list(const list_t *);
 /* P0T1 */

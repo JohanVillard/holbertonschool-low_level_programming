@@ -2,13 +2,25 @@
 
 /**
  * add_node - Create a new node
- * @head: Double pointer to current poition
+ * @head: Double pointer to head position
  * @str: String to assign at the new node
+ *
  * Return: The address of the new element, or NULL if it failed
  */
-size_t list_t *add_node(list_t **head, const char *str)
+list_t *add_node(list_t **head, const char *str)
 {
-	list_t new;
+	list_t *new;	/* Declare a new node */
+	list_t *temp;	/* Temporary head */
 
-	new = malloc(sizeof)
+	new = malloc(sizeof(list_t));	/* Assign memory to new node */
+	if (new == NULL)				/* Malloc check */
+		return (NULL);
+
+	temp = *head;	/* Store the actual head adress */
+	*head = new;	/* The head point the new node */
+	new->str = strdup(str);	/* Copy string in struct */
+	new->len = strlen(str);	/* Count the length of string */
+	new->next = temp;	/* The new becomes the first node */
+
+	return (new);
 }
