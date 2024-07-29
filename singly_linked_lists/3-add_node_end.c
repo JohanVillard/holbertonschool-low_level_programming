@@ -32,7 +32,6 @@ list_t *add_node_end(list_t **head, const char *str)
 		return (new_node);
 	}
 
-
 	last_node = *head;    /* Store the head address in a temp variable */
 
 	while (last_node->next != NULL)    /* Traverse till the last_node*/
