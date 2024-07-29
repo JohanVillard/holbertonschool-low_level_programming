@@ -22,9 +22,9 @@ typedef struct list_s
 
 /* ------------------- ------------Functions-------- ------------------- */
 /* Write a character */
-int _putchar(char c);
+int _putchar(char );
 /* P0T0 */
-size_t print_list(const list_t *h);
+size_t print_list(const list_t *);
 
 /* --------------------------------------------------------------------- */
 #endif /* LISTS_H */
