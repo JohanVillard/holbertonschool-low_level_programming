@@ -26,7 +26,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	{
 		curr = curr->next;	/* Address to take when loop is over */
 		count++;
+		if (curr == NULL)	/* idx does not exist */
+			return (NULL);
 	}
+
 
 	after = curr->next;	/* Take the address of the list after new_node */
 
