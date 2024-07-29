@@ -23,7 +23,9 @@ typedef struct dlistint_s
 } dlistint_t;
 
 /* --------------------FUNCTIONS--------------------- */
-/* P0T0 */
+/* P1T0 */
 size_t print_dlistint(const dlistint_t *h);
+/* P1T1 */
+size_t dlistint_len(const dlistint_t *h);
 
 #endif /* LISTS_H */
