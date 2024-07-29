@@ -14,11 +14,9 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *new_node, *curr, *after;
 	unsigned int count = 1;	/* Begin at one otherwise offset */
 
-	new_node = malloc(sizeof(dlistint_t));	/* Allocate memory */
+	new_node = add_dnodeint(h, n);
 	if (new_node == NULL)	/* Malloc check */
 		return (NULL);
-
-	new_node->n = n;	/* Attribute value of n */
 
 	curr = *h;	/* Take the address of head */
 
