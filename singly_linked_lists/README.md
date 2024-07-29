@@ -2,7 +2,6 @@
 
 Learn Singly linked lists
 
-
 ## Lessons Learned
 
 P0T0
