@@ -6,6 +6,7 @@
 		"3-calc.h": "c",
 		"stdarg.h": "c",
 		"variadic_functions.h": "c",
-		"lists.h": "c"
+		"lists.h": "c",
+		"main.h": "c"
 	}
 }
