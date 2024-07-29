@@ -11,7 +11,7 @@
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *new_node, *curr, *after;
+	dlistint_t *new_node, *curr, *before;
 	unsigned int count = 0;	/* Inde bgin at 0 */
 
 	new_node = malloc(sizeof(dlistint_t));	/* Allocate memory */
@@ -31,13 +31,13 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	}
 
 
-	after = curr->next;	/* Take the address of the list after new_node */
+	before = curr->prev;	/* Take the address of the list before new_node */
 
-	new_node->prev = curr;	/* Take the address of node at idx */
-	curr->next = new_node;	/* Current node leaves its place  */
+	new_node->next = curr;	/* Take the address of node at idx */
+	curr->prev = new_node;	/* Current node leaves its place  */
 
-	new_node->next = after;	/* Put new_node before 'after'.... */
-	after->prev = new_node;
+	new_node->prev = before;	/* Put new_node 'after' before .... */
+	before->next = new_node;
 
 	return (new_node);
 
