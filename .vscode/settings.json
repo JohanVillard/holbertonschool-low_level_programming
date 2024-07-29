@@ -5,6 +5,7 @@
 		"stdlib.h": "c",
 		"3-calc.h": "c",
 		"stdarg.h": "c",
-		"variadic_functions.h": "c"
+		"variadic_functions.h": "c",
+		"lists.h": "c"
 	}
 }

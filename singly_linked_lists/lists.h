@@ -26,6 +26,8 @@ typedef struct list_s
 int _putchar(char );
 /* P0T0 */
 size_t print_list(const list_t *);
+/* P0T1 */
+size_t list_len(const list_t *h);
 
 /* --------------------------------------------------------------------- */
 #endif /* LISTS_H */
