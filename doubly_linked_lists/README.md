@@ -4,9 +4,14 @@ Learn Doubly linked lists
 
 ## Lessons Learned
 
-P0T0
+P1T0
 Write a function that prints all the elements of a dlistint_t list.
 
 Prototype: size_t print_dlistint(const dlistint_t *h);
 Return: the number of nodes
 Format: see example
+
+P1T1
+Write a function that returns the number of elements in a linked dlistint_t list.
+
+Prototype: size_t dlistint_len(const dlistint_t *h);
