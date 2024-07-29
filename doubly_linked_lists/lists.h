@@ -37,5 +37,7 @@ void free_dlistint(dlistint_t *head);
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);
 /* P1T6 */
 int sum_dlistint(dlistint_t *head);
+/* P1T7 */
+dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n);
 
 #endif /* LISTS_H */
