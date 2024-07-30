@@ -13,7 +13,7 @@ int get_bit(unsigned long int n, unsigned int index)
 
 	/* Check if index is out of range for an unsigned long int */
 	/* Index can't depass 64 bits */
-	/* Determine the number of bits unsigned long int */
+	/* Determine the number of bits for unsigned long int */
 	/* Size of the type * a byte(= 8bits)*/
 	if (index > sizeof(n) * 8)
 		return (-1);
@@ -25,13 +25,9 @@ int get_bit(unsigned long int n, unsigned int index)
 	/* Compare with binary n */
 	/* Return if non-zero:TRUE or O:FALSE */
 	if (n & (1 << index))
-	{
 		the_bit = 1;
-	}
 	else
-	{
 		the_bit = 0;
-	}
 
 	return (the_bit);
 }
