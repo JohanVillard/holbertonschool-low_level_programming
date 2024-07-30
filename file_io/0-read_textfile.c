@@ -35,7 +35,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 	}
 	/* Print the buffer to read bytes */
-	/* Always prefer using symbolic constants  */
+	/* Always prefer using symbolic constants */
 	write_bytes = write(STDOUT_FILENO, buffer, read_bytes);
 	if (write_bytes == -1 || write_bytes != read_bytes)
 	{
