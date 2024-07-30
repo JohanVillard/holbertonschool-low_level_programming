@@ -10,15 +10,12 @@ void print_binary(unsigned long int n)
 {
 	char binary_digit;
 
-	if (n == 0)
-		_putchar('0');
+	binary_digit = (n & 1) + '0';	/* If equal 1, if not 0 */
 
-	while (n > 0)
-	{
-		binary_digit = (n & 1) + '0';	/* If equal 1, if not 0 */
+	n = n >> 1;	/* Cut the last digit */
 
-		_putchar(binary_digit);	/* Print digit */
+	if (n > 0)
+		print_binary(n);
 
-		n = n >> 1;	/* Cut the last digit */
-	}
+	_putchar(binary_digit);	/* Print digit */
 }
