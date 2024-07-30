@@ -13,5 +13,7 @@
 int _putchar(char c);
 /* P2T0 */
 unsigned int binary_to_uint(const char *b);
+/* P2T1 */
+void print_binary(unsigned long int n);
 
 #endif /* MAIN_H */
