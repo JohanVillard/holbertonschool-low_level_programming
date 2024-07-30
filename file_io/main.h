@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <fcntl.h>
 
 /* -----------------FUNCTIONS---------------- */
 /* P3T0 */
