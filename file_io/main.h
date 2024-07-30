@@ -8,6 +8,7 @@
 #include <fcntl.h>
 
 /* -----------------FUNCTIONS---------------- */
+int _putchar(char c);
 /* P3T0 */
 ssize_t read_textfile(const char *filename, size_t letters);
 
