@@ -19,5 +19,7 @@ void print_binary(unsigned long int n);
 int get_bit(unsigned long int n, unsigned int index);
 /* P2T3 */
 int set_bit(unsigned long int *n, unsigned int index);
+/* P2T4 */
+int clear_bit(unsigned long int *n, unsigned int index);
 
 #endif /* MAIN_H */
