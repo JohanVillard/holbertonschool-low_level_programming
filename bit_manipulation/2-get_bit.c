@@ -11,7 +11,11 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	int the_bit;
 
-	if ((int)index < 0)	/* Cast into int to check if negative */
+	/* Check if index is out of range for an unsigned long int */
+	/* Index can't depass 64 bits */
+	/* Determine the number of bits unsigned long int */
+	/* Size of the type * a byte(= 8bits)*/
+	if (index > sizeof(n) * 8)
 		return (-1);
 
 	/* (1 << index) is called a mask */
