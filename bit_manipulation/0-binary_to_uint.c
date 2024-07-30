@@ -1,6 +1,6 @@
 #include "main.h"
 
-int _pow_recursion(int x, int y);
+unsigned int _pow_recursion(unsigned int x, unsigned int y);
 
 /**
  * binary_to_uint - Converts a binary number to an unsigned int.
@@ -14,7 +14,7 @@ unsigned int binary_to_uint(const char *b)
 {
 	unsigned int binary_num = 0, decimal_number = 0, binary_length = 0, i;
 
-	if (b == NULL || *b < '0' || *b > '1')
+	if (b == NULL)
 		return (0);
 
 	while (*b)	/* Crosses the chain b */
@@ -38,18 +38,14 @@ unsigned int binary_to_uint(const char *b)
 
 /**
 * _pow_recursion - return v power y
-* @x: int base
-* @y: int exponent
+* @x: unsigned int base
+* @y: unsigned int exponent
 *
 * Return: exponentiation
 */
-int _pow_recursion(int x, int y)
+unsigned int _pow_recursion(unsigned int x, unsigned int y)
 {
-	if (y == 1)
-		return (x);
-	else if (y < 0)
-		return (-1);
-	else if (y == 0)
+	if (y == 0)
 		return (1);
 	else if (y == 0 && x == 0)
 		return (0);
