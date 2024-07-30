@@ -9,25 +9,23 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	int *binary_num;
-	unsigned int cut_count = 0;
+	int the_bit;
 
-	binary_num = malloc(sizeof(unsigned int) * index + 1);
-	if (binary_num == NULL)
-		return (-1);
-
-	/*  Cut the number until the index is reached  */
-	while (cut_count != index + 1)
+	/* (1 << index) is called a mask */
+	/* Create a binary number */
+	/* Put a 1 at the index where the bit is*/
+	/* Other are 0 */
+	/* Compare with binary n */
+	/* Return if non-zero:TRUE or O:FALSE */
+	if (n & (1 << index))
 	{
-		/* Each bit of n is ANDed with the corresponding bit of 1 */
-		*binary_num = n & 1;	/* Store a 1 or 0 after comparaison */
-		n = n >> 1;		/* Cut the last digit */
-		cut_count++;
-
-		/*  Stop incrementing to obtain the desired value */
-		if (cut_count != index + 1)
-			binary_num++;
+		the_bit = 1;
+	}
+	else
+	{
+		the_bit = 0;
 	}
 
-	return (*binary_num);	/* If equal 1, if not 0 */
+
+	return (the_bit);	/* If equal 1, if not 0 */
 }
