@@ -11,7 +11,7 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	int the_bit;
 
-	if ((int)n < 0)	/* Cast into int to check if negative */
+	if ((int)index < 0)	/* Cast into int to check if negative */
 		return (-1);
 
 	/* (1 << index) is called a mask */
