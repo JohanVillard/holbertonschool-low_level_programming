@@ -6,9 +6,6 @@
 #include <limits.h>
 #include <stdio.h>
 
-/* -------------------------STRUCTURE--------------------- */
-
-
 /* -------------------------FUNCTIONS--------------------- */
 int _putchar(char c);
 /* P2T0 */
