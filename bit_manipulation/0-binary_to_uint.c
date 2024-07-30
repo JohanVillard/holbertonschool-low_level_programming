@@ -1,5 +1,4 @@
 #include "main.h"
-#include <stdio.h>
 
 int _pow_recursion(int x, int y);
 
@@ -15,7 +14,7 @@ unsigned int binary_to_uint(const char *b)
 {
 	unsigned int binary_num = 0, decimal_number = 0, binary_length = 0, i;
 
-	if (b == NULL)
+	if (b == NULL || *b < '0' || *b > '1')
 		return (0);
 
 	while (*b)	/* Crosses the chain b */
