@@ -13,7 +13,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	int fd = 0;
 	char *buffer;	/* Create a buffer */
 	/* ssize_t represents the size of an allocated block of memory, but signed  */
-	ssize_t write_readBytes = 0;
+	ssize_t writeBytes = 0, readBytes = 0;
 
 	if (filename == NULL)
 		return (0);
@@ -27,17 +27,17 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	/* Put data in the buffer to letters bytes */
-	write_readBytes = read(fd, buffer, letters);
-	if (write_readBytes == -1)	/* Open check */
+	readBytes = read(fd, buffer, letters);
+	if (readBytes == -1)	/* Open check */
 		return (0);
 
 	/* Output the buffer to letters bytes */
-	write_readBytes = write(1, buffer, write_readBytes);
-	if (write_readBytes == -1)
+	writeBytes = write(1, buffer, readBytes);
+	if (writeBytes == -1 || writeBytes != readBytes)
 		return (0);
 
 	close(fd);	/* Close the file */
 	free(buffer);	/* Free the memory of buffer */
 
-	return (write_readBytes);
+	return (writeBytes);
 }
