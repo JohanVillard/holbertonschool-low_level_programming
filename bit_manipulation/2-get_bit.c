@@ -11,6 +11,9 @@ int get_bit(unsigned long int n, unsigned int index)
 {
 	int the_bit;
 
+	if (index > n)
+		return (-1);
+
 	/* (1 << index) is called a mask */
 	/* Create a binary number */
 	/* Put a 1 at the index where the bit is*/
@@ -26,6 +29,5 @@ int get_bit(unsigned long int n, unsigned int index)
 		the_bit = 0;
 	}
 
-
-	return (the_bit);	/* If equal 1, if not 0 */
+	return (the_bit);
 }
