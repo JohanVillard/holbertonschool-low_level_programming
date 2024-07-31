@@ -34,14 +34,11 @@ int create_file(const char *filename, char *text_content)
 		copy_text_content++;
 	}
 
-	if (text_content != NULL)	/* Write if necessary */
+	bytes_write = write(fd, text_content, str_length);
+	if (bytes_write == -1)	/* bytes_write error handling check */
 	{
-		bytes_write = write(fd, text_content, str_length);
-		if (bytes_write == -1)	/* bytes_write error handling check */
-		{
-			close(fd);
-			return (-1);
-		}
+		close(fd);
+		return (-1);
 	}
 
 	close(fd);
