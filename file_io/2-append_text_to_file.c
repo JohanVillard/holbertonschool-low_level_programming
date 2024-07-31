@@ -13,7 +13,7 @@ int append_text_to_file(const char *filename, char *text_content)
 	char *copy_text_content, str_length;
 	ssize_t write_bytes = 0;
 
-	if (filename == NULL)
+	if (filename == NULL)	/* Check if file exists */
 		return (-1);
 
 	fd = open(filename, O_WRONLY | O_APPEND);
@@ -31,7 +31,8 @@ int append_text_to_file(const char *filename, char *text_content)
 		}
 
 		write_bytes = write(fd, text_content, str_length);
-		if (write_bytes == -1)
+		/* errno return the value depending of error */
+		if (write_bytes == -1 || errno == EPERM)
 		{
 			close(fd);
 			return (-1);

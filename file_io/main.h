@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/stat.h>
+#include <errno.h>
 
 /* -----------------FUNCTIONS---------------- */
 int _putchar(char c);
