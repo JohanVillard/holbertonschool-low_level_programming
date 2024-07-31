@@ -68,12 +68,6 @@ int main(int argc, char **argv)
 	close_bytes = close(file_to);
 	if (close_bytes == -1)
 	{
-		close_bytes = close(file_from);
-		if (close_bytes == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
-			exit(100);
-		}
 		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
 		exit(100);
 	}
