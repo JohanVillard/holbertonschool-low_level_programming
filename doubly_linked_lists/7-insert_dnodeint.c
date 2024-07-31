@@ -42,15 +42,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (NULL);
 
 	new_node->n = n;	/* Attribute value of n */
-
 	before = target->prev;	/* Take the address of the list before new_node */
-
 	new_node->next = target;	/* Take the address of node at idx */
 	target->prev = new_node;	/* targetent node leaves its place  */
-
 	new_node->prev = before;	/* Put new_node 'after' before .... */
 	before->next = new_node;
-
 	return (new_node);
-
 }
