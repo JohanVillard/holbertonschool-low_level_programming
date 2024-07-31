@@ -80,11 +80,9 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-
-	free(buffer);
-
 	/* Close all files and check if no error */
 	close_all(file_from, file_to);
+	free(buffer);
 	return (0);
 }
 
