@@ -15,11 +15,9 @@ int append_text_to_file(const char *filename, char *text_content)
 
 	if (filename == NULL)	/* Check if file exists */
 		return (-1);
-
 	fd = open(filename, O_WRONLY | O_APPEND);
 	if (fd == -1)	/* fd error handling check */
 		return (-1);
-
 	if (text_content != NULL)
 	{
 		/* Pointer of text_content must stay at the beginning */
@@ -38,8 +36,16 @@ int append_text_to_file(const char *filename, char *text_content)
 			return (-1);
 		}
 	}
-
+	else
+	{
+		write_bytes = write(fd, text_content, str_length);
+		/* errno return the value depending of error */
+		if (errno == EPERM || errno == ENOENT)
+		{
+			close(fd);
+			return (-1);
+		}
+	}
 	close(fd);
-
 	return (1);
 }
