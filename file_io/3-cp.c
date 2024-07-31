@@ -1,6 +1,8 @@
 #include "main.h"
 
 void close_and_check(int fd, ssize_t close_bytes);
+void write_and_check(int fd, ssize_t write_bytes,
+					char *buffer, int read_bytes, char *str_argv);
 
 /**
  * main - copies the content of a file to another file.
@@ -35,8 +37,8 @@ int main(int argc, char **argv)
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
-
-		read_bytes = read(file_from, buffer, 1024);	/* file_from is stored into the buffer */
+		/* file_from is stored into the buffer */
+		read_bytes = read(file_from, buffer, 1024);
 		if (read_bytes == -1)
 		{
 			free(buffer);
@@ -48,7 +50,8 @@ int main(int argc, char **argv)
 	if (argv[2] != NULL)
 	{
 		/* Create a file, trunc if exists, if not create it RW for user */
-		file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+		file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR
+							| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 		if (file_to == -1)
 		{
 			free(buffer);
@@ -56,14 +59,7 @@ int main(int argc, char **argv)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
-		write_bytes = write(file_to, buffer, read_bytes);
-		if (write_bytes == -1)
-		{
-			free(buffer);
-
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
+		write_and_check(file_to, write_bytes, buffer, read_bytes, argv[2]);
 	}
 	free(buffer);
 
@@ -75,9 +71,9 @@ int main(int argc, char **argv)
 }
 
 /**
- * close_and_check - vlose file and check if no error
- * @fd: is the file descriptor to close
- * @close_bytes:  -1 if error
+ * close_and_check - close file and check if no error.
+ * @fd: is the file descriptor to close.
+ * @close_bytes: -1 if error.
  */
 void close_and_check(int fd, ssize_t close_bytes)
 {
@@ -87,6 +83,26 @@ void close_and_check(int fd, ssize_t close_bytes)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
 		exit(100);
 	}
+}
+
+/**
+ * write_and_check - write buffer and check if no error.
+ * @fd: is the file descriptor to write in.
+ * @write_bytes: is the number of bytes written or -1 if error.
+ * @buffer: to write in to_file.
+ * @read_bytes: is the number of bytes to write from the buffer.
+ * @str_argv: is the file to print when an error occurs.
+ */
+void write_and_check(int fd, ssize_t write_bytes, char *buffer, int read_bytes, char *str_argv)
+{
+	write_bytes = write(fd, buffer, read_bytes);
+		if (write_bytes == -1)
+		{
+			free(buffer);
+
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", str_argv);
+			exit(99);
+		}
 }
 
 

@@ -10,6 +10,7 @@
 		"main.h": "c",
 		"algorithm": "c",
 		"unistd.h": "c",
-		"fcntl.h": "c"
+		"fcntl.h": "c",
+		"*.tcc": "c"
 	}
 }
