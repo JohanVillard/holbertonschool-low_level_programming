@@ -28,13 +28,11 @@ int main(int argc, char **argv)
 	if (buffer == NULL)	/* Malloc error handling */
 		return (-1);
 
-	if (argv[1] != NULL)	/* Check if file exist */
+	if (argv[1] != NULL && argv[2] != NULL)	/* Check if file exist */
 	{
 		file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
 		read_check(read_bytes, buffer, argv[1]);
-	}
-	if (argv[2] != NULL)
-	{
+
 		/* Create a file, trunc if exists, if not create it RW for user */
 		file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR
 							| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
