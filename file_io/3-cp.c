@@ -1,5 +1,7 @@
 #include "main.h"
 
+void close_all(int file_from, int file_to);
+
 /**
  * main - copies the content of a file to another file.
  * @argc: is an integer containing the number of command line arguments.
@@ -10,7 +12,7 @@
 int main(int argc, char **argv)
 {
 	int file_from = 0, file_to = 0; /* Destination file */
-	ssize_t read_bytes = 0, write_bytes = 0, close_bytes = 0;
+	ssize_t read_bytes = 0, write_bytes = 0;
 	char *buffer;
 
 	/* argv[1]: 1st file ----- argv[2]: 2nd file */
@@ -52,8 +54,7 @@ int main(int argc, char **argv)
 	{
 		if (read_bytes == -1)
 		{
-			close(file_from);
-			close(file_to);
+			close_all(file_from, file_to);
 			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
@@ -63,18 +64,16 @@ int main(int argc, char **argv)
 		write_bytes = write(file_to, buffer, read_bytes);
 		if (write_bytes == -1)
 		{
-			close(file_from);
-			close(file_to);
+			close_all(file_from, file_to);
 			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
+			exit(99);
 		}
 	}
 
 	if (read_bytes == -1)
 	{
-		close(file_from);
-		close(file_to);
+		close_all(file_from, file_to);
 		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
@@ -84,33 +83,46 @@ int main(int argc, char **argv)
 	write_bytes = write(file_to, buffer, read_bytes);
 	if (write_bytes == -1)
 	{
-		close(file_from);
-		close(file_to);
+		close_all(file_from, file_to);
 		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-	exit(99);
+		exit(99);
 	}
 
 	free(buffer);
 
-	/* Close file and check if no error */
-	close_bytes = close(file_from);	/* Close the file descriptor */
-	if (close_bytes == -1)
+	/* Close all files and check if no error */
+	close_all(file_from, file_to);
+	return (0);
+}
+
+/**
+ * close_all - close all files
+ * @file_from: to close
+ * @file_to: to close
+ *
+ * Return: Always nothing
+ */
+void close_all(int file_from, int file_to)
+{
+	ssize_t close_byte = 0;
+
+	close_byte = close(file_from);	/* Close the file descriptor */
+	if (close_byte == -1)
 	{
-		close_bytes = close(file_to);	/* Close the file descriptor */
-		if (close_bytes == -1)
+		close_byte = close(file_to);	/* Close the file descriptor */
+		if (close_byte == -1)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
+			dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
 			exit(100);
 		}
-		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
 		exit(100);
 	}
-	close_bytes = close(file_to);	/* Close the file descriptor */
-	if (close_bytes == -1)
+	close_byte = close(file_to);	/* Close the file descriptor */
+	if (close_byte == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
 		exit(100);
 	}
-	return (0);
 }
