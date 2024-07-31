@@ -9,7 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-	int file_from, file_to; /* Destination file */
+	int file_from, file_to, size_argv = 0; /* Destination file */
 	ssize_t read_bytes = 0, write_bytes = 0, close_bytes = 0;
 	char *buffer;
 
@@ -48,7 +48,7 @@ int main(int argc, char **argv)
 	{
 		/* Create a file, trunc if exists, if not create it RW for user */
 		file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-		if (read_bytes == -1)
+		if (file_to == -1)
 		{
 			free(buffer);
 
