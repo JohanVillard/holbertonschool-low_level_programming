@@ -13,7 +13,7 @@ void read_check(ssize_t read_bytes, char *buffer, char *str_argv);
  */
 int main(int argc, char **argv)
 {
-	int file_from, file_to; /* Destination file */
+	int file_from = 0, file_to = 0; /* Destination file */
 	ssize_t read_bytes = 0, write_bytes = 0, close_bytes = 0;
 	char *buffer;
 
@@ -23,19 +23,20 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
+
 	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
 	if (buffer == NULL)	/* Malloc error handling */
 		return (-1);
 
 	file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
-	read_check(read_bytes, buffer, argv[1]);	/* exit(98) */
+	read_check(file_from, buffer, argv[1]);	/* exit(98) */
 
 	/* Create a file, trunc if exists, if not create it RW for user */
 	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR
 						| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	if (read_bytes == -1)
+	if (file_to == -1)
 		close(file_from);
-	write_check(write_bytes, buffer, argv[2]);	/* exit(99) */
+	write_check(file_to, buffer, argv[2]);	/* exit(99) */
 	/* file_from is stored into the buffer */
 	/* Manage the case if file_from is greater than buffer */
 	while ((read_bytes = read(file_from, buffer, 1024)) > 0)
