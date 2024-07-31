@@ -37,7 +37,6 @@ int main(int argc, char **argv)
 		exit(98);
 	}
 
-
 	/* Create a file, trunc if exists, if not create it RW for user */
 	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR
 						| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
@@ -69,7 +68,10 @@ int main(int argc, char **argv)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
+		printf("RB:%lu_____WB:%lu\n", read_bytes, write_bytes);
 	}
+
+	write_bytes = 0; /* Everything is already written */
 
 	if (read_bytes == -1)
 	{
@@ -77,16 +79,6 @@ int main(int argc, char **argv)
 		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
-	}
-
-	/* Write from the buffer to the file */
-	write_bytes = write(file_to, buffer, read_bytes);
-	if (write_bytes == -1)
-	{
-		close_all(file_from, file_to);
-		free(buffer);
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
 	}
 
 	free(buffer);
