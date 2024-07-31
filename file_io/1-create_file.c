@@ -21,7 +21,7 @@ int create_file(const char *filename, char *text_content)
 	/* O_TRUNC: Truncate the file to zero length if it exists. */
 	/* S_IRUSR (or S_IREAD): Read permission for the owner (user). */
 	/* S_IWUSR (or S_IWRITE): Write permission for the owner (user). */
-	fd = open(filename, O_RDWR | O_CREAT, S_IRUSR | O_TRUNC | S_IWUSR);
+	fd = open(filename, O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR);
 	if (fd == -1)	/* fd error handling check */
 		return (-1);
 
