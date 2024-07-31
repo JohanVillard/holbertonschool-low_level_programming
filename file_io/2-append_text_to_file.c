@@ -30,13 +30,13 @@ int append_text_to_file(const char *filename, char *text_content)
 			str_length++;
 			copy_text_content++;
 		}
-	}
 
-	write_bytes = write(fd, text_content, str_length);
-	if (write_bytes == -1)
-	{
-		close(fd);
-		return (-1);
+		write_bytes = write(fd, text_content, str_length);
+		if (write_bytes == -1)
+		{
+			close(fd);
+			return (-1);
+		}
 	}
 
 	close(fd);
