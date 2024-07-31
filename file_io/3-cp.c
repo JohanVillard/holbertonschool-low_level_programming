@@ -61,7 +61,7 @@ int main(int argc, char **argv)
 
 		/* Write from the buffer to the file */
 		write_bytes = write(file_to, buffer, read_bytes);
-		if (write_bytes == -1 || write_bytes != read_bytes)
+		if (write_bytes == -1)
 		{
 			close_all(file_from, file_to);
 			free(buffer);
