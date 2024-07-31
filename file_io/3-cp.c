@@ -1,5 +1,7 @@
 #include "main.h"
 
+void close_and_check(int fd, ssize_t close_bytes);
+
 /**
  * main - copies the content of a file to another file.
  * @argc: is an integer containing the number of command line arguments.
@@ -65,21 +67,20 @@ int main(int argc, char **argv)
 	}
 	free(buffer);
 
-	close_bytes = close(file_to);
-	if (close_bytes == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
-		exit(100);
-	}
-
-	close_bytes = close(file_from);
-	if (close_bytes == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
-		exit(100);
-	}
+	close_and_check(file_to, close_bytes);	/* Close file and check if no error */
+	close_and_check(file_from, close_bytes);
 
 	return (0);
+}
+
+void close_and_check(int fd, ssize_t close_bytes)
+{
+	close_bytes = close(fd);	/* Close the file descriptor */
+	if (close_bytes == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
+		exit(100);
+	}
 }
 
 
