@@ -2,6 +2,7 @@
 
 void close_and_check(int fd, ssize_t close_bytes);
 void write_check(ssize_t write_bytes, char *buffer, char *str_argv);
+void read_check(ssize_t read_bytes, char *buffer, char *str_argv);
 
 /**
  * main - copies the content of a file to another file.
@@ -30,21 +31,10 @@ int main(int argc, char **argv)
 	if (argv[1] != NULL)	/* Check if file exist */
 	{
 		file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
-		if (file_from == -1)	/* Open error handling */
-		{
-			free(buffer);
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
+		read_check(file_from, buffer, argv[1]);
 		/* file_from is stored into the buffer */
 		read_bytes = read(file_from, buffer, 1024);
-		if (read_bytes == -1)
-		{
-			free(buffer);
-
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
+		read_check(read_bytes, buffer, argv[1]);
 	}
 	if (argv[2] != NULL)
 	{
@@ -94,6 +84,23 @@ void write_check(ssize_t write_bytes, char *buffer, char *str_argv)
 
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", str_argv);
 		exit(99);
+	}
+}
+
+/**
+ * read_check - read buffer and check if no error.
+ * @read_bytes: is the number of bytes read or -1 in the event of an error.
+ * @buffer: to read in to_file.
+ * @str_argv: is the file to print when an error occurs.
+ */
+void read_check(ssize_t read_bytes, char *buffer, char *str_argv)
+{
+	if (read_bytes == -1)
+	{
+		free(buffer);
+
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", str_argv);
+		exit(98);
 	}
 }
 
