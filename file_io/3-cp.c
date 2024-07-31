@@ -38,12 +38,7 @@ int main(int argc, char **argv)
 		if (read_bytes == -1)
 		{
 			free(buffer);
-			close_bytes = close(file_from);
-			if (close_bytes == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
-				exit(100);
-			}
+
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
@@ -56,20 +51,7 @@ int main(int argc, char **argv)
 		{
 			free(buffer);
 
-			close_bytes = close(file_to);
-			if (close_bytes == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
-				exit(100);
-			}
 
-			close(file_from);
-			close_bytes = close(file_from);
-			if (close_bytes == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
-				exit(100);
-			}
 
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
@@ -78,19 +60,7 @@ int main(int argc, char **argv)
 		if (write_bytes == -1)
 		{
 			free(buffer);
-			close_bytes = close(file_to);
-			if (close_bytes == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
-				exit(100);
-			}
 
-			close_bytes = close(file_from);
-			if (close_bytes == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_bytes);
-				exit(100);
-			}
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
