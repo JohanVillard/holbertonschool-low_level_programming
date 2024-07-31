@@ -31,31 +31,36 @@ int main(int argc, char **argv)
 	if (argv[1] != NULL && argv[2] != NULL)	/* Check if file exist */
 	{
 		file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
-		read_check(read_bytes, buffer, argv[1]);
+		read_check(read_bytes, buffer, argv[1]);	/* exit(98) */
 
 		/* Create a file, trunc if exists, if not create it RW for user */
 		file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR
 							| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-		write_check(write_bytes, buffer, argv[2]);
+		if (read_bytes == -1)
+			close(file_from);
+		write_check(write_bytes, buffer, argv[2]);	/* exit(99) */
 
 		/* file_from is stored into the buffer */
 		/* Manage the case if file_from is greater than buffer */
 		while ((read_bytes = read(file_from, buffer, 1024)) > 0)
 		{
+			if (read_bytes == -1)
+			{
+				close(file_from);
+				close(file_to);
+			}
 			read_check(read_bytes, buffer, argv[1]);
 			/* Write from the buffer to the file */
-			write_bytes = write(file_to, buffer, read_bytes);
-			write_check(write_bytes, buffer, argv[2]);
+			write_bytes = write(file_to, buffer, read_bytes);	/* exit(98) */
+			write_check(write_bytes, buffer, argv[2]);	/* exit(99) */
 		}
-
-
 	}
 
 	free(buffer);
 
 	/* Close file and check if no error */
-	close_and_check(file_to, close_bytes);
-	close_and_check(file_from, close_bytes);
+	close_and_check(file_to, close_bytes);	/* exit(100) */
+	close_and_check(file_from, close_bytes);	/* exit(100) */
 
 	return (0);
 }
@@ -86,7 +91,6 @@ void write_check(ssize_t write_bytes, char *buffer, char *str_argv)
 	if (write_bytes == -1)
 	{
 		free(buffer);
-
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", str_argv);
 		exit(99);
 	}
