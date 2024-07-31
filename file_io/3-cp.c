@@ -31,6 +31,7 @@ int main(int argc, char **argv)
 	if (argv[1] != NULL)	/* Check if file exist */
 	{
 		file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
+		read_check(read_bytes, buffer, argv[1]);
 		/* file_from is stored into the buffer */
 		read_bytes = read(file_from, buffer, 1024);
 		read_check(read_bytes, buffer, argv[1]);
@@ -40,6 +41,7 @@ int main(int argc, char **argv)
 		/* Create a file, trunc if exists, if not create it RW for user */
 		file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR
 							| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+		write_check(write_bytes, buffer, argv[2]);
 		/* Write from the buffer to the file */
 		write_bytes = write(file_to, buffer, read_bytes);
 		write_check(write_bytes, buffer, argv[2]);
