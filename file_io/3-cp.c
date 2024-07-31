@@ -74,7 +74,7 @@ int main(int argc, char **argv)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
-		write_bytes = write(file_to, buffer,1024);
+		write_bytes = write(file_to, buffer, read_bytes);
 		if (write_bytes == -1)
 		{
 			free(buffer);
