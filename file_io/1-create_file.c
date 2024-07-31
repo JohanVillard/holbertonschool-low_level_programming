@@ -11,7 +11,6 @@ int create_file(const char *filename, char *text_content)
 {
 	int fd = 0, str_length = 0;
 	char *copy_text_content; /* Avoid to move original pointer */
-
 	ssize_t bytes_write = 0;
 
 	if (filename == NULL)
@@ -20,7 +19,6 @@ int create_file(const char *filename, char *text_content)
 	/* O_RDWR: Open the file in read-write mode. */
 	/* O_CREAT: Create the file if it doesn't exist. */
 	/* O_TRUNC: Truncate the file to zero length if it exists. */
-	/* O_APPEND: Append data to the end of the file. */
 	/* S_IRUSR (or S_IREAD): Read permission for the owner (user). */
 	/* S_IWUSR (or S_IWRITE): Write permission for the owner (user). */
 	fd = open(filename, O_RDWR | O_CREAT, S_IRUSR | O_TRUNC | S_IWUSR);
@@ -35,9 +33,7 @@ int create_file(const char *filename, char *text_content)
 		str_length++;
 		copy_text_content++;
 	}
-	
-	/* Write in choosen file fd */
-	/* Write parameter text_content */
+
 	if (text_content != NULL)	/* Write if necessary */
 	{
 		bytes_write = write(fd, text_content, str_length);
@@ -49,6 +45,5 @@ int create_file(const char *filename, char *text_content)
 	}
 
 	close(fd);
-
 	return (1);
 }
