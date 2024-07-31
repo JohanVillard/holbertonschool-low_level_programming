@@ -27,7 +27,7 @@ int create_file(const char *filename, char *text_content)
 
 	copy_text_content = text_content;	/* text_content must not move */
 
-	if (text_content != NULL)	/* Write if necessary */
+	if (text_content != NULL)	/* Compute length if necessary - 0 by default */
 	{
 		/* Must know the size to write */
 		while (*copy_text_content)
