@@ -10,7 +10,7 @@
 int append_text_to_file(const char *filename, char *text_content)
 {
 	int fd;	/* File descriptor */
-	char *copy_text_content, str_length;
+	char *copy_text_content, str_length = 0;
 	ssize_t write_bytes = 0;
 
 	if (filename == NULL)	/* Check if file exists */
