@@ -31,6 +31,14 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	}
 	if (index > cursor)
 		return (-1);
+
+	if (curr->next == NULL)
+	{
+		prev_curr = curr->prev;
+		prev_curr->next = NULL;
+		free(curr);
+		return (1);
+	}
 	next_curr = curr->next;	/* Set the node address after the deleted node */
 	if (index > 0)
 	{
