@@ -23,13 +23,14 @@ int main(int argc, char **argv)
 	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
 	if (buffer == NULL)	/* Malloc error handling */
 		return (-1);
+
 	if (argv[1] != NULL)	/* Check if file exist */
 	{
 		file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
 		if (file_from == -1)	/* Open error handling */
 			return (-1);
 
-		read_bytes = read(file_from, buffer, 1024);
+		read_bytes = read(file_from, buffer, 1024);	/* file_from is stored into the buffer */
 		if (read_bytes == -1)
 		{
 			free(buffer);
@@ -67,7 +68,7 @@ int main(int argc, char **argv)
 			}
 
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(98);
+			exit(99);
 		}
 		write_bytes = write(file_to, buffer,1024);
 		if (write_bytes == -1)
@@ -87,11 +88,10 @@ int main(int argc, char **argv)
 				exit(100);
 			}
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(98);
+			exit(99);
 		}
 	}
 	free(buffer);
-
 
 	close_bytes = close(file_to);
 	if (close_bytes == -1)
