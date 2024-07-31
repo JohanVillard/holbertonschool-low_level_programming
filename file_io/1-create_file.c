@@ -27,11 +27,14 @@ int create_file(const char *filename, char *text_content)
 
 	copy_text_content = text_content;	/* text_content must not move */
 
-	/* Must know the size to write */
-	while (*copy_text_content)
+	if (text_content != NULL)	/* Write if necessary */
 	{
-		str_length++;
-		copy_text_content++;
+		/* Must know the size to write */
+		while (*copy_text_content)
+		{
+			str_length++;
+			copy_text_content++;
+		}
 	}
 
 	bytes_write = write(fd, text_content, str_length);
