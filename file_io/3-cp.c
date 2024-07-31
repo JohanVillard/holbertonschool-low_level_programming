@@ -81,7 +81,7 @@ int main(int argc, char **argv)
 	/* Close all files and check if no error */
 	close_all(file_from, file_to);
 	free(buffer);
-	buffer = NULL;
+	buffer = NULL;	/* Eraser buffer */
 	return (0);
 }
 
