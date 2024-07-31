@@ -32,7 +32,7 @@ int append_text_to_file(const char *filename, char *text_content)
 
 		write_bytes = write(fd, text_content, str_length);
 		/* errno return the value depending of error */
-		if (write_bytes == -1 || errno == EPERM)
+		if (write_bytes == -1 || errno == EPERM || errno == ENOENT)
 		{
 			close(fd);
 			return (-1);
