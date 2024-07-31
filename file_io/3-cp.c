@@ -68,10 +68,7 @@ int main(int argc, char **argv)
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
-		printf("RB:%lu_____WB:%lu\n", read_bytes, write_bytes);
 	}
-
-	write_bytes = 0; /* Everything is already written */
 
 	if (read_bytes == -1)
 	{
@@ -80,6 +77,7 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
+	write_bytes = 0; /* Everything is already written */
 	/* Close all files and check if no error */
 	close_all(file_from, file_to);
 	free(buffer);
