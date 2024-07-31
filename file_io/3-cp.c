@@ -28,7 +28,11 @@ int main(int argc, char **argv)
 	{
 		file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
 		if (file_from == -1 || errno == ENOENT)	/* Open error handling */
-			return (-1);
+		{
+			free(buffer);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
 
 		read_bytes = read(file_from, buffer, 1024);	/* file_from is stored into the buffer */
 		if (read_bytes == -1 || errno == ENOENT)
