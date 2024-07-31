@@ -9,7 +9,7 @@
  */
 int main(int argc, char **argv)
 {
-	int file_from, file_to, size_argv = 0; /* Destination file */
+	int file_from, file_to; /* Destination file */
 	ssize_t read_bytes = 0, write_bytes = 0, close_bytes = 0;
 	char *buffer;
 
