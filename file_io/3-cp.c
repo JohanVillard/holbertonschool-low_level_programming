@@ -9,7 +9,7 @@ void read_check(ssize_t read_bytes, char *buffer, char *str_argv);
  * @argc: is an integer containing the number of command line arguments.
  * @argv: is an array of pointers to strings containing arguments.
  *
- * Return: ???
+ * Return: Always 0.
  */
 int main(int argc, char **argv)
 {
