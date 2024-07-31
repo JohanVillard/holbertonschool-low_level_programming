@@ -20,11 +20,10 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (fd == -1)	/* fd error handling check */
 		return (-1);
 
-	/* Pointer of text_content must stay at the beginning */
-	copy_text_content = text_content;
-
 	if (text_content != NULL)
 	{
+		/* Pointer of text_content must stay at the beginning */
+		copy_text_content = text_content;
 		while (*copy_text_content)
 		{
 			str_length++;
