@@ -31,7 +31,7 @@ int main(int argc, char **argv)
 			return (-1);
 
 		read_bytes = read(file_from, buffer, 1024);	/* file_from is stored into the buffer */
-		if (read_bytes == -1)
+		if (read_bytes == -1 || errno == ENOENT)
 		{
 			free(buffer);
 			close_bytes = close(file_from);
