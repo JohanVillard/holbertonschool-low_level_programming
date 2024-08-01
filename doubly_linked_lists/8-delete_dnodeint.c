@@ -24,23 +24,23 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	}
 	while (cursor < index)
 	{
-		curr = curr->next;
+		curr = curr->next;	/* Move to next node */
 		cursor++;
 	}
-	if (index > cursor)
+	if (index > cursor)	/* Index out of bound */
 		return (-1);
-	if (curr->next == NULL)
+	prev_curr = curr->prev;		/* Set the node address before the deleted node */
+	if (curr->next == NULL)	/* Delete last element */
 	{
-		prev_curr = curr->prev;
-		prev_curr->next = NULL;
+		prev_curr->next = NULL;	/* Set this node as last element */
 		free(curr);
 		return (1);
 	}
 	next_curr = curr->next;	/* Set the node address after the deleted node */
 	if (index > 0)
 	{
-		prev_curr = curr->prev;		/* Set the node address before the deleted node */
-		prev_curr->next = next_curr; /* Link the node to next node */
+		/* Link the node to node after delete node */
+		prev_curr->next = next_curr;
 		next_curr->prev = prev_curr;
 	}
 	else	/* If we want to delete first node */
