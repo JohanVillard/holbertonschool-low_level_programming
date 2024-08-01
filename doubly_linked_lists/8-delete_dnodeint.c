@@ -28,7 +28,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		cursor++;
 	}
 	/* idx does not exist || Index out of bound */
-	if (delete_node == NULL || index  > cursor)
+	if (delete_node == NULL)
 		return (-1);
 	if (delete_node->next == NULL)	/* Delete last element */
 	{
@@ -37,15 +37,16 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	}
 	if (delete_node->prev == NULL) /* If we want delete the first node */
 	{
-		delete_node->next->prev = NULL;
 		*head = delete_node->next;
-		free(delete_node);
-		return (1);
+		delete_node->next->prev = NULL;
 	}
-	/* Link the nodes to node between delete node */
-	delete_node->prev->next = delete_node->next;
-	if (delete_node->next != NULL)	/* If not at the end of list */
-		delete_node->next->prev = delete_node->prev;
+	else
+	{
+		/* Link the nodes to node between delete node */
+		delete_node->prev->next = delete_node->next;
+		if (delete_node->next != NULL)	/* If not at the end of list */
+			delete_node->next->prev = delete_node->prev;
+	}
 
 	free(delete_node);
 	return (1);
