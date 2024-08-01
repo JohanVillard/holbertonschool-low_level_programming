@@ -32,6 +32,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		return (-1);
 	if (delete_node->next == NULL)	/* Delete last element */
 	{
+		delete_node->prev->next = NULL;
 		free(delete_node);
 		return (1);
 	}
@@ -40,9 +41,8 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		*head = delete_node->next;
 		delete_node->next->prev = NULL;
 	}
-	else
+	else	/* Link the nodes to node between delete node */
 	{
-		/* Link the nodes to node between delete node */
 		delete_node->prev->next = delete_node->next;
 		delete_node->next->prev = delete_node->prev;
 	}
