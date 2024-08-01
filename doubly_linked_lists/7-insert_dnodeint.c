@@ -12,7 +12,7 @@
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *new_node, *curr_node;
-	unsigned int count = 0;	/* idx begin at 0 */
+	unsigned int cursor = 0;	/* idx begin at 0 */
 
 	if (h == NULL)
 		return (NULL);
@@ -22,14 +22,14 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 
 	curr_node = *h;	/* Copy the address of head */
 
-	while (count < idx - 1 && curr_node != NULL)
+	while (cursor < idx - 1 && curr_node != NULL)
 	{
 		curr_node = curr_node->next;	/* Address at idx when loop is over */
-		count++;
+		cursor++;
 	}
 	if (curr_node == NULL)	/* idx does not exist */
 		return (NULL);
-	if (idx - 1 > count)	/* Check if idx is out of bound */
+	if (idx - 1 > cursor)	/* Check if idx is out of bound */
 		return (NULL);
 	if (curr_node->next == NULL)	/* If idx is on last node */
 		return (add_dnodeint_end(h, n)); /* Create a node at the end */

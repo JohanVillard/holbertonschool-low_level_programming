@@ -10,44 +10,42 @@
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *curr, *next_curr, *prev_curr;
+	dlistint_t *delete_node;
 	unsigned int cursor = 0;
 
 	if (*head == NULL || (int)index < 0)	/* If list is empty */
 		return (-1);						/* or index is negative */
-	curr = *head;	/* Copy head's address */
-	if (curr->next == NULL)	/* If 1 element in the list */
+	delete_node = *head;	/* Copy head's address */
+	if (delete_node->next == NULL)	/* If 1 element in the list */
 	{
-		free(curr);
+		free(delete_node);
 		*head = NULL;
 		return (1);
 	}
-	while (cursor < index)
+	while (cursor < index  && delete_node != NULL)
 	{
-		curr = curr->next;	/* Move to next node */
+		delete_node = delete_node->next;	/* Move to next node */
 		cursor++;
 	}
-	if (index > cursor)	/* Index out of bound */
+	/* idx does not exist || Index out of bound */
+	if (delete_node == NULL || index  > cursor)
 		return (-1);
-	prev_curr = curr->prev;		/* Set the node address before the deleted node */
-	if (curr->next == NULL)	/* Delete last element */
+	if (delete_node->next == NULL)	/* Delete last element */
 	{
-		prev_curr->next = NULL;	/* Set this node as last element */
-		free(curr);
+		free(delete_node);
 		return (1);
 	}
-	next_curr = curr->next;	/* Set the node address after the deleted node */
-	if (index > 0)
+	if (delete_node->prev == NULL) /* If we want delete the first node */
 	{
-		/* Link the node to node after delete node */
-		prev_curr->next = next_curr;
-		next_curr->prev = prev_curr;
+		delete_node->next->prev = NULL;
+		*head = delete_node->next;
+		free(delete_node);
+		return (1);
 	}
-	else	/* If we want to delete first node */
-	{
-		next_curr->prev = NULL;
-		*head = next_curr;
-	}
-	free(curr);
+	/* Link the nodes to node between delete node */
+	delete_node->prev->next = delete_node->next;
+	delete_node->next->prev = delete_node->prev;
+
+	free(delete_node);
 	return (1);
 }
