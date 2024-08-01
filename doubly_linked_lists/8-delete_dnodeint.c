@@ -13,7 +13,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	dlistint_t *delete_node;
 	unsigned int cursor = 0;
 
-	if (*head == NULL || (int)index < 0)	/* If list is empty */
+	if (*head == NULL)	/* If list is empty */
 		return (-1);						/* or index is negative */
 	delete_node = *head;	/* Copy head's address */
 	if (delete_node->next == NULL)	/* If 1 element in the list */
