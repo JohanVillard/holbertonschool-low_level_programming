@@ -26,7 +26,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	{
 		curr_node = curr_node->next;	/* Address at idx when loop is over */
 		count++;
-		printf("C: %d-----idx-1: %d\n", count, idx - 1);
 	}
 	if (curr_node == NULL)	/* idx does not exist */
 		return (NULL);
