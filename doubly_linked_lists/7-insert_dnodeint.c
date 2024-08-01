@@ -15,7 +15,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	unsigned int cursor = 0;	/* idx begin at 0 */
 
 	if (idx == 0)	/* Take the place 1 = idx 0 */
-	return (add_dnodeint(h, n));	/* Function creates a node at the beginning */
+		return (add_dnodeint(h, n));	/* Function creates a node at the beginning */
 
 	curr_node = *h;	/* Copy the address of head */
 
@@ -33,7 +33,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 
 	new_node = malloc(sizeof(dlistint_t));	/* Allocate memory */
 	if (new_node == NULL)	/* Malloc check */
+	{
+		free(new_node);
 		return (NULL);
+	}
 
 	new_node->n = n;	/* Attribute value of n */
 	new_node->prev = curr_node;	/* Put new_node after the node curr_node at idx */
