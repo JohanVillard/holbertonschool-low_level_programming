@@ -16,7 +16,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	if (*head == NULL)	/* If list is empty */
 		return (-1);						/* or index is negative */
 	delete_node = *head;	/* Copy head's address */
-	if (delete_node->next == NULL)	/* If 1 element in the list */
+	if (delete_node->next == NULL && index == 0)	/* If 1 element in the list */
 	{
 		free(delete_node);
 		*head = NULL;
