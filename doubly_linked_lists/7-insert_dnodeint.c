@@ -22,13 +22,13 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 
 	curr_node = *h;	/* Copy the address of head */
 
-	while (count < idx - 1)
+	while (count < idx - 1 && curr_node != NULL)
 	{
 		curr_node = curr_node->next;	/* Address at idx when loop is over */
-		if (curr_node == NULL)	/* idx does not exist */
-			return (NULL);
 		count++;
 	}
+	if (curr_node == NULL)	/* idx does not exist */
+		return (NULL);
 	if (idx - 1 > count)	/* Check if idx is out of bound */
 		return (NULL);
 	if (curr_node->next == NULL)	/* If idx is on last node */
