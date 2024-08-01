@@ -26,12 +26,13 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	{
 		curr_node = curr_node->next;	/* Address at idx when loop is over */
 		count++;
+		printf("C: %d-----idx-1: %d\n", count, idx - 1);
 	}
 	if (curr_node == NULL)	/* idx does not exist */
 		return (NULL);
 	if (idx - 1 > count)	/* Check if idx is out of bound */
 		return (NULL);
-	if (curr_node->next == NULL)	/* If idx is on last node */
+	if (curr_node->next == NULL && count == idx - 1)	/* If idx is on last node */
 		return (add_dnodeint_end(h, n)); /* Create a node at the end */
 
 	new_node = malloc(sizeof(dlistint_t));	/* Allocate memory */
