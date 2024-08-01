@@ -14,7 +14,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	dlistint_t *new_node, *curr_node;
 	unsigned int cursor = 0;	/* idx begin at 0 */
 
-	if (h == NULL || idx == 0)	/* Take the place 1 = idx 0 */
+	if (h == NULL)	/* Take the place 1 = idx 0 */
 		return (NULL);	/* Function creates a node at the beginning */
 
 	curr_node = *h;	/* Copy the address of head */
