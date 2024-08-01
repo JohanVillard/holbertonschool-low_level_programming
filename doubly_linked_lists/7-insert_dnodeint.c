@@ -11,30 +11,27 @@
  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *new_node, *target, *before;
+	dlistint_t *new_node, *curr_node;
 	unsigned int count = 0;	/* idx begin at 0 */
 
 	if (h == NULL)
 		return (NULL);
 
 	if (idx == 0)	/* Take the place 1 = idx 0 */
-	{
-		new_node = add_dnodeint(h, n);	/* Function creates a node at the beginning */
-		return (new_node);
-	}
+		return (add_dnodeint(h, n));	/* Function creates a node at the beginning */
 
-	target = *h;	/* Copy the address of head */
+	curr_node = *h;	/* Copy the address of head */
 
-	while (count < idx)
+	while (count < idx - 1)
 	{
-		target = target->next;	/* Address at idx when loop is over */
-		if (target == NULL)	/* idx does not exist */
+		curr_node = curr_node->next;	/* Address at idx when loop is over */
+		if (curr_node == NULL)	/* idx does not exist */
 			return (NULL);
 		count++;
 	}
-	if (idx > count)	/* Check if idx is out of bound */
+	if (idx - 1 > count)	/* Check if idx is out of bound */
 		return (NULL);
-	if (target->next == NULL)	/* If idx is on last node */
+	if (curr_node->next == NULL)	/* If idx is on last node */
 		return (add_dnodeint_end(h, n)); /* Create a node at the end */
 
 	new_node = malloc(sizeof(dlistint_t));	/* Allocate memory */
@@ -42,10 +39,10 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (NULL);
 
 	new_node->n = n;	/* Attribute value of n */
-	before = target->prev;	/* Identify the node before the idx */
-	new_node->next = target;	/* Put new_node before the node target at idx */
-	target->prev = new_node;
-	new_node->prev = before;	/* Put new_node after the node before */
-	before->next = new_node;
+	new_node->prev = curr_node;	/* Put new_node after the node curr_node at idx */
+	new_node->next = curr_node->next;	/* Link new_node t next node at idx */
+	curr_node->next = new_node;
+	curr_node->next->prev = new_node;	/* Link new_node t next node at idx */
+
 	return (new_node);
 }
