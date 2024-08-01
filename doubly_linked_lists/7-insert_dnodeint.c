@@ -12,40 +12,40 @@
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *new_node, *target, *before;
-	unsigned int count = 0;	/* Index begin at 0 */
+	unsigned int count = 0;	/* idx begin at 0 */
 
 	if (h == NULL)
 		return (NULL);
 
-	if (idx == 0)	/* Take the place 1 */
+	if (idx == 0)	/* Take the place 1 = idx 0 */
 	{
-		new_node = add_dnodeint(h, n);
+		new_node = add_dnodeint(h, n);	/* Function creates a node at the beginning */
 		return (new_node);
 	}
 
-	target = *h;	/* Take the address of head */
+	target = *h;	/* Copy the address of head */
 
 	while (count < idx)
 	{
-		target = target->next;	/* Address to take when loop is over */
+		target = target->next;	/* Address at idx when loop is over */
 		if (target == NULL)	/* idx does not exist */
 			return (NULL);
 		count++;
 	}
-	if (idx > count)
+	if (idx > count)	/* Check if idx is out of bound */
 		return (NULL);
-	if (target->next == NULL)
-		return (add_dnodeint_end(h, n));
+	if (target->next == NULL)	/* If idx is on last node */
+		return (add_dnodeint_end(h, n)); /* Create a node at the end */
 
 	new_node = malloc(sizeof(dlistint_t));	/* Allocate memory */
 	if (new_node == NULL)	/* Malloc check */
 		return (NULL);
 
 	new_node->n = n;	/* Attribute value of n */
-	before = target->prev;	/* Take the address of the list before new_node */
-	new_node->next = target;	/* Take the address of node at idx */
-	target->prev = new_node;	/* targetent node leaves its place  */
-	new_node->prev = before;	/* Put new_node 'after' before .... */
+	before = target->prev;	/* Identify the node before the idx */
+	new_node->next = target;	/* Put new_node before the node target at idx */
+	target->prev = new_node;
+	new_node->prev = before;	/* Put new_node after the node before */
 	before->next = new_node;
 	return (new_node);
 }
