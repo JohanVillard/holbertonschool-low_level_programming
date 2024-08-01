@@ -41,11 +41,8 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	new_node->n = n;	/* Attribute value of n */
 	new_node->prev = curr_node;	/* Put new_node after the node curr_node at idx */
 	new_node->next = curr_node->next;	/* Link new_node t next node at idx */
-	if (curr_node->next != NULL)
-	{
-		curr_node->next = new_node;
-		curr_node->next->prev = new_node;	/* Link new_node t next node at idx */
-	}
+	curr_node->next = new_node;
+	curr_node->next->prev = new_node;	/* Link new_node t next node at idx */
 
 	return (new_node);
 }
