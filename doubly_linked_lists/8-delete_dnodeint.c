@@ -13,7 +13,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	dlistint_t *curr, *next_curr, *prev_curr;
 	unsigned int cursor = 0;
 
-	if (*head == NULL)	/* If list is empty */
+	if (*head == NULL || (int)index < 0)	/* If list is empty */
 		return (-1);
 	curr = *head;	/* Copy head's address */
 	if (curr->next == NULL)	/* If 1 element in the list */
