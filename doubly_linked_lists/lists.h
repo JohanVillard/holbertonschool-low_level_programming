@@ -4,6 +4,7 @@
 /* ----------------------LIBRARY--------------------- */
 #include <stdio.h>
 #include <stdlib.h>
+#include <CUnit/Basic.h>
 
 /* ---------------------STRUCTURE-------------------- */
 /**
