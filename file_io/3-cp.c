@@ -25,14 +25,9 @@ int main(int argc, char **argv)
 	if (argv[1] == NULL || argv[2] == NULL)
 		return (-1);
 
-	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
-	if (buffer == NULL)	/* Malloc error handling */
-		return (-1);
-
 	file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
 	if (file_from == -1)
 	{
-		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
@@ -43,10 +38,14 @@ int main(int argc, char **argv)
 	if (file_to == -1)
 	{
 		close(file_from);
-		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
+
+	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
+	if (buffer == NULL)	/* Malloc error handling */
+		return (-1);
+
 	/* file_from is stored into the buffer */
 	/* Manage the case if file_from is greater than buffer */
 	while ((read_bytes = read(file_from, buffer, 1024)) > 0)
