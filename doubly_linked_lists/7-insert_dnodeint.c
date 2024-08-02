@@ -28,9 +28,6 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	if (curr_node == NULL)	/* idx does not exist */
 		return (NULL);
 
-	if (curr_node->next == NULL && idx > cursor + 1) /* idx is out of bound */
-		return (NULL);
-
 	if (curr_node->next == NULL)	/* If idx is on last node */
 		return (add_dnodeint_end(h, n)); /* Create a node at the end */
 
@@ -39,10 +36,13 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		return (NULL);
 
 	new_node->n = n;	/* Attribute value of n */
-	new_node->prev = curr_node;	/* Put new_node after the node curr_node at idx */
 	new_node->next = curr_node->next;	/* Link new_node t next node at idx */
-	curr_node->next = new_node;
-	curr_node->next->prev = new_node;	/* Link new_node t next node at idx */
+	new_node->prev = curr_node;	/* Put new_node after the node curr_node at idx */
 
+	if (curr_node->next != NULL)	/*  */
+	{
+		curr_node->next->prev = new_node;	/* Link new_node t next node at idx */
+	}
+	curr_node->next = new_node;
 	return (new_node);
 }
