@@ -20,5 +20,7 @@ int set_bit(unsigned long int *n, unsigned int index);
 int clear_bit(unsigned long int *n, unsigned int index);
 /* P2T5 */
 unsigned int flip_bits(unsigned long int n, unsigned long int m);
+/* P2T6 */
+int get_endianness(void);
 
 #endif /* MAIN_H */
