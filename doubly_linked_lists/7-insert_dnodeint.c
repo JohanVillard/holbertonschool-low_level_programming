@@ -25,7 +25,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 		cursor++;
 	}
 	/* idx does not exist || idx is out of bound */
-	if (curr_node == NULL || idx - 1 > cursor)
+	if (curr_node == NULL || idx > cursor + 1)
 		return (NULL);
 
 	if (curr_node->next == NULL)	/* If idx is on last node */
