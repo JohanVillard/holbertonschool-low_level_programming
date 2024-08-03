@@ -73,13 +73,6 @@ int main(int argc, char **argv)
 			exit(99);
 		}
 	}
-	if (read_bytes == -1)
-	{
-		close_all(file_from, file_to);
-		free(buffer);
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
 	write_bytes = 0; /* Everything is already written */
 	close_all(file_from, file_to);	/* Close all files and check if no error */
 	free(buffer);
