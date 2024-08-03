@@ -58,7 +58,7 @@ void print_entry_point(unsigned char *header)
 	int total_bytes_address = 0, max_offset_entry_point = 0, i = 0, j = 0;
 	int entry_point[8] = {0}, flag = 0;
 
-	printf("  %-34s%s", "Entry point address:", "0x");
+	printf("  %-35s%s", "Entry point address:", "0x");
 	if (header[EI_CLASS] == ELFCLASS32)	/* 32 bit format */
 	{
 		total_bytes_address = 4;	/* Set 32 bit variables */
@@ -118,7 +118,7 @@ void print_elf_file_type(unsigned char *header)
 	while (elf_type_sheet[i].type != NULL)
 	{
 		if (header[16] == elf_type_sheet[i].value)
-			printf("  %-34s%s\n", "Type:", elf_type_sheet[i].type);
+			printf("  %-35s%s\n", "Type:", elf_type_sheet[i].type);
 		i++;
 	}
 }
@@ -157,11 +157,11 @@ void print_abi(unsigned char *header)
 	while (abi_sheet[i].abi != NULL)
 	{
 		if (header[EI_OSABI] == abi_sheet[i].value)
-			printf("  %-34s%s\n", "OS/ABI:", abi_sheet[i].abi);
+			printf("  %-35s%s\n", "OS/ABI:", abi_sheet[i].abi);
 		i++;
 	}
 
-	printf("  %-34s%d\n", "ABI Version:", header[EI_ABIVERSION]);
+	printf("  %-35s%d\n", "ABI Version:", header[EI_ABIVERSION]);
 }
 
 /**
@@ -172,7 +172,7 @@ void print_abi(unsigned char *header)
  */
 void print_bit_format(unsigned char *header)
 {
-	printf("  %-34s", "Class:");
+	printf("  %-35s", "Class:");
 	if (header[EI_CLASS] == ELFCLASS64)	/* 32 or 64 bit format */
 		printf("ELF64\n");
 	else
@@ -188,9 +188,9 @@ void print_bit_format(unsigned char *header)
 void print_version(unsigned char *header)
 {
 	if (header[EI_VERSION] == EV_CURRENT)	/* 99,99% of time it is set to 1 */
-		printf("  %-34s%s\n", "Version:", "1 (current)");
+		printf("  %-35s%s\n", "Version:", "1 (current)");
 	else
-		printf("  %-34s%s\n", "Version:", "0 (invalid)");
+		printf("  %-35s%s\n", "Version:", "0 (invalid)");
 }
 
 /**
@@ -201,7 +201,7 @@ void print_version(unsigned char *header)
  */
 void print_endianness(unsigned char *header)
 {
-	printf("  %-34s", "Data:");
+	printf("  %-35s", "Data:");
 	/* 2's complement: Notation to represent signed integers */
 	/* Endianness */
 	if (header[EI_DATA] == ELFDATA2MSB)
@@ -239,7 +239,7 @@ void print_magic(unsigned char *header, char *arg)
 	for (i = 0; i < 16; i++)
 	{
 		if (i == 0)
-			printf("%4.2x", header[i]);
+			printf("%5.2x", header[i]);
 		else if (i == 15)
 		{
 			printf("%3.2x", header[i]);
