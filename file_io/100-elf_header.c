@@ -203,9 +203,9 @@ void print_endianness(unsigned char *header)
 	/* 2's complement: Notation to represent signed integers */
 	/* Endianness */
 	if (header[EI_DATA] == ELFDATA2MSB)
-		printf("  Data:				     %-30s", "2's complement, big endian\n");
+		printf("  Data:				     %-29s", "2's complement, big endian\n");
 	else
-		printf("  Data:				     %-30s", "2's complement, little endian\n");
+		printf("  Data:				     %-29s", "2's complement, little endian\n");
 }
 
 /**
@@ -235,7 +235,14 @@ void print_magic(unsigned char *header, char *arg)
 	printf("  Magic:   ");
 
 	for (i = 0; i < 16; i++)
+	{
+		if (i == 15)
+		{
+			printf("%02x", header[i]);
+			break;
+		}
 		printf("%02x ", header[i]);
+	}
 
 	printf("\n");
 }
