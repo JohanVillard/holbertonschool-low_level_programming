@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 		{
 			close_all(file_from, file_to);
 			free(buffer);
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
 	}
@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 	{
 		close_all(file_from, file_to);
 		free(buffer);
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
 		exit(98);
 	}
 	write_bytes = 0; /* Everything is already written */
