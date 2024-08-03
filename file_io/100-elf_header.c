@@ -111,7 +111,7 @@ int main(int argc, char **argv)
 	printf(" Entry point address:		     0x");
 
 
-	printf("%x", header[18]);
+	printf("%x", header[27]);
 
 
 	printf("\n");
