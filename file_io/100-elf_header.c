@@ -58,7 +58,7 @@ void print_entry_point(unsigned char *header)
 	int total_bytes_address = 0, max_offset_entry_point = 0, i = 0, j = 0;
 	int entry_point[8] = {0}, flag = 0;
 
-	printf("  %-35s0x", "Entry point address:");
+	printf("%22s%17s", "Entry point address:", "0x");
 	if (header[EI_CLASS] == ELFCLASS32)	/* 32 bit format */
 	{
 		total_bytes_address = 4;	/* Set 32 bit variables */
@@ -84,7 +84,7 @@ void print_entry_point(unsigned char *header)
 	{
 		if (entry_point[i] != 0 && flag == 0)
 		{
-			printf("%x", entry_point[i]);
+			printf("%2.x", entry_point[i]);
 			flag = 1;
 		}
 		else if (flag == 1)
@@ -118,7 +118,7 @@ void print_elf_file_type(unsigned char *header)
 	while (elf_type_sheet[i].type != NULL)
 	{
 		if (header[16] == elf_type_sheet[i].value)
-			printf("  %-33s  %-33s\n", "Type:", elf_type_sheet[i].type);
+			printf("%7s%49s\n", "Type:", elf_type_sheet[i].type);
 		i++;
 	}
 }
@@ -157,11 +157,11 @@ void print_abi(unsigned char *header)
 	while (abi_sheet[i].abi != NULL)
 	{
 		if (header[EI_OSABI] == abi_sheet[i].value)
-			printf("  %-35s%-32s\n", "OS/ABI:", abi_sheet[i].abi);
+			printf("%9s%43s\n", "OS/ABI:", abi_sheet[i].abi);
 		i++;
 	}
 
-	printf("  %-35s%-32d\n", "ABI Version:", header[EI_ABIVERSION]);
+	printf("%14s%24d\n", "ABI Version:", header[EI_ABIVERSION]);
 }
 
 /**
@@ -173,9 +173,9 @@ void print_abi(unsigned char *header)
 void print_bit_format(unsigned char *header)
 {
 	if (header[EI_CLASS] == ELFCLASS64)	/* 32 or 64 bit format */
-		printf("  Class:			     ELF64\n");
+		printf("%8s%34s\n", "Class:", "ELF64");
 	else
-		printf("  Class:			     ELF32\n");
+		printf("%8s%34s\n", "Class:", "ELF32");
 }
 
 /**
@@ -187,9 +187,9 @@ void print_bit_format(unsigned char *header)
 void print_version(unsigned char *header)
 {
 	if (header[EI_VERSION] == EV_CURRENT)	/* 99,99% of time it is set to 1 */
-		printf("  Version:			     1 (current)\n");
+		printf("%10s%38s\n", "Version:", "1 (current)");
 	else
-		printf("  Version:			     0 (invalid)\n");
+		printf("%10s%38s\n", "Version:", "0 (invalid)");
 }
 
 /**
@@ -203,9 +203,9 @@ void print_endianness(unsigned char *header)
 	/* 2's complement: Notation to represent signed integers */
 	/* Endianness */
 	if (header[EI_DATA] == ELFDATA2MSB)
-		printf("  Data:				     %-29s", "2's complement, big endian\n");
+		printf("%7s%59s\n", "Data:", "2's complement, big endian");
 	else
-		printf("  Data:				     %-29s", "2's complement, little endian\n");
+		printf("%7s%59s\n", "Data:", "2's complement, little endian");
 }
 
 /**
@@ -232,16 +232,19 @@ void print_magic(unsigned char *header, char *arg)
 
 	printf("ELF Header:\n");
 
-	printf("  Magic:   ");
+	printf("%8s", "Magic:");
 
 	for (i = 0; i < 16; i++)
 	{
-		if (i == 15)
+		if (i == 0)
+			printf("%31.2x", header[i]);
+		else if (i == 15)
 		{
-			printf("%02x", header[i]);
+			printf("%3.2x", header[i]);
 			break;
 		}
-		printf("%02x ", header[i]);
+		else
+			printf("%3.2x", header[i]);
 	}
 
 	printf("\n");
