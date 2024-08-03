@@ -11,7 +11,8 @@
 		"algorithm": "c",
 		"unistd.h": "c",
 		"fcntl.h": "c",
-		"*.tcc": "c"
+		"*.tcc": "c",
+		"stat.h": "c"
 	},
 	"python.experiments.optInto": [
 		
