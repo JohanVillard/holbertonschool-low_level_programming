@@ -150,6 +150,7 @@ void print_abi(unsigned char *header)
 		{0x10, "FenixOS"},
 		{0x11, "Nuxi CloudABI"},
 		{0x12, "Stratus Technologies OpenVOS"},
+		{0x53, "<unknown: 53>"},
 		{-1, NULL},
 	};
 	int i = 0;
