@@ -102,7 +102,7 @@ void print_entry_point(unsigned char *header)
 void print_elf_file_type(unsigned char *header)
 {
 	elf_type_t elf_type_sheet[] = {
-		{0x00, "NONE (Unknown)"},
+		{0x00, "EXEC (Executable file)"},
 		{0x01, "REL (Relocatable file)"},
 		{0x02, "EXEC (Executable file)"},
 		{0x03, "DYN (Shared object)"},
