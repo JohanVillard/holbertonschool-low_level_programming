@@ -35,7 +35,6 @@ typedef struct elf_type
 	char *description;	/* Corresponding description */
 } elf_type_t;
 
-
 /* -----------------FUNCTIONS---------------- */
 int _putchar(char c);
 /* P3T0 */

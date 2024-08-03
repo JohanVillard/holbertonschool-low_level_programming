@@ -1,5 +1,12 @@
 #include "main.h"
 
+/**
+ * main - implement readelf function 
+ * @argc: store the number of argument
+ * @argv: array of pointer pointing strings storing argument
+ * 
+ * Return: Always nothing 
+ */
 int main(int argc, char **argv)
 {
 
@@ -68,9 +75,7 @@ int main(int argc, char **argv)
 	printf("  Magic:   ");
 
 	for (i = 0; i < 16; i++)
-	{
 		printf("%02x ", header[i]);
-	}
 
 	printf("\n");
 
@@ -148,3 +153,5 @@ int main(int argc, char **argv)
 
 	return (0);
 }
+
+
