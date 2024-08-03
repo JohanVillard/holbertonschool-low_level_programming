@@ -27,13 +27,22 @@ int main(int argc, char **argv)
 
 	file_from = open(argv[1], O_RDONLY);
 	if (file_from == -1)	/* Open the file at argv[1]-Read Only */
+	{
 		close_all(file_from, file_to);	/* Open error handling */
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
+		exit(98);
+	}
 
 	/* Create a file, trunc if exists, if not create it RW for user */
 	file_to = open(argv[2], O_RDWR | O_TRUNC | O_CREAT, S_IRUSR
 						| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file_to == -1)
+	{
 		close_all(file_to, file_from);	/* Open error handling */
+		dprintf(STDERR_FILENO, "Error: Can't write from file %s\n", argv[1]);
+		exit(99);
+
+	}
 
 	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
 	if (buffer == NULL)	/* Malloc error handling */
