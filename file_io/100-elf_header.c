@@ -135,9 +135,9 @@ int main(int argc, char **argv)
 
 	for (i = 0; i < total_bytes_address; i++)	/* Print entry point */
 	{
-		if (entry_point[i] != 0)
+		if (entry_point[i] != 0 && flag == 0)
 		{
-			printf("%02x", entry_point[i]);
+			printf("%x", entry_point[i]);
 			flag = 1;
 		}
 		else if (flag == 1)
