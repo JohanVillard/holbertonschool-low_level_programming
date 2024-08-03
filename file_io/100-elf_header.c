@@ -115,7 +115,7 @@ int main(int argc, char **argv)
 		address_bound = 27;
 	for (i = 24; i <= address_bound; i++)
 	{
-		printf("%d", header[i]);
+		printf("%x", header[i]);
 	}
 
 	printf("\n");
