@@ -6,7 +6,7 @@ int main(int argc, char **argv)
 	abi_list_t abi_sheet[] = {
 		{0x00, "UNIX - System V"},
 		{0x01, "HP - UX"},
-		{0x02, "NetBSD"},
+		{0x02, "UNIX - NetBSD"},
 		{0x03, "Linux"},
 		{0x04, "GNU Hurd"},
 		{0x06, "UNIX - Solaris"},
