@@ -157,11 +157,11 @@ void print_abi(unsigned char *header)
 	while (abi_sheet[i].abi != NULL)
 	{
 		if (header[EI_OSABI] == abi_sheet[i].value)
-			printf("  OS/ABI:			     %s\n", abi_sheet[i].abi);
+			printf("  OS/ABI:			     %-33s\n", abi_sheet[i].abi);
 		i++;
 	}
 
-	printf("  ABI Version:			     %d\n", header[EI_ABIVERSION]);
+	printf("  ABI Version:			     %-33d\n", header[EI_ABIVERSION]);
 }
 
 /**
