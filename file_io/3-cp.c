@@ -1,6 +1,6 @@
 #include "main.h"
 
-void close_all(int file1, int file2);
+void close_all(int file_from, int file_to);
 
 /**
  * main - copies the content of a file to another file.
@@ -15,8 +15,8 @@ int main(int argc, char **argv)
 	ssize_t read_bytes = 0, write_bytes = 0;
 	char *buffer;
 
-
-	if (argc != 3)	/* argv[1]: 1st file ----- argv[2]: 2nd file */
+	/* argv[1]: 1st file ----- argv[2]: 2nd file */
+	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
@@ -25,10 +25,10 @@ int main(int argc, char **argv)
 	if (argv[1] == NULL || argv[2] == NULL)
 		return (-1);
 
-	file_from = open(argv[1], O_RDONLY);
-	if (file_from == -1)	/* Open the file at argv[1]-Read Only */
+	file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
+	if (file_from == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 
@@ -38,14 +38,8 @@ int main(int argc, char **argv)
 	if (file_to == -1)
 	{
 		close(file_from);
-		if (close(file_from == -1))	/* If closing fails */
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %u\n", file_from);
-			exit(100);
-		}
-		dprintf(STDERR_FILENO, "Error: Can't write from file %s\n", argv[1]);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
-
 	}
 
 	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
@@ -64,39 +58,59 @@ int main(int argc, char **argv)
 			exit(98);
 		}
 
-		write_bytes = write(file_to, buffer, read_bytes);	/* Write from the */
+		/* Write from the buffer to the file */
+		write_bytes = write(file_to, buffer, read_bytes);
 		if (write_bytes == -1)
 		{
 			close_all(file_from, file_to);
 			free(buffer);
-			dprintf(STDERR_FILENO, "Error: Can't write from file %s\n", argv[2]);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
 	}
+
+	if (read_bytes == -1)
+	{
+		close_all(file_from, file_to);
+		free(buffer);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
 	write_bytes = 0; /* Everything is already written */
-	close_all(file_from, file_to);	/* Close all files and check if no error */
+	/* Close all files and check if no error */
+	close_all(file_from, file_to);
 	free(buffer);
 	buffer = NULL;	/* Eraser buffer */
 	return (0);
 }
 
 /**
- * close_all - close and check all files
- * @file1: to close
- * @file2: to close
+ * close_all - close all files
+ * @file_from: to close
+ * @file_to: to close
  *
  * Return: Always nothing
  */
-void close_all(int file1, int file2)
+void close_all(int file_from, int file_to)
 {
-	if (close(file1 == -1))	/* If closing fails */
+	ssize_t close_byte = 0;
+
+	close_byte = close(file_from);	/* Close the file descriptor */
+	if (close_byte == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %u\n", file1);
+		close_byte = close(file_to);	/* Close the file descriptor */
+		if (close_byte == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+			exit(100);
+		}
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
 		exit(100);
 	}
-	if (close(file2 == -1))	/* If closing fails */
+	close_byte = close(file_to);	/* Close the file descriptor */
+	if (close_byte == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %u\n", file2);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
 		exit(100);
 	}
 }
