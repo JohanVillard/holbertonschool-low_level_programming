@@ -59,7 +59,7 @@ void print_entry_point(unsigned char *header)
 	int entry_point[8] = {0}, flag = 0;
 
 	printf("  Entry point address:		     0x");
-	if (header[4] == 1)	/* 32 bit format */
+	if (header[EI_CLASS] == ELFCLASS32)	/* 32 bit format */
 	{
 		total_bytes_address = 4;	/* Set 32 bit variables */
 		max_offset_entry_point = 27;
