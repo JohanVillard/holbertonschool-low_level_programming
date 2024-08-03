@@ -111,7 +111,10 @@ int main(int argc, char **argv)
 	printf(" Entry point address:		     0x");
 
 
-	printf("%x", header[27]);
+	printf("%x", header[24]);
+	printf("%x", header[25]);
+	printf("%x", header[26]);
+	printf("%x", header[24]);
 
 
 	printf("\n");
