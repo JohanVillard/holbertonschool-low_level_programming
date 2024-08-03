@@ -30,21 +30,15 @@ int main(int argc, char **argv)
 	o_fd = open(argv[1], O_RDONLY);	/* Open the second argument */
 	fd_error_handling(o_fd, argv[1]);
 
-	r_fd = read(o_fd, header, 64);	/* Read the header of ELF file: 16 bytes */
+	r_fd = read(o_fd, header, 64);	/* Read the header of ELF file->64 bytes max */
 	fd_error_handling(r_fd, argv[1]);
 
 	print_magic(header, argv[1]);
-
 	print_bit_format(header);
-
 	print_endianness(header);
-
 	print_version(header);
-
 	print_abi(header);
-
 	print_elf_file_type(header);
-
 	print_entry_point(header);
 
 	c_fd = close(o_fd);
@@ -62,7 +56,7 @@ int main(int argc, char **argv)
 void print_entry_point(unsigned char *header)
 {
 	int total_bytes_address = 0, max_offset_entry_point = 0, i = 0, j = 0;
-	int entry_point[8], flag = 0;
+	int entry_point[8] = {0}, flag = 0;
 
 	printf("  Entry point address:		     0x");
 	if (header[4] == 1)	/* 32 bit format */
