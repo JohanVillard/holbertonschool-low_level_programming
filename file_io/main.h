@@ -33,7 +33,6 @@ typedef struct elf_type
 {
 	int value;	/* Set in ELF header */
 	char *type;	/* Corresponding type */
-	char *description;	/* Corresponding description */
 } elf_type_t;
 
 /* -----------------FUNCTIONS---------------- */

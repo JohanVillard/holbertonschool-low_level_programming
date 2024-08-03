@@ -102,24 +102,23 @@ void print_entry_point(unsigned char *header)
 void print_elf_file_type(unsigned char *header)
 {
 	elf_type_t elf_type_sheet[] = {
-		{0x00, "NONE", "(Unknown)"},
-		{0x01, "REL", "(Relocatable file)"},
-		{0x02, "EXEC", "(Executable file)"},
-		{0x03, "DYN", "(Shared object)"},
-		{0x04, "CORE", "(Core file)"},
-		{0xFE00, "LOOS", "(Reserved inclusive range)"},
-		{0xFEFF, "HIOS", "(Reserved inclusive range)"},
-		{0xFF00, "LOPROC", "(Reserved inclusive range)"},
-		{0xFFFF, "HIPROC", "(Reserved inclusive range)"},
-		{-1, NULL, NULL},
+		{0x00, "NONE (Unknown)"},
+		{0x01, "REL (Relocatable file)"},
+		{0x02, "EXEC (Executable file)"},
+		{0x03, "DYN (Shared object)"},
+		{0x04, "CORE (Core file)"},
+		{0xFE00, "LOOS (Reserved inclusive range)"},
+		{0xFEFF, "HIOS (Reserved inclusive range)"},
+		{0xFF00, "LOPROC (Reserved inclusive range)"},
+		{0xFFFF, "HIPROC (Reserved inclusive range)"},
+		{-1, NULL},
 	};
 	int i = 0;
 
 	while (elf_type_sheet[i].type != NULL)
 	{
 		if (header[16] == elf_type_sheet[i].value)
-			printf("  Type:				     %-33s %s\n",
-			elf_type_sheet[i].type, elf_type_sheet[i].description);
+			printf("  Type:				     %-33s\n", elf_type_sheet[i].type);
 		i++;
 	}
 }
