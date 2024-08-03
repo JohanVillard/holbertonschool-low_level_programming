@@ -84,7 +84,7 @@ void print_entry_point(unsigned char *header)
 	{
 		if (entry_point[i] != 0 && flag == 0)
 		{
-			printf("%2.x", entry_point[i]);
+			printf("%.x", entry_point[i]);
 			flag = 1;
 		}
 		else if (flag == 1)
