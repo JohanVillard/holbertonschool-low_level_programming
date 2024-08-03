@@ -1,8 +1,6 @@
 #include "main.h"
 
 void close_all(int file1, int file2);
-void w_r_error_handling(char *buffer, char *argv,
-						int file_from, int file_to);
 
 /**
  * main - copies the content of a file to another file.
@@ -46,14 +44,29 @@ int main(int argc, char **argv)
 	while ((read_bytes = read(file_from, buffer, 1024)) > 0)
 	{
 		if (read_bytes == -1)
-			w_r_error_handling(buffer, argv[1], file_from, file_to);
+		{
+			close_all(file_from, file_to);
+			free(buffer);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+			exit(98);
+		}
 
 		write_bytes = write(file_to, buffer, read_bytes);	/* Write from the */
 		if (write_bytes == -1)
-			w_r_error_handling(buffer, argv[2], file_from, file_to);
+		{
+			close_all(file_from, file_to);
+			free(buffer);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+			exit(98);
+		}
 	}
 	if (read_bytes == -1)
-		w_r_error_handling(buffer, argv[1], file_from, file_to);
+	{
+		close_all(file_from, file_to);
+		free(buffer);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+		exit(98);
+	}
 	write_bytes = 0; /* Everything is already written */
 	close_all(file_from, file_to);	/* Close all files and check if no error */
 	free(buffer);
@@ -80,21 +93,4 @@ void close_all(int file1, int file2)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %u\n", file2);
 		exit(100);
 	}
-}
-
-/**
- * w_r_error_handling - handle error
- * if check fails after a call of write and read
- * @buffer: to free
- * @argv: where the error comes from
- * @file_from: to close
- * @file_to: to close
- */
-void w_r_error_handling(char *buffer, char *argv,
-						int file_from, int file_to)
-{
-		close_all(file_from, file_to);
-		free(buffer);
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
-		exit(98);
 }
