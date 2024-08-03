@@ -118,7 +118,7 @@ void print_elf_file_type(unsigned char *header)
 	while (elf_type_sheet[i].type != NULL)
 	{
 		if (header[16] == elf_type_sheet[i].value)
-			printf("  Type:				     %s %s\n",
+			printf("  Type:				     %-33s %s\n",
 			elf_type_sheet[i].type, elf_type_sheet[i].description);
 		i++;
 	}
