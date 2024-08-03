@@ -58,7 +58,7 @@ void print_entry_point(unsigned char *header)
 	int total_bytes_address = 0, max_offset_entry_point = 0, i = 0, j = 0;
 	int entry_point[8] = {0}, flag = 0;
 
-	printf("  %-33s  0x", "Entry point address:");
+	printf("  %-35s0x", "Entry point address:");
 	if (header[EI_CLASS] == ELFCLASS32)	/* 32 bit format */
 	{
 		total_bytes_address = 4;	/* Set 32 bit variables */
@@ -157,11 +157,11 @@ void print_abi(unsigned char *header)
 	while (abi_sheet[i].abi != NULL)
 	{
 		if (header[EI_OSABI] == abi_sheet[i].value)
-			printf("  %-33s  %-33s\n", "OS/ABI:", abi_sheet[i].abi);
+			printf("  %-35s%-35s\n", "OS/ABI:", abi_sheet[i].abi);
 		i++;
 	}
 
-	printf("  %-33s  %-33d\n", "ABI Version:", header[EI_ABIVERSION]);
+	printf("  %-35s%-35d\n", "ABI Version:", header[EI_ABIVERSION]);
 }
 
 /**
