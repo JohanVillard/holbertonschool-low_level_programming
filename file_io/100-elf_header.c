@@ -19,7 +19,7 @@ void fd_error_handling(int fd, char *arg);
 int main(int argc, char **argv)
 {
 	int o_fd = 0, r_fd = 0, c_fd;
-	unsigned char header[51];
+	unsigned char header[64];
 
 	if (argc != 2)	/* Argument's number check */
 	{
@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	o_fd = open(argv[1], O_RDONLY);	/* Open the second argument */
 	fd_error_handling(o_fd, argv[1]);
 
-	r_fd = read(o_fd, header, 51);	/* Read the header of ELF file: 16 bytes */
+	r_fd = read(o_fd, header, 64);	/* Read the header of ELF file: 16 bytes */
 	fd_error_handling(r_fd, argv[1]);
 
 	print_magic(header, argv[1]);
