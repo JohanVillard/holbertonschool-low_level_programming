@@ -75,42 +75,42 @@ int main(int argc, char **argv)
 	printf("\n");
 
 	if (header[4] == 2)	/* 32 or 64 bit format */
-		printf("  Class:			      ELF64\n");
+		printf("  Class:			     ELF64\n");
 	else
-		printf("  Class:			      ELF32\n");
+		printf("  Class:			     ELF32\n");
 
 	/* 2's complement: Notation to represent signed integers */
 	/* Endianness */
 	if (header[5] == 2)
-		printf("  Data:				      2's complement, big endian\n");
+		printf("  Data:				     2's complement, big endian\n");
 	else
-		printf("  Data:				      2's complement, little endian\n");
+		printf("  Data:				     2's complement, little endian\n");
 
 	if (header[6] == 1)	/* 99,99% of time it is set to 1 */
-		printf("  Version:			      1 (current)\n");
+		printf("  Version:			     1 (current)\n");
 	else
-		printf("  Version:			      0 (invalid)\n");
+		printf("  Version:			     0 (invalid)\n");
 
 
 	i = 0; /* Reset incrementation */
 	while (abi_sheet[i].abi != NULL)
 	{
 		if (header[7] == abi_sheet[i].value)
-			printf("  OS/ABI:			      %s\n", abi_sheet[i].abi);
+			printf("  OS/ABI:			     %s\n", abi_sheet[i].abi);
 		i++;
 	}
 
-	printf("  ABI Version:			      %d\n", header[8]);
+	printf("  ABI Version:			     %d\n", header[8]);
 
 	i = 0; /* Reset incrementation */
 	while (elf_type_sheet[i].type != NULL)
 	{
 		if (header[16] == elf_type_sheet[i].value)
-			printf("  Type:				      %s %s\n", elf_type_sheet[i].type, elf_type_sheet[i].description);
+			printf("  Type:				     %s %s\n", elf_type_sheet[i].type, elf_type_sheet[i].description);
 		i++;
 	}
 
-	printf("  Entry point address:		      0x");
+	printf("  Entry point address:		     0x");
 
 	if (header[4] == 1)	/* 32 bit format */
 	{
