@@ -72,12 +72,12 @@ void print_entry_point(unsigned char *header)
 	if (header[EI_DATA] == ELFDATA2LSB)	/* Little endian */
 	{
 		for (i = max_offset_entry_point; i >= 24; i--, j++)
-			entry_point[j] = header[i];
+			entry_point[j] = header[i];	/* Right to left */
 	}
 	else /* Big endian */
 	{
 		for (i = 24; i <= max_offset_entry_point; i++, j++)
-			entry_point[j] = header[i];
+			entry_point[j] = header[i];	/* Left to right */
 	}
 
 	for (i = 0; i < total_bytes_address; i++)	/* Print entry point */
@@ -204,9 +204,9 @@ void print_endianness(unsigned char *header)
 	/* 2's complement: Notation to represent signed integers */
 	/* Endianness */
 	if (header[EI_DATA] == ELFDATA2MSB)
-		printf("  Data:				     2's complement, big endian\n");
+		printf("  Data:				     %-30s", "2's complement, big endian\n");
 	else
-		printf("  Data:				     2's complement, little endian\n");
+		printf("  Data:				     %-30s", "2's complement, little endian\n");
 }
 
 /**
@@ -239,7 +239,6 @@ void print_magic(unsigned char *header, char *arg)
 		printf("%02x ", header[i]);
 
 	printf("\n");
-
 }
 
 /**
