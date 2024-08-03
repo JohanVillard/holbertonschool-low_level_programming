@@ -17,19 +17,28 @@ void print_magic(unsigned char *header, char *arg);
  */
 int main(int argc, char **argv)
 {
-	int o_fd = 0, r_fd = 0;
+	int o_fd = 0, r_fd = 0, c_fd;
 	unsigned char header[51];
 
 	if (argc != 2)	/* Argument's number check */
-		return (-1);	/* Message to put */
+	{
+		dprintf(STDERR_FILENO, "Usage: elf_header elf_filename\n");
+		exit(98);
+	}
 
 	o_fd = open(argv[1], O_RDONLY);	/* Open the second argument */
 	if (o_fd == -1)
-		return (-1);	/* Message to put */
+	{
+		dprintf(STDERR_FILENO, "Error: Can't open %s\n", argv[1]);
+		exit(98);
+	}
 
 	r_fd = read(o_fd, header, 51);	/* Read the header of ELF file: 16 bytes */
 	if (r_fd == -1)
-		return (-1);	/* Message to put */
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read %s\n", argv[1]);
+		exit(98);
+	}
 
 	print_magic(header, argv[1]);
 
@@ -44,6 +53,13 @@ int main(int argc, char **argv)
 	print_elf_file_type(header);
 
 	print_entry_point(header);
+
+	c_fd = close(o_fd);
+	if (c_fd == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close %s\n", argv[1]);
+		exit(98);
+	}
 
 	return (0);
 }
@@ -240,4 +256,6 @@ void print_magic(unsigned char *header, char *arg)
 		printf("%02x ", header[i]);
 
 	printf("\n");
+
+
 }
