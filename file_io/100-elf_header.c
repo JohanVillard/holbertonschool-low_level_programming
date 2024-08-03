@@ -163,12 +163,12 @@ void print_abi(unsigned char *header)
 
 	while (abi_sheet[i].abi != NULL)
 	{
-		if (header[7] == abi_sheet[i].value)
+		if (header[EI_OSABI] == abi_sheet[i].value)
 			printf("  OS/ABI:			     %s\n", abi_sheet[i].abi);
 		i++;
 	}
 
-	printf("  ABI Version:			     %d\n", header[8]);
+	printf("  ABI Version:			     %d\n", header[EI_ABIVERSION]);
 }
 
 /**
@@ -179,7 +179,7 @@ void print_abi(unsigned char *header)
  */
 void print_bit_format(unsigned char *header)
 {
-	if (header[4] == 2)	/* 32 or 64 bit format */
+	if (header[EI_CLASS] == ELFCLASS64)	/* 32 or 64 bit format */
 		printf("  Class:			     ELF64\n");
 	else
 		printf("  Class:			     ELF32\n");
@@ -193,7 +193,7 @@ void print_bit_format(unsigned char *header)
  */
 void print_version(unsigned char *header)
 {
-	if (header[6] == 1)	/* 99,99% of time it is set to 1 */
+	if (header[EI_VERSION] == EV_CURRENT)	/* 99,99% of time it is set to 1 */
 		printf("  Version:			     1 (current)\n");
 	else
 		printf("  Version:			     0 (invalid)\n");
@@ -209,7 +209,7 @@ void print_endianness(unsigned char *header)
 {
 	/* 2's complement: Notation to represent signed integers */
 	/* Endianness */
-	if (header[5] == 2)
+	if (header[EI_DATA] == ELFDATA2MSB)
 		printf("  Data:				     2's complement, big endian\n");
 	else
 		printf("  Data:				     2's complement, little endian\n");
@@ -245,7 +245,6 @@ void print_magic(unsigned char *header, char *arg)
 		printf("%02x ", header[i]);
 
 	printf("\n");
-
 
 }
 
