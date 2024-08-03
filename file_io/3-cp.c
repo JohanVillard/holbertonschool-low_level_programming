@@ -85,7 +85,7 @@ int main(int argc, char **argv)
 }
 
 /**
- * close_all - close all files
+ * close_all - close and check all files
  * @file_from: to close
  * @file_to: to close
  *
@@ -93,24 +93,14 @@ int main(int argc, char **argv)
  */
 void close_all(int file_from, int file_to)
 {
-	ssize_t close_byte = 0;
-
-	close_byte = close(file_from);	/* Close the file descriptor */
-	if (close_byte == -1)
+	if (close(file_from == -1))	/* If closing fails */
 	{
-		close_byte = close(file_to);	/* Close the file descriptor */
-		if (close_byte == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
-			exit(100);
-		}
-		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", file_from);
 		exit(100);
 	}
-	close_byte = close(file_to);	/* Close the file descriptor */
-	if (close_byte == -1)
+	if (close(file_to == -1))	/* If closing fails */
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", file_to);
 		exit(100);
 	}
 }
