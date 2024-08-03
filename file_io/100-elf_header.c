@@ -69,7 +69,7 @@ void print_entry_point(unsigned char *header)
 		total_bytes_address = 8;	/* Set 32 bit variables */
 		max_offset_entry_point = 31;
 	}
-	if (header[5] == 1)	/* Little endian */
+	if (header[EI_DATA] == ELFDATA2LSB)	/* Little endian */
 	{
 		for (i = max_offset_entry_point; i >= 24; i--, j++)
 			entry_point[j] = header[i];
