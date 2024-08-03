@@ -1,11 +1,13 @@
 #include "main.h"
 
+void print_entry_point(unsigned char *header);
+
 /**
- * main - implement readelf function 
+ * main - implement readelf function
  * @argc: store the number of argument
  * @argv: array of pointer pointing strings storing argument
- * 
- * Return: Always nothing 
+ *
+ * Return: Always nothing
  */
 int main(int argc, char **argv)
 {
@@ -44,11 +46,10 @@ int main(int argc, char **argv)
 		{-1, NULL, NULL},
 
 	};
-	int o_fd = 0, r_fd = 0, i = 0, j = 0, flag = 0;
-	int total_bytes_address = 0, max_offset_entry_point = 0;
+	int o_fd = 0, r_fd = 0, i = 0;
 	unsigned char header[51];
 	unsigned char magic_number[4] = {0x7f, 0x45, 0x4c, 0x46};
-	int entry_point[5];
+
 
 	if (argc != 2)	/* Argument's number check */
 		return (-1);	/* Message to put */
@@ -63,10 +64,10 @@ int main(int argc, char **argv)
 
 	for (i = 0; i < 4; i++)	/* ELF file check */
 	{
-		if (header[i] != magic_number[i])
+		if (header[i] != magic_number[i])	/* Message to put */
 		{
-			printf("%s is not an ELF file\n", argv[1]);
-			return (-1);	/* Message to put */
+			dprintf(STDERR_FILENO, "Error: %s is not an ELF file\n", argv[1]);
+			exit(98);
 		}
 	}
 
@@ -115,8 +116,23 @@ int main(int argc, char **argv)
 		i++;
 	}
 
-	printf("  Entry point address:		     0x");
+	print_entry_point(header);
 
+	return (0);
+}
+
+/**
+ * print_entry_point - print tha address of entry point
+ * @header: is the first line of ELF file
+ *
+ * Return: Always nothing
+ */
+void print_entry_point(unsigned char *header)
+{
+	int total_bytes_address = 0, max_offset_entry_point = 0, i = 0, j = 0;
+	int entry_point[8], flag = 0;
+
+	printf("  Entry point address:		     0x");
 	if (header[4] == 1)	/* 32 bit format */
 	{
 		total_bytes_address = 4;	/* Set 32 bit variables */
@@ -148,10 +164,5 @@ int main(int argc, char **argv)
 		else if (flag == 1)
 			printf("%02x", entry_point[i]);
 	}
-
 	printf("\n");
-
-	return (0);
 }
-
-
