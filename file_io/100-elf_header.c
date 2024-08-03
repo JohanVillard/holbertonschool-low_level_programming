@@ -114,7 +114,7 @@ int main(int argc, char **argv)
 	printf("%x", header[24]);
 	printf("%x", header[25]);
 	printf("%x", header[26]);
-	printf("%x", header[24]);
+	printf("%x", header[27]);
 
 
 	printf("\n");
