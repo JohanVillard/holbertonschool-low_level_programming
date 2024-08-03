@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 		{-1, NULL, NULL},
 
 	};
-	int o_fd = 0, r_fd = 0, i = 0, address_bound = 0;	/* File descriptor of Open */
+	int o_fd = 0, r_fd = 0, i = 0;	/* File descriptor of Open */
 	unsigned char header[32];
 	unsigned char magic_number[4] = {0x7f, 0x45, 0x4c, 0x46};
 
@@ -109,14 +109,10 @@ int main(int argc, char **argv)
 	}
 
 	printf(" Entry point address:		     0x");
-	if (header[4] == 2)
-		address_bound = 31;
-	else
-		address_bound = 27;
-	for (i = 24; i <= address_bound; i++)
-	{
-		printf("%x", header[i]);
-	}
+
+
+	printf("%x", header[18]);
+
 
 	printf("\n");
 
