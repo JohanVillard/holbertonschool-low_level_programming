@@ -15,8 +15,8 @@ int main(int argc, char **argv)
 	ssize_t read_bytes = 0, write_bytes = 0;
 	char *buffer;
 
-	/* argv[1]: 1st file ----- argv[2]: 2nd file */
-	if (argc != 3)
+
+	if (argc != 3)	/* argv[1]: 1st file ----- argv[2]: 2nd file */
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 		{
 			close_all(file_from, file_to);
 			free(buffer);
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
 			exit(98);
 		}
 
@@ -56,7 +56,7 @@ int main(int argc, char **argv)
 		{
 			close_all(file_from, file_to);
 			free(buffer);
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[2]);
 			exit(98);
 		}
 	}
@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 	{
 		close_all(file_from, file_to);
 		free(buffer);
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	write_bytes = 0; /* Everything is already written */
