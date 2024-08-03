@@ -37,6 +37,12 @@ int main(int argc, char **argv)
 						| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file_to == -1)
 	{
+		close(file_from);
+		if (close(file_from == -1))	/* If closing fails */
+		{
+			dprintf(STDERR_FILENO, "Error: Can't close fd %u\n", file_from);
+			exit(100);
+		}
 		dprintf(STDERR_FILENO, "Error: Can't write from file %s\n", argv[1]);
 		exit(99);
 
