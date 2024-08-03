@@ -190,7 +190,7 @@ void print_version(unsigned char *header)
 {
 	if (header[EI_VERSION] == EV_CURRENT)	/* 99,99% of time it is set to 1 */
 		printf("  %-35s%s\n", "Version:", "1 (current)");
-	else if (header[EI_VERSION] == 2)	/* 99,99% of time it is set to 1 */
+	else if (EV_CURRENT == 2)	/* 99,99% of time it is set to 1 */
 		printf("  %-35s%s\n", "Version:", "1");
 	else
 		printf("  %-35s%s\n", "Version:", "0 (invalid)");
