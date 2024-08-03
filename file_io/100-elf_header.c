@@ -37,9 +37,11 @@ int main(int argc, char **argv)
 		{-1, NULL, NULL},
 
 	};
-	int o_fd = 0, r_fd = 0, i = 0;	/* File descriptor of Open */
-	unsigned char header[32];
+	int o_fd = 0, r_fd = 0, i = 0, j = 0, flag = 0;
+	int total_bytes_address = 0, max_offset_entry_point = 0;
+	unsigned char header[51];
 	unsigned char magic_number[4] = {0x7f, 0x45, 0x4c, 0x46};
+	int entry_point[5];
 
 	if (argc != 2)	/* Argument's number check */
 		return (-1);	/* Message to put */
@@ -48,7 +50,7 @@ int main(int argc, char **argv)
 	if (o_fd == -1)
 		return (-1);	/* Message to put */
 
-	r_fd = read(o_fd, header, 32);	/* Read the header of ELF file: 16 bytes */
+	r_fd = read(o_fd, header, 51);	/* Read the header of ELF file: 16 bytes */
 	if (r_fd == -1)
 		return (-1);	/* Message to put */
 
@@ -110,11 +112,37 @@ int main(int argc, char **argv)
 
 	printf(" Entry point address:		     0x");
 
+	if (header[4] == 1)	/* 32 bit format */
+	{
+		total_bytes_address = 4;	/* Set 32 bit variables */
+		max_offset_entry_point = 27;
+	}
+	else	/* 64 bit format */
+	{
+		total_bytes_address = 8;	/* Set 32 bit variables */
+		max_offset_entry_point = 31;
+	}
+	if (header[5] == 1)	/* Little endian */
+	{
+		for (i = max_offset_entry_point; i >= 24; i--, j++)
+			entry_point[j] = header[i];
+	}
+	else /* Big endian */
+	{
+		for (i = 24; i <= max_offset_entry_point; i++, j++)
+			entry_point[j] = header[i];
+	}
 
-	printf("%x", header[24]);
-	printf("%x", header[25]);
-	printf("%x", header[26]);
-	printf("%x", header[27]);
+	for (i = 0; i < total_bytes_address; i++)	/* Print entry point */
+	{
+		if (entry_point[i] != 0)
+		{
+			printf("%02x", entry_point[i]);
+			flag = 1;
+		}
+		else if (flag == 1)
+			printf("%02x", entry_point[i]);
+	}
 
 
 	printf("\n");
