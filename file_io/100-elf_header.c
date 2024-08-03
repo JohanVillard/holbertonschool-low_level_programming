@@ -7,6 +7,7 @@ void print_endianness(unsigned char *header);
 void print_bit_format(unsigned char *header);
 void print_version(unsigned char *header);
 void print_magic(unsigned char *header, char *arg);
+void fd_error_handling(int fd, char *arg);
 
 /**
  * main - implement readelf function
@@ -27,18 +28,10 @@ int main(int argc, char **argv)
 	}
 
 	o_fd = open(argv[1], O_RDONLY);	/* Open the second argument */
-	if (o_fd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't open %s\n", argv[1]);
-		exit(98);
-	}
+	fd_error_handling(o_fd, argv[1]);
 
 	r_fd = read(o_fd, header, 51);	/* Read the header of ELF file: 16 bytes */
-	if (r_fd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read %s\n", argv[1]);
-		exit(98);
-	}
+	fd_error_handling(r_fd, argv[1]);
 
 	print_magic(header, argv[1]);
 
@@ -55,11 +48,7 @@ int main(int argc, char **argv)
 	print_entry_point(header);
 
 	c_fd = close(o_fd);
-	if (c_fd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close %s\n", argv[1]);
-		exit(98);
-	}
+	fd_error_handling(c_fd, argv[1]);
 
 	return (0);
 }
@@ -258,4 +247,20 @@ void print_magic(unsigned char *header, char *arg)
 	printf("\n");
 
 
+}
+
+/**
+ * fd_error_handling - if error, print error message and exit
+ * @fd: to check
+ * @arg: is the name's file
+ *
+ * Return: Always nothing
+ */
+void fd_error_handling(int fd, char *arg)
+{
+	if (fd == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't open %s\n", arg);
+		exit(98);
+	}
 }
