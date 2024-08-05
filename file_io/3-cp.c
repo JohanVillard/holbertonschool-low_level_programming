@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	}
 
 	/* Create a file, trunc if exists, if not create it RW for user */
-	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR |
+	file_to = open(argv[2], O_RDWR | O_TRUNC | O_CREAT, S_IRUSR |
 	S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file_to == -1)
 	{
@@ -59,13 +59,6 @@ int main(int argc, char **argv)
 	/* Manage the case if file_from is greater than buffer */
 	while (read_bytes > 0)
 	{
-		if (read_bytes == -1)
-		{
-			free(buffer);
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
-
 		/* Write from the buffer to the file */
 		write_bytes = write(file_to, buffer, read_bytes);
 		if (write_bytes == -1)
