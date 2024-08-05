@@ -35,7 +35,7 @@ int main(int argc, char **argv)
 	}
 
 	/* Create a file, trunc if exists, if not create it RW for user */
-	file_to = open(argv[2], O_RDWR | O_TRUNC | O_CREAT, S_IRUSR |
+	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR |
 	S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file_to == -1)
 	{
