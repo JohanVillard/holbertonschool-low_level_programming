@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
+		exit(98);
 	}
 
 	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
