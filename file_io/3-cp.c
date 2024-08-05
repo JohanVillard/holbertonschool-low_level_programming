@@ -33,7 +33,8 @@ int main(int argc, char **argv)
 	}
 
 	/* Create a file, trunc if exists, if not create it RW for user */
-	file_to = open(argv[2], O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	file_to = open(argv[2], O_RDWR | O_TRUNC | O_CREAT, S_IRUSR |
+	S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file_to == -1)
 	{
 		close_byte = close(file_from);
