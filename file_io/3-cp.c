@@ -38,6 +38,7 @@ int main(int argc, char **argv)
 	if (file_to == -1)
 	{
 		close_byte = close(file_from);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 
@@ -51,9 +52,9 @@ int main(int argc, char **argv)
 	{
 		if (read_bytes == -1)
 		{
+			free(buffer);
 			close_byte = close(file_from);	/* Close the file descriptor */
 			close_byte = close(file_to);	/* Close the file descriptor */
-			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
@@ -62,9 +63,9 @@ int main(int argc, char **argv)
 		write_bytes = write(file_to, buffer, read_bytes);
 		if (write_bytes == -1)
 		{
+			free(buffer);
 			close_byte = close(file_from);	/* Close the file descriptor */
 			close_byte = close(file_to);	/* Close the file descriptor */
-			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
@@ -72,9 +73,9 @@ int main(int argc, char **argv)
 
 	if (read_bytes == -1)
 	{
+		free(buffer);
 		close_byte = close(file_from);	/* Close the file descriptor */
 		close_byte = close(file_to);	/* Close the file descriptor */
-		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
