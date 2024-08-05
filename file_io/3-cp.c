@@ -84,14 +84,14 @@ int main(int argc, char **argv)
 	close_byte = close(file_from);	/* Close the file descriptor */
 	if (close_byte == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", file_from);
 		exit(100);
 	}
 
 	close_byte = close(file_to);	/* Close the file descriptor */
 	if (close_byte == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", file_to);
 		exit(100);
 	}
 
