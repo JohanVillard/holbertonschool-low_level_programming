@@ -62,8 +62,6 @@ int main(int argc, char **argv)
 		if (write_bytes == -1)
 		{
 			free(buffer);
-			close_byte = close(file_from);	/* Close the file descriptor */
-			close_byte = close(file_to);	/* Close the file descriptor */
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
