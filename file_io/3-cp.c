@@ -46,6 +46,16 @@ int main(int argc, char **argv)
 	if (buffer == NULL)	/* Malloc error handling */
 		return (-1);
 
+	read_bytes = read(file_from, buffer, 1024);
+	if (read_bytes == -1)
+	{
+		free(buffer);
+		close_byte = close(file_from);	/* Close the file descriptor */
+		close_byte = close(file_to);	/* Close the file descriptor */
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+
 	/* file_from is stored into the buffer */
 	/* Manage the case if file_from is greater than buffer */
 	while (read_bytes > 0)
@@ -74,14 +84,6 @@ int main(int argc, char **argv)
 		}
 	}
 
-	if (read_bytes == -1)
-	{
-		free(buffer);
-		close_byte = close(file_from);	/* Close the file descriptor */
-		close_byte = close(file_to);	/* Close the file descriptor */
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
 	write_bytes = 0;	/* Everything is already written */
 	close_byte = close(file_from);	/* Close the file descriptor */
 	if (close_byte == -1)
