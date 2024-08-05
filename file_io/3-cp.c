@@ -1,7 +1,5 @@
 #include "main.h"
 
-void error_message(ssize_t fd, int error_num, char *msg);
-
 /**
  * main - copies the content of a file to another file.
  * @argc: is an integer containing the number of command line arguments.
@@ -60,8 +58,6 @@ int main(int argc, char **argv)
 	/* Manage the case if file_from is greater than buffer */
 	while (read_bytes > 0)
 	{
-
-
 		/* Write from the buffer to the file */
 		write_bytes = write(file_to, buffer, read_bytes);
 		if (write_bytes == -1)
@@ -87,24 +83,19 @@ int main(int argc, char **argv)
 	write_bytes = 0;	/* Everything is already written */
 	close_byte = close(file_from);	/* Close the file descriptor */
 	if (close_byte == -1)
-		error_message(close_byte, 100, "Error: Can't close fd");
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+		exit(100);
+	}
+
 	close_byte = close(file_to);	/* Close the file descriptor */
 	if (close_byte == -1)
-		error_message(close_byte, 100, "Error: Can't close fd");
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+		exit(100);
+	}
 
 	free(buffer);
 	buffer = NULL;	/* Eraser buffer */
 	return (0);
-}
-
-/**
- * error_message - print eeror message
- * @fd: file descriptor
- * @error_num: .
- * @msg: .
- */
-void error_message(ssize_t fd, int error_num, char *msg)
-{
-	dprintf(STDERR_FILENO, "%s %lu\n", msg, fd);
-	exit(error_num);
 }
