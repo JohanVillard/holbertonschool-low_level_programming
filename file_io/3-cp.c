@@ -14,6 +14,7 @@ int main(int argc, char **argv)
 	int file_from = 0, file_to = 0; /* Destination file */
 	ssize_t read_bytes = 0, write_bytes = 0;
 	char *buffer;
+	ssize_t close_byte = 0;
 
 	/* argv[1]: 1st file ----- argv[2]: 2nd file */
 	if (argc != 3)
@@ -38,6 +39,11 @@ int main(int argc, char **argv)
 	if (file_to == -1)
 	{
 		close(file_from);
+		if (close_byte == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+			exit(100);
+		}
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
