@@ -98,12 +98,6 @@ void close_all(int file_from, int file_to)
 	close_byte = close(file_from);	/* Close the file descriptor */
 	if (close_byte == -1)
 	{
-		close_byte = close(file_to);	/* Close the file descriptor */
-		if (close_byte == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
-			exit(100);
-		}
 		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
 		exit(100);
 	}
