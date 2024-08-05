@@ -1,5 +1,7 @@
 #include "main.h"
 
+void close_error_message(int fd);
+
 /**
  * main - copies the content of a file to another file.
  * @argc: is an integer containing the number of command line arguments.
@@ -25,10 +27,7 @@ int main(int argc, char **argv)
 
 	file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
 	if (file_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
+		close_error_message(file_from);
 
 	/* Create a file, trunc if exists, if not create it RW for user */
 	file_to = open(argv[2], O_RDWR | O_TRUNC | O_CREAT, S_IRUSR |
@@ -37,10 +36,7 @@ int main(int argc, char **argv)
 	{
 		close_byte = close(file_from);
 		if (close_byte == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-			exit(100);
-		}
+			close_error_message(file_from);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
@@ -55,16 +51,10 @@ int main(int argc, char **argv)
 		free(buffer);
 		close_byte = close(file_from);	/* Close the file descriptor */
 		if (close_byte == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-			exit(100);
-		}
+			close_error_message(file_from);
 		close_byte = close(file_to);	/* Close the file descriptor */
 		if (close_byte == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
-			exit(100);
-		}
+			close_error_message(file_to);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
@@ -80,16 +70,10 @@ int main(int argc, char **argv)
 			free(buffer);
 			close_byte = close(file_from);	/* Close the file descriptor */
 			if (close_byte == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-				exit(100);
-			}
+				close_error_message(file_from);
 			close_byte = close(file_to);	/* Close the file descriptor */
 			if (close_byte == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
-				exit(100);
-			}
+				close_error_message(file_to);
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
@@ -100,16 +84,10 @@ int main(int argc, char **argv)
 			free(buffer);
 			close_byte = close(file_from);	/* Close the file descriptor */
 			if (close_byte == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-				exit(100);
-			}
+				close_error_message(file_from);
 			close_byte = close(file_to);	/* Close the file descriptor */
 			if (close_byte == -1)
-			{
-				dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
-				exit(100);
-			}
+				close_error_message(file_to);
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
@@ -118,18 +96,22 @@ int main(int argc, char **argv)
 	write_bytes = 0;	/* Everything is already written */
 	close_byte = close(file_from);	/* Close the file descriptor */
 	if (close_byte == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_from);
-		exit(100);
-	}
+		close_error_message(file_from);
 	close_byte = close(file_to);	/* Close the file descriptor */
 	if (close_byte == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_to);
-		exit(100);
-	}
+		close_error_message(file_to);
 
 	free(buffer);
 	buffer = NULL;	/* Eraser buffer */
 	return (0);
+}
+
+/**
+ * close_error_message - print close message
+ * @fd: to print
+ */
+void close_error_message(int fd)
+{
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+	exit(100);
 }
