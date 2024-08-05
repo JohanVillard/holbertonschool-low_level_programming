@@ -33,8 +33,7 @@ int main(int argc, char **argv)
 	}
 
 	/* Create a file, trunc if exists, if not create it RW for user */
-	file_to = open(argv[2], O_RDWR | O_TRUNC | O_CREAT, S_IRUSR
-	| S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	file_to = open(argv[2], O_RDWR | O_TRUNC | O_CREAT, S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file_to == -1)
 	{
 		close_byte = close(file_from);
@@ -63,11 +62,7 @@ int main(int argc, char **argv)
 		if (write_bytes == -1)
 		{
 			close_byte = close(file_from);	/* Close the file descriptor */
-			if (close_byte == -1)
-				error_message(close_byte, 100, "Error: Can't close fd");
 			close_byte = close(file_to);	/* Close the file descriptor */
-			if (close_byte == -1)
-				error_message(close_byte, 100, "Error: Can't close fd");
 			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
@@ -82,7 +77,7 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	write_bytes = 0; /* Everything is already written */
+	write_bytes = 0;	/* Everything is already written */
 	close_byte = close(file_from);	/* Close the file descriptor */
 	if (close_byte == -1)
 		error_message(close_byte, 100, "Error: Can't close fd");
