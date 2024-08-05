@@ -40,7 +40,7 @@ int main(int argc, char **argv)
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(98);
+		exit(99);
 	}
 
 	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
@@ -59,6 +59,13 @@ int main(int argc, char **argv)
 	/* Manage the case if file_from is greater than buffer */
 	while (read_bytes > 0)
 	{
+		if (read_bytes == -1)
+		{
+			free(buffer);
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+
 		/* Write from the buffer to the file */
 		write_bytes = write(file_to, buffer, read_bytes);
 		if (write_bytes == -1)
