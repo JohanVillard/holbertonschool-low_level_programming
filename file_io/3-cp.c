@@ -48,16 +48,9 @@ int main(int argc, char **argv)
 
 	/* file_from is stored into the buffer */
 	/* Manage the case if file_from is greater than buffer */
-	while ((read_bytes = read(file_from, buffer, 1024)) > 0)
+	while (read_bytes > 0)
 	{
-		if (read_bytes == -1)
-		{
-			free(buffer);
-			close_byte = close(file_from);	/* Close the file descriptor */
-			close_byte = close(file_to);	/* Close the file descriptor */
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
+
 
 		/* Write from the buffer to the file */
 		write_bytes = write(file_to, buffer, read_bytes);
@@ -68,6 +61,16 @@ int main(int argc, char **argv)
 			close_byte = close(file_to);	/* Close the file descriptor */
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
+		}
+
+		read_bytes = read(file_from, buffer, 1024);
+		if (read_bytes == -1)
+		{
+			free(buffer);
+			close_byte = close(file_from);	/* Close the file descriptor */
+			close_byte = close(file_to);	/* Close the file descriptor */
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
 		}
 	}
 
