@@ -23,8 +23,10 @@ int main(int argc, char **argv)
 	}
 
 	if (argv[1] == NULL || argv[2] == NULL)
+	{
+		dprintf(STDOUT_FILENO, "Error: %s and %s doesn't exist\n", argv[1], argv[2]);
 		return (-1);
-
+	}
 	file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
 	if (file_from == -1)
 		close_error_message(file_from);
