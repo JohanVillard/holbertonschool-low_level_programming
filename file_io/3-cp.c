@@ -58,7 +58,18 @@ int main(int argc, char **argv)
 	{
 		if (read_bytes == -1)
 		{
-			close_all(file_from, file_to);
+			close_byte = close(file_from);	/* Close the file descriptor */
+			if (close_byte == -1)
+			{
+				dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+				exit(100);
+			}
+			close_byte = close(file_to);	/* Close the file descriptor */
+			if (close_byte == -1)
+			{
+				dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+				exit(100);
+			}
 			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
@@ -68,7 +79,18 @@ int main(int argc, char **argv)
 		write_bytes = write(file_to, buffer, read_bytes);
 		if (write_bytes == -1)
 		{
-			close_all(file_from, file_to);
+			close_byte = close(file_from);	/* Close the file descriptor */
+			if (close_byte == -1)
+			{
+				dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+				exit(100);
+			}
+			close_byte = close(file_to);	/* Close the file descriptor */
+			if (close_byte == -1)
+			{
+				dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+				exit(100);
+			}
 			free(buffer);
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
@@ -77,30 +99,23 @@ int main(int argc, char **argv)
 
 	if (read_bytes == -1)
 	{
-		close_all(file_from, file_to);
+		close_byte = close(file_from);	/* Close the file descriptor */
+		if (close_byte == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+			exit(100);
+		}
+		close_byte = close(file_to);	/* Close the file descriptor */
+		if (close_byte == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
+			exit(100);
+		}
 		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
 	write_bytes = 0; /* Everything is already written */
-	/* Close all files and check if no error */
-	close_all(file_from, file_to);
-	free(buffer);
-	buffer = NULL;	/* Eraser buffer */
-	return (0);
-}
-
-/**
- * close_all - close all files
- * @file_from: to close
- * @file_to: to close
- *
- * Return: Always nothing
- */
-void close_all(int file_from, int file_to)
-{
-	ssize_t close_byte = 0;
-
 	close_byte = close(file_from);	/* Close the file descriptor */
 	if (close_byte == -1)
 	{
@@ -113,4 +128,8 @@ void close_all(int file_from, int file_to)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %lu\n", close_byte);
 		exit(100);
 	}
+	free(buffer);
+	buffer = NULL;	/* Eraser buffer */
+	return (0);
 }
+
