@@ -37,8 +37,7 @@ int main(int argc, char **argv)
 	}
 
 	/* Create a file, trunc if exists, if not create it W for user */
-	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, S_IRUSR |
-	S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
