@@ -3,6 +3,7 @@
 void close_error_message(int fd);
 void _write(int file_to, char *buffer, char *arg, ssize_t  read_bytes);
 int _read(int file_from, char *buffer, char *arg);
+void _close(int fd);
 
 /**
  * main - copies the content of a file to another file.
@@ -14,7 +15,7 @@ int _read(int file_from, char *buffer, char *arg);
 int main(int argc, char **argv)
 {
 	int file_from = 0, file_to = 0; /* Destination file */
-	ssize_t read_bytes = 0, close_byte = 0;
+	ssize_t read_bytes = 0;
 	char *buffer;
 
 	/* argv[1]: 1st file ----- argv[2]: 2nd file */
@@ -60,12 +61,8 @@ int main(int argc, char **argv)
 		read_bytes = _read(file_from, buffer, argv[1]);
 	}
 
-	close_byte = close(file_from);	/* Close the file descriptor */
-	if (close_byte == -1)
-		close_error_message(file_from);
-	close_byte = close(file_to);	/* Close the file descriptor */
-	if (close_byte == -1)
-		close_error_message(file_to);
+	_close(file_from);
+	_close(file_to);
 
 	free(buffer);
 	buffer = NULL;	/* Eraser buffer */
@@ -73,13 +70,16 @@ int main(int argc, char **argv)
 }
 
 /**
- * close_error_message - print close message
- * @fd: to print
+ * _close - print close message
+ * @fd: to close and check
  */
-void close_error_message(int fd)
+void _close(int fd)
 {
-	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-	exit(100);
+	if (close(fd) == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
 }
 
 /**
