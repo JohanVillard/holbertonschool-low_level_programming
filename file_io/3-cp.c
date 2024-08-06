@@ -53,6 +53,7 @@ int main(int argc, char **argv)
 	/* Manage the case if file_from is greater than buffer */
 	while ((read_bytes = _read(file_from, buffer, argv[1])) > 0)
 	{
+		buffer[read_bytes] = '\0';
 		/* Write from the buffer to the file and handle error*/
 		_write(file_to, buffer, argv[2], read_bytes);
 	}
