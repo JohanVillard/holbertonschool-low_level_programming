@@ -1,6 +1,7 @@
 #include "main.h"
 
 void close_error_message(int fd);
+void _write(int file_to, char *buffer, char *arg, ssize_t  read_bytes);
 
 /**
  * main - copies the content of a file to another file.
@@ -12,7 +13,7 @@ void close_error_message(int fd);
 int main(int argc, char **argv)
 {
 	int file_from = 0, file_to = 0; /* Destination file */
-	ssize_t read_bytes = 0, write_bytes = 0, close_byte = 0;
+	ssize_t read_bytes = 0, close_byte = 0;
 	char *buffer;
 
 	/* argv[1]: 1st file ----- argv[2]: 2nd file */
@@ -59,14 +60,8 @@ int main(int argc, char **argv)
 	/* Manage the case if file_from is greater than buffer */
 	while (read_bytes > 0)
 	{
-		/* Write from the buffer to the file */
-		write_bytes = write(file_to, buffer, read_bytes);
-		if (write_bytes == -1)
-		{
-			free(buffer);
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
+		/* Write from the buffer to the file and handle error*/
+		_write(file_to, buffer, argv[2], read_bytes);
 
 		read_bytes = read(file_from, buffer, 1024);
 		if (read_bytes == -1)
@@ -77,7 +72,6 @@ int main(int argc, char **argv)
 		}
 	}
 
-	write_bytes = 0;	/* Everything is already written */
 	close_byte = close(file_from);	/* Close the file descriptor */
 	if (close_byte == -1)
 		close_error_message(file_from);
@@ -98,4 +92,24 @@ void close_error_message(int fd)
 {
 	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 	exit(100);
+}
+
+/**
+ * _write - write and handle error
+ * @buffer: source
+ * @file_to: where to write
+ * @arg: to print if write fails
+ * @read_bytes: is the fd of read call
+ *
+ * Return: Always nothing
+ */
+void _write(int file_to, char *buffer, char *arg, ssize_t  read_bytes)
+{
+	/* Write from the buffer to the file */
+	if (write(file_to, buffer, read_bytes) == -1)
+	{
+		free(buffer);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", arg);
+		exit(99);
+	}
 }
