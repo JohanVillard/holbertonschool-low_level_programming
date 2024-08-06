@@ -113,7 +113,7 @@ int _read(int file_from, char *buffer, char *arg)
 	int fd = 0;
 
 	/* Write from the buffer to the file */
-	fd = read(file_from, buffer, buffer_size);
+	fd = read(file_from, buffer, buffer_size - 1);
 	if (fd == -1)
 	{
 		free(buffer);
