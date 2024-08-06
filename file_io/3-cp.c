@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 
 	/* Create a file, trunc if exists, if not create it W for user */
 	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
-	if (file_to == -1)
+	if (file_to < 0)
 	{
 		_close(file_from);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
@@ -91,7 +91,7 @@ void _close(int fd)
 void _write(int file_to, char *buffer, char *arg, ssize_t  read_bytes)
 {
 	/* Write from the buffer to the file */
-	if (write(file_to, buffer, read_bytes) == -1)
+	if (write(file_to, buffer, read_bytes) < 0)
 	{
 		free(buffer);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", arg);
