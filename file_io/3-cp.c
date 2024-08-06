@@ -2,6 +2,7 @@
 
 void close_error_message(int fd);
 void _write(int file_to, char *buffer, char *arg, ssize_t  read_bytes);
+int _read(int file_from, char *buffer, char *arg);
 
 /**
  * main - copies the content of a file to another file.
@@ -48,13 +49,7 @@ int main(int argc, char **argv)
 	if (buffer == NULL)	/* Malloc error handling */
 		return (-1);
 
-	read_bytes = read(file_from, buffer, 1024);
-	if (read_bytes == -1)
-	{
-		free(buffer);
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-		exit(98);
-	}
+	read_bytes = _read(file_from, buffer, argv[1]);
 
 	/* file_from is stored into the buffer */
 	/* Manage the case if file_from is greater than buffer */
@@ -62,14 +57,8 @@ int main(int argc, char **argv)
 	{
 		/* Write from the buffer to the file and handle error*/
 		_write(file_to, buffer, argv[2], read_bytes);
-
-		read_bytes = read(file_from, buffer, 1024);
-		if (read_bytes == -1)
-		{
-			free(buffer);
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
-			exit(98);
-		}
+		/* Read to the buffer and handle error */
+		read_bytes = _read(file_from, buffer, argv[1]);
 	}
 
 	close_byte = close(file_from);	/* Close the file descriptor */
@@ -112,4 +101,29 @@ void _write(int file_to, char *buffer, char *arg, ssize_t  read_bytes)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", arg);
 		exit(99);
 	}
+}
+
+/**
+ * _read- read and handle error
+ * @buffer: to store read
+ * @file_from: where to read
+ * @arg: to print if write fails
+ *
+ * Return: Return file descriptor, exit(98) if fail
+ */
+int _read(int file_from, char *buffer, char *arg)
+{
+	size_t buffer_size = 1024;
+	int fd = 0;
+
+	/* Write from the buffer to the file */
+	fd = read(file_from, buffer, buffer_size);
+	if (fd == -1)
+	{
+		free(buffer);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", arg);
+		exit(98);
+	}
+
+	return (fd);
 }
