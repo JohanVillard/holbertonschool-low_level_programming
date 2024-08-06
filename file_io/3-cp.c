@@ -25,11 +25,6 @@ int main(int argc, char **argv)
 		exit(97);
 	}
 
-	if (argv[1] == NULL)
-	{
-		dprintf(STDOUT_FILENO, "Error: %s doesn't exist\n", argv[1]);
-		return (-1);
-	}
 	file_from = open(argv[1], O_RDONLY);	/* Open the file at argv[1]-Read Only */
 	if (file_from == -1)
 	{
@@ -49,16 +44,12 @@ int main(int argc, char **argv)
 	if (buffer == NULL)	/* Malloc error handling */
 		return (-1);
 
-	read_bytes = _read(file_from, buffer, argv[1]);
-
 	/* file_from is stored into the buffer */
 	/* Manage the case if file_from is greater than buffer */
-	while (read_bytes > 0)
+	while ((read_bytes = _read(file_from, buffer, argv[1])) > 0)
 	{
 		/* Write from the buffer to the file and handle error*/
 		_write(file_to, buffer, argv[2], read_bytes);
-		/* Read to the buffer and handle error */
-		read_bytes = _read(file_from, buffer, argv[1]);
 	}
 
 	_close(file_from);
