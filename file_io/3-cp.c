@@ -36,13 +36,18 @@ int main(int argc, char **argv)
 	file_to = open(argv[2], O_WRONLY | O_TRUNC | O_CREAT, 0664);
 	if (file_to == -1)
 	{
+		_close(file_from);
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
 
 	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
 	if (buffer == NULL)	/* Malloc error handling */
+	{
+		_close(file_from);
+		_close(file_to);
 		return (-1);
+	}
 
 	/* file_from is stored into the buffer */
 	/* Manage the case if file_from is greater than buffer */
@@ -57,6 +62,7 @@ int main(int argc, char **argv)
 
 	free(buffer);
 	buffer = NULL;	/* Eraser buffer */
+
 	return (0);
 }
 
