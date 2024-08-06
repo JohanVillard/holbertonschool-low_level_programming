@@ -39,8 +39,8 @@ int main(int argc, char **argv)
 	S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	if (file_to == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", argv[2]);
-		exit(98);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
 	}
 
 	buffer = malloc(1024);	/* Allocate 1024 blocks of memory to the buffer */
